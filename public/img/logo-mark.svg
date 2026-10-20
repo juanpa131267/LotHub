@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="4 4 136 128" fill="none">
+  <title>LotHub</title>
+  <!-- Edificios (de izquierda a derecha). El borde inferior queda oculto bajo la vía. -->
+  <path d="M15 60 L26 50 V118 H15 Z" fill="#305FB0"/>
+  <path d="M30 34 L51 11 V112 H30 Z" fill="#BCCE1B"/>
+  <path d="M56 12 L70 25 V104 H56 Z" fill="#305FB0"/>
+  <path d="M66 21.3 L70 25 V104 H66 Z" fill="#5A80C0"/>
+  <path d="M74 51 L85 61 V100 H74 Z" fill="#305FB0"/>
+  <!-- Vía: sale ancha hacia el frente y se pierde entre los edificios. -->
+  <path d="M9 125 C15 111 36 99 60 96 L79 95 C74 105 79 115 103 119.5 C118 122.3 128 123 136 123.4 L136 126 L9 126 Z"
+        fill="#0E1116" stroke="#FFFFFF" stroke-width="2.2" stroke-linejoin="round" paint-order="stroke"/>
+  <!-- Líneas de carril -->
+  <path d="M58 97.5 C48 104 41 113 38 125" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M65 97 C56 105 50 114 50 125" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
+</svg>

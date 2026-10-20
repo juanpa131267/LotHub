@@ -1,0 +1,31 @@
+# Dependencias
+/vendor
+/tools/plan-processor/.venv/
+/tools/plan-processor/bin/
+__pycache__/
+
+# Entorno y secretos
+.env
+.env.backup
+/storage/*.key
+
+# Archivos generados / subidos por usuarios
+/public/storage
+/public/.cache/
+/storage/app/plans/
+/storage/app/photos/
+.phpunit.result.cache
+*.log
+
+# Documentos y fuentes de trabajo (no se publican)
+*.dwg
+*.docx
+/BASE DE DATOS.txt
+/%SystemDrive%/
+
+# Editores y sistema operativo
+/.idea
+/.vscode
+.DS_Store
+Thumbs.db
+~$*
