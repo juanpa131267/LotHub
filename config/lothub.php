@@ -1,0 +1,55 @@
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Parámetros de negocio de LotHub
+|--------------------------------------------------------------------------
+| Laravel 12 toma la configuración base (database, session, mail...) desde
+| el framework y el archivo .env, por eso este proyecto solo publica este
+| archivo con los valores propios del dominio. Si necesitas personalizar
+| otro archivo usa: php artisan config:publish <nombre>
+*/
+
+return [
+
+    // Permiso que concede acceso total (equivale a "superusuario").
+    'super_permission' => 'sistema.acceso_total',
+
+    // RN-25: bloqueo de cuenta y recuperación de contraseña.
+    'auth' => [
+        'max_attempts'        => 5,
+        'lock_minutes'        => 15,
+        'reset_token_minutes' => 30,
+    ],
+
+    // Roles que no pueden eliminarse desde la interfaz.
+    'protected_roles' => ['ADMINISTRADOR'],
+
+    // Ley 1581 de 2012: versión vigente de la política de tratamiento de datos.
+    'privacy_policy_version' => '1.0',
+
+    // Plano interactivo: procesamiento de DWG/DXF (ver docs/PLANOS.md).
+    'plans' => [
+        'python'     => env('PLAN_PYTHON', 'python'),
+        'script'     => base_path('tools/plan-processor/process_plan.py'),
+        // Conversor DWG → DXF (LibreDWG dwg2dxf). Vacío = solo se aceptan archivos DXF.
+        'dwg2dxf'    => env('PLAN_DWG2DXF'),
+        // El procesamiento corre en segundo plano (php artisan plans:process): un plano de
+        // 40 MB / 4.500 lotes tarda ~40 s. Este es el tiempo máximo antes de darlo por fallido.
+        'timeout'    => 1800,    // segundos
+        // Tamaño máximo de archivo. El límite real es el menor entre este valor y los de PHP
+        // (upload_max_filesize y post_max_size en php.ini): ver PlanService::maxUploadBytes().
+        'max_mb'     => (int) env('PLAN_MAX_MB', 50),
+        // PHP de consola para lanzar el proceso en segundo plano.
+        'php'        => env('PLAN_PHP') ?: (str_contains(strtolower(basename(PHP_BINARY)), 'php') ? PHP_BINARY : 'php'),
+        'directory'  => 'plans', // dentro de storage/app
+    ],
+
+    // Datos de contacto mostrados en el sitio público.
+    'company' => [
+        'name'     => 'LotHub Inmobiliaria',
+        'city'     => 'Girardot, Cundinamarca',
+        'phone'    => '+57 300 000 0000',
+        'email'    => 'contacto@lothub.local',
+    ],
+];
