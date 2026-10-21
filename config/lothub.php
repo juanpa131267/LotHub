@@ -42,6 +42,13 @@ return [
         'max_monthly_rate' => (float) env('USURY_MONTHLY_RATE', 2.10),
     ],
 
+    // Motor de asignación automática de pagos (Sprint 6, ver docs/ASIGNACION.md).
+    // Se asigna solo si el mejor candidato alcanza el umbral y supera al segundo por el margen.
+    'allocation' => [
+        'auto_threshold' => (int) env('ALLOCATION_AUTO_THRESHOLD', 75),
+        'min_margin'     => (int) env('ALLOCATION_MIN_MARGIN', 20),
+    ],
+
     // Roles que no pueden eliminarse desde la interfaz.
     'protected_roles' => ['ADMINISTRADOR'],
 

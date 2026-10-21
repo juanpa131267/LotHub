@@ -118,6 +118,7 @@ docs/                             ← guías para el equipo
 - [docs/PLANOS.md](docs/PLANOS.md) — plano interactivo: cómo preparar el DWG/DXF, el algoritmo y su instalación.
 - [docs/FICHA_DE_VENTA.md](docs/FICHA_DE_VENTA.md) — fotos del proyecto, precios (por m² o planilla de Excel) y nomenclatura MANZANA-NÚMERO.
 
+- [docs/ASIGNACION.md](docs/ASIGNACION.md) — motor de asignación automática de pagos: extracto, puntaje y cola de revisión.
 - [docs/CRONOGRAMA.md](docs/CRONOGRAMA.md) — sprints S1–S11, puntos de historia y estado de cada uno.
 
 ## Estado por sprint

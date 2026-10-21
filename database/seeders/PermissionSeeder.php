@@ -68,9 +68,10 @@ class PermissionSeeder extends Seeder
         'acuerdos.ver'                     => 'Ver acuerdos de pago, obligaciones y planes de cuotas',
         'acuerdos.crear'                   => 'Definir acuerdos de pago y registrar su firma',
         'acuerdos.reestructurar'           => 'Reestructurar acuerdos de pago',
-        'abonos.ver'                       => 'Ver abonos (próximo sprint)',
-        'abonos.crear'                     => 'Registrar abonos manuales (próximo sprint)',
-        'abonos.reversar'                  => 'Reversar abonos (próximo sprint)',
+        'abonos.ver'                       => 'Ver abonos y su aplicación a cuotas',
+        'abonos.crear'                     => 'Registrar abonos manuales',
+        'abonos.reversar'                  => 'Reversar abonos',
+        'asignacion.gestionar'             => 'Cargar extractos bancarios y revisar la asignación automática de pagos',
         'conciliacion.ver'                 => 'Conciliar transacciones de la pasarela (próximo sprint)',
         'cartera.ver'                      => 'Consultar cartera y mora',
         'cartera.exportar'                 => 'Exportar reportes de cartera (próximo sprint)',
@@ -98,13 +99,13 @@ class PermissionSeeder extends Seeder
     private const DIRECTOR_EXTRA = [
         'proyectos.crear', 'proyectos.editar', 'proyectos.eliminar',
         'lotes.crear', 'lotes.editar', 'lotes.eliminar', 'lotes.bloquear', 'lotes.importar',
-        'clientes.eliminar', 'negociaciones.aprobar_anulacion', 'cartera.ver', 'cartera.exportar',
+        'clientes.eliminar', 'negociaciones.aprobar_anulacion', 'cartera.ver', 'cartera.exportar', 'abonos.ver', 'acuerdos.ver',
     ];
 
     private const AUXILIAR = [
         'panel.acceder', 'proyectos.ver', 'lotes.ver', 'clientes.ver', 'negociaciones.ver',
         'acuerdos.ver', 'acuerdos.crear', 'acuerdos.reestructurar',
-        'abonos.ver', 'abonos.crear', 'abonos.reversar', 'conciliacion.ver',
+        'abonos.ver', 'abonos.crear', 'abonos.reversar', 'asignacion.gestionar', 'conciliacion.ver',
         'cartera.ver', 'estados_cuenta.ver', 'reclamos.ver', 'reclamos.atender',
         'documentos.ver', 'documentos.cargar',
     ];

@@ -13,6 +13,7 @@ use App\Models\Commercial\Project;
 use App\Models\Commercial\Reservation;
 use App\Models\Commercial\Sale;
 use App\Models\Commercial\SaleCancellationRequest;
+use App\Models\Payments\BankStatementLine;
 use App\Models\Security\AuditLog;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
@@ -73,6 +74,8 @@ class DashboardController extends Controller
              'count' => fn () => SaleCancellationRequest::where('status', SaleCancellationRequest::PENDING)->count()],
             ['label' => 'Negociaciones sin acuerdo', 'icon' => 'ph-file-dashed', 'route' => 'agreements.pending', 'permission' => 'acuerdos.ver',
              'count' => fn () => Sale::where('status_id', SaleStatus::VIGENTE)->whereDoesntHave('agreements')->count()],
+            ['label' => 'Pagos por revisar', 'icon' => 'ph-list-checks', 'route' => 'allocation.queue', 'permission' => 'asignacion.gestionar',
+             'count' => fn () => BankStatementLine::where('status', BankStatementLine::REVIEW)->count()],
         ];
     }
 }
