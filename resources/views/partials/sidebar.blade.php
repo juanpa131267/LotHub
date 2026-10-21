@@ -53,6 +53,9 @@
     ];
 
     $user = auth()->user();
+    // El portal es del comprador: un usuario del personal (aunque tenga acceso total) no lo ve
+    // si no está vinculado a una ficha de cliente.
+    $isClient = $user->client() !== null;
 @endphp
 
 <aside class="sidebar" aria-label="Menú principal">
@@ -63,7 +66,7 @@
 
     <nav class="sidebar-nav">
         @foreach ($menu as $group => $items)
-            @php $visible = array_filter($items, fn ($i) => $user->hasPermission($i[3])); @endphp
+            @php $visible = array_filter($items, fn ($i) => $user->hasPermission($i[3]) && ($isClient || ! str_starts_with($i[2], 'portal.'))); @endphp
             @continue(! $visible)
 
             <div class="nav-label">{{ $group }}</div>
