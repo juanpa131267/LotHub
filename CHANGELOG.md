@@ -7,6 +7,19 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y 
 ### Pendiente
 - S4 Reservas y negociaciones · S5 Acuerdos de pago y plan de cuotas · S6 Motor de asignación automática · S7 Pasarela Wompi y conciliación.
 
+## [0.8.0] — Sprint 8: cartera, mora y estados de cuenta
+
+### Added
+- Liquidación diaria de intereses de mora (RN-19, CU-27): sobre capital e interés corriente vencidos, con la tasa
+  pactada sin superar la usura vigente, días de gracia configurables e idempotente por fecha (`portfolio:late-charges`).
+- Tablero de cartera y mora (CU-23): saldo, índice de mora, edades de mora (al día, 1-30, 31-60, 61-90, más de 90),
+  filtros por proyecto, rango y cliente, y exportación a Excel del resultado filtrado.
+- Estado de cuenta en PDF (CU-24) para el personal de cartera y para el cliente desde el portal (RN-21), archivado
+  con su huella SHA-256 en `account_statements`.
+
+### Fixed
+- Los archivos privados (documentos, extractos y estados de cuenta) se ignoran en Git (`storage/app/private`).
+
 ## [0.7.0] — Sprint 7: pasarela Wompi y conciliación
 
 ### Added
