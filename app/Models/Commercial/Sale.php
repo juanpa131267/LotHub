@@ -5,6 +5,7 @@ namespace App\Models\Commercial;
 use App\Models\Catalogs\FinancingModality;
 use App\Models\Catalogs\SaleStatus;
 use App\Models\Documents\Document;
+use App\Models\Financing\PaymentAgreement;
 use App\Models\Security\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -90,6 +91,17 @@ class Sale extends Model
     public function documents(): HasMany
     {
         return $this->hasMany(Document::class)->latest('id');
+    }
+
+    /** Versiones del acuerdo de pago (la vigente es la de mayor versión, RN-11). */
+    public function agreements(): HasMany
+    {
+        return $this->hasMany(PaymentAgreement::class)->orderByDesc('version');
+    }
+
+    public function currentAgreement(): HasOne
+    {
+        return $this->hasOne(PaymentAgreement::class)->ofMany('version', 'max');
     }
 
     public function isActive(): bool

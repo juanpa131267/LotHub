@@ -65,9 +65,9 @@ class PermissionSeeder extends Seeder
         'negociaciones.crear'              => 'Registrar negociaciones',
         'negociaciones.solicitar_anulacion'=> 'Solicitar anulación o desistimiento',
         'negociaciones.aprobar_anulacion'  => 'Aprobar anulación o desistimiento',
-        'acuerdos.ver'                     => 'Ver acuerdos de pago (próximo sprint)',
-        'acuerdos.crear'                   => 'Definir acuerdos de pago (próximo sprint)',
-        'acuerdos.reestructurar'           => 'Reestructurar acuerdos de pago (próximo sprint)',
+        'acuerdos.ver'                     => 'Ver acuerdos de pago, obligaciones y planes de cuotas',
+        'acuerdos.crear'                   => 'Definir acuerdos de pago y registrar su firma',
+        'acuerdos.reestructurar'           => 'Reestructurar acuerdos de pago',
         'abonos.ver'                       => 'Ver abonos (próximo sprint)',
         'abonos.crear'                     => 'Registrar abonos manuales (próximo sprint)',
         'abonos.reversar'                  => 'Reversar abonos (próximo sprint)',
@@ -102,7 +102,7 @@ class PermissionSeeder extends Seeder
     ];
 
     private const AUXILIAR = [
-        'panel.acceder', 'proyectos.ver', 'lotes.ver', 'clientes.ver',
+        'panel.acceder', 'proyectos.ver', 'lotes.ver', 'clientes.ver', 'negociaciones.ver',
         'acuerdos.ver', 'acuerdos.crear', 'acuerdos.reestructurar',
         'abonos.ver', 'abonos.crear', 'abonos.reversar', 'conciliacion.ver',
         'cartera.ver', 'estados_cuenta.ver', 'reclamos.ver', 'reclamos.atender',

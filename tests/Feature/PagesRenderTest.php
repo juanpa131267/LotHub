@@ -27,6 +27,8 @@ class PagesRenderTest extends TestCase
             route('sales.index'),
             route('sales.create', ['lot_id' => $lot->id]),
             route('sales.cancellations'),
+            route('agreements.pending'),
+            route('obligations.index'),
         ];
 
         foreach ($routes as $url) {
