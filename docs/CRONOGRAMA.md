@@ -12,7 +12,7 @@ detalladas están en el cronograma del equipo (Excel).
 | S4 | Reservas y negociaciones | 50 | — | ✅ Implementado |
 | S5 | Acuerdos de pago y plan de cuotas | 58 | — | ✅ Implementado |
 | S6 | Motor de asignación automática | 61 | — | ✅ Implementado |
-| S7 | Pasarela de pagos (Wompi) y conciliación | 53 | 2026-10-20 | ⏳ Pendiente |
+| S7 | Pasarela de pagos (Wompi) y conciliación | 53 | 2026-10-20 | ✅ Implementado |
 | S8 | Por definir | — | — | — |
 | S9 | Por definir | — | — | — |
 | S10 | Operación en paralelo | — | — | ⏳ Planificado |
