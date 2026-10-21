@@ -82,6 +82,8 @@ class PermissionSeeder extends Seeder
         'documentos.ver'                   => 'Ver documentos soporte',
         'documentos.cargar'                => 'Cargar documentos soporte',
 
+        'migracion.gestionar'              => 'Migrar la cartera vigente y comparar los cortes de la operación en paralelo',
+
         'portal.acceder'                   => 'Acceder al portal del cliente',
         'portal.pagar'                     => 'Pagar en línea',
         'portal.reclamos'                  => 'Radicar consultas o reclamos',
@@ -100,14 +102,14 @@ class PermissionSeeder extends Seeder
     private const DIRECTOR_EXTRA = [
         'proyectos.crear', 'proyectos.editar', 'proyectos.eliminar',
         'lotes.crear', 'lotes.editar', 'lotes.eliminar', 'lotes.bloquear', 'lotes.importar',
-        'clientes.eliminar', 'negociaciones.aprobar_anulacion', 'cartera.ver', 'cartera.exportar', 'abonos.ver', 'acuerdos.ver', 'estados_cuenta.ver', 'comunicaciones.ver', 'reclamos.ver',
+        'clientes.eliminar', 'negociaciones.aprobar_anulacion', 'cartera.ver', 'cartera.exportar', 'abonos.ver', 'acuerdos.ver', 'estados_cuenta.ver', 'comunicaciones.ver', 'reclamos.ver', 'migracion.gestionar',
     ];
 
     private const AUXILIAR = [
         'panel.acceder', 'proyectos.ver', 'lotes.ver', 'clientes.ver', 'negociaciones.ver',
         'acuerdos.ver', 'acuerdos.crear', 'acuerdos.reestructurar',
         'abonos.ver', 'abonos.crear', 'abonos.reversar', 'asignacion.gestionar', 'conciliacion.ver',
-        'cartera.ver', 'cartera.exportar', 'estados_cuenta.ver', 'reclamos.ver', 'reclamos.atender', 'comunicaciones.ver',
+        'cartera.ver', 'cartera.exportar', 'estados_cuenta.ver', 'reclamos.ver', 'reclamos.atender', 'comunicaciones.ver', 'migracion.gestionar',
         'documentos.ver', 'documentos.cargar',
     ];
 

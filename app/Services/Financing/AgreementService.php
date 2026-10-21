@@ -27,8 +27,10 @@ class AgreementService
     /**
      * @param array{down_payment:float, financed_amount:float, installments_count:int, frequency_id:int,
      *              monthly_interest_rate:float, late_interest_rate:float, first_due_date:string} $terms
+     * @param bool $migration acuerdo traído de la operación anterior (Sprint 10): admite fechas pasadas y
+     *                        la cuota inicial vence en la fecha de la negociación
      */
-    public function create(Sale $sale, array $terms): Obligation
+    public function create(Sale $sale, array $terms, bool $migration = false): Obligation
     {
         if (! $sale->isActive()) {
             throw new RuntimeException('Solo se define el acuerdo de una negociación vigente.');
@@ -37,16 +39,16 @@ class AgreementService
             throw new RuntimeException('La negociación ya tiene acuerdo de pago; para cambiar las condiciones usa la reestructuración.');
         }
 
-        $terms = $this->normalize($terms, $sale);
+        $terms = $this->normalize($terms, $sale, $migration);
 
         if (abs($terms['down_payment'] + $terms['financed_amount'] - (float) $sale->agreed_price) >= 1) {
             throw new RuntimeException('La cuota inicial más el capital financiado debe ser igual al precio pactado de $ '
                 .number_format((float) $sale->agreed_price, 0, ',', '.').' (RN-09).');
         }
 
-        return DB::transaction(function () use ($sale, $terms) {
+        return DB::transaction(function () use ($sale, $terms, $migration) {
             $agreement = PaymentAgreement::create($terms + ['sale_id' => $sale->id, 'version' => 1, 'created_by' => auth()->id()]);
-            $obligation = $this->openObligation($agreement, $terms);
+            $obligation = $this->openObligation($agreement, $terms, $migration ? CarbonImmutable::parse($sale->sale_date) : null);
 
             AuditLogger::model('DEFINIR_ACUERDO', $agreement, [], $terms + ['obligacion' => $obligation->obligation_code]);
 
@@ -118,7 +120,7 @@ class AgreementService
     // ── Internos ───────────────────────────────────────────────────────────
 
     /** RN-10: el contado es una sola cuota sin intereses. RN-19: las tasas no superan la usura. */
-    private function normalize(array $terms, Sale $sale): array
+    private function normalize(array $terms, Sale $sale, bool $allowPastDates = false): array
     {
         $terms = [
             'down_payment'          => round((float) ($terms['down_payment'] ?? 0)),
@@ -155,14 +157,14 @@ class AgreementService
         if (! PaymentFrequency::whereKey($terms['frequency_id'])->exists()) {
             throw new RuntimeException('Selecciona la periodicidad de las cuotas.');
         }
-        if ($terms['first_due_date'] === '' || CarbonImmutable::parse($terms['first_due_date'])->lt(now()->startOfDay())) {
+        if ($terms['first_due_date'] === '' || (! $allowPastDates && CarbonImmutable::parse($terms['first_due_date'])->lt(now()->startOfDay()))) {
             throw new RuntimeException('El primer vencimiento debe ser hoy o una fecha posterior.');
         }
 
         return $terms;
     }
 
-    private function plan(array $terms): array
+    private function plan(array $terms, ?CarbonImmutable $downPaymentDate = null): array
     {
         return $this->scheduler->schedule(
             $terms['down_payment'],
@@ -171,12 +173,12 @@ class AgreementService
             (int) PaymentFrequency::whereKey($terms['frequency_id'])->value('months_interval'),
             $terms['monthly_interest_rate'],
             CarbonImmutable::parse($terms['first_due_date']),
-            CarbonImmutable::today(),
+            $downPaymentDate ?? CarbonImmutable::today(),
         );
     }
 
     /** CU-14: obligación ACTIVA con su plan; verifica la suma del capital (RN-12). */
-    private function openObligation(PaymentAgreement $agreement, array $terms): Obligation
+    private function openObligation(PaymentAgreement $agreement, array $terms, ?CarbonImmutable $downPaymentDate = null): Obligation
     {
         $obligation = Obligation::create([
             'obligation_code' => Obligation::nextCode(),
@@ -185,7 +187,7 @@ class AgreementService
             'opened_at'       => now()->toDateString(),
         ]);
 
-        $plan = $this->plan($terms);
+        $plan = $this->plan($terms, $downPaymentDate);
         Installment::insert(array_map(fn ($row) => $row + ['obligation_id' => $obligation->id], $plan));
 
         $principal = (float) Installment::where('obligation_id', $obligation->id)->sum('principal_amount');
