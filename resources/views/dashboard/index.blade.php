@@ -58,6 +58,20 @@
         </div>
     </div>
 
+    @if ($queues->isNotEmpty())
+        <div class="stats">
+            @foreach ($queues as $queue)
+                @php($count = ($queue['count'])())
+                <div class="card stat">
+                    <div class="stat-icon {{ $count ? 'warn' : 'info' }}"><i class="ph {{ $queue['icon'] }}"></i></div>
+                    <div class="stat-value">{{ $count }}</div>
+                    <div class="stat-label">{{ $queue['label'] }}@if (isset($queue['hint']) && ($hint = ($queue['hint'])())) · <strong>{{ $hint }}</strong>@endif</div>
+                    <a href="{{ route($queue['route']) }}" class="stat-link"><i class="ph ph-arrow-up-right"></i></a>
+                </div>
+            @endforeach
+        </div>
+    @endif
+
     <div class="dash-grid">
         <div style="display:grid;gap:1.25rem">
             <section class="card">
