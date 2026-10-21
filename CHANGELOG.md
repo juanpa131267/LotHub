@@ -7,6 +7,15 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y 
 ### Pendiente
 - S4 Reservas y negociaciones · S5 Acuerdos de pago y plan de cuotas · S6 Motor de asignación automática · S7 Pasarela Wompi y conciliación.
 
+## [1.0.0-rc.2] — Datos de demostración y geografía completa
+
+### Added
+- Geografía completa de Colombia según la DIVIPOLA del DANE: 33 departamentos y 1.122 municipios, áreas no
+  municipalizadas e isla, con su código (`database/seeders/data/divipola.csv`).
+- Datos de demostración (`DemoDataSeeder` + `DemoPortfolioSeeder`): 18 meses de operación simulada con los servicios
+  reales, en orden cronológico, que cubren todos los casos de uso (más de 15.000 registros), con usuarios por rol.
+- Opción `NOTIFY_PAYMENT_CONFIRMATIONS` para activar o desactivar la confirmación automática de abonos.
+
 ## [1.0.0-rc.1] — Sprint 11: puesta en producción
 
 Versión candidata para la salida a producción (28 de diciembre de 2026, ver `docs/DESPLIEGUE.md`).
