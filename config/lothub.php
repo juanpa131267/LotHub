@@ -27,6 +27,7 @@ return [
     // US-TEC-001: en producción toda petición se atiende por HTTPS (redirección 301 + HSTS).
     // Detrás de un proxy o balanceador, define TRUSTED_PROXIES para reconocer X-Forwarded-Proto.
     'force_https' => (bool) env('FORCE_HTTPS', false),
+    'trusted_proxies' => env('TRUSTED_PROXIES'),     // * o lista separada por comas
     'hsts_max_age' => (int) env('HSTS_MAX_AGE', 31536000),
 
     // CU-11 Reservas: vigencia propuesta en el formulario y máxima permitida (días).
@@ -40,6 +41,7 @@ return [
     // la Superintendencia Financiera (tasa efectiva anual convertida a mensual).
     'financing' => [
         'max_monthly_rate' => (float) env('USURY_MONTHLY_RATE', 2.10),
+        'usury_configured' => env('USURY_MONTHLY_RATE') !== null,   // lothub:check advierte si se usa el valor por defecto
     ],
 
     // RN-19 Liquidación de mora: días de gracia después del vencimiento antes de liquidar.
@@ -78,6 +80,13 @@ return [
             'sms'      => env('SMS_PROVIDER'),
             'whatsapp' => env('WHATSAPP_PROVIDER'),
         ],
+    ],
+
+    // S11 Respaldos (php artisan lothub:backup). Cópialos también fuera del servidor.
+    'backup' => [
+        'path'           => env('BACKUP_PATH', storage_path('backups')),
+        'mysqldump'      => env('BACKUP_MYSQLDUMP', 'mysqldump'),
+        'retention_days' => (int) env('BACKUP_RETENTION_DAYS', 14),
     ],
 
     // Roles que no pueden eliminarse desde la interfaz.

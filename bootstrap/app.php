@@ -25,12 +25,9 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->redirectGuestsTo(fn () => route('login'));
         $middleware->redirectUsersTo(fn () => route('home.redirect'));
 
-        // US-TEC-001: HTTPS obligatorio en producción. Detrás de un proxy (Nginx, balanceador,
-        // Cloudflare) TRUSTED_PROXIES permite reconocer el esquema original (X-Forwarded-Proto).
+        // US-TEC-001: HTTPS obligatorio en producción. Los proxies de confianza (TRUSTED_PROXIES) se
+        // registran en AppServiceProvider para que funcionen también con la configuración en caché.
         $middleware->prepend(ForceHttps::class);
-        if ($proxies = env('TRUSTED_PROXIES')) {
-            $middleware->trustProxies(at: $proxies === '*' ? '*' : array_map('trim', explode(',', $proxies)));
-        }
 
         // La pasarela notifica sin sesión ni token CSRF; la autenticidad se valida con su firma (RN-17).
         $middleware->validateCsrfTokens(except: ['pasarela/wompi/eventos']);
