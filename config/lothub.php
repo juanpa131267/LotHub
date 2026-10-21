@@ -67,6 +67,19 @@ return [
         'min_amount'         => (float) env('WOMPI_MIN_AMOUNT', 10000),
     ],
 
+    // CU-27 Comunicaciones al cliente (RN-23, Ley 2300 de 2023). Los horarios permitidos, domingos y
+    // festivos están en App\Services\Communications\CollectionNotifier y App\Support\ColombianCalendar.
+    'notifications' => [
+        'reminder_days_before' => array_map('intval', explode(',', env('NOTIFY_REMINDER_DAYS', '3'))),
+        'overdue_days'         => array_map('intval', explode(',', env('NOTIFY_OVERDUE_DAYS', '1,8,15,30,60,90'))),
+        'send_hour'            => (int) env('NOTIFY_SEND_HOUR', 9),
+        // Proveedores de SMS y WhatsApp: mientras no se configuren, esos canales no se usan automáticamente.
+        'providers' => [
+            'sms'      => env('SMS_PROVIDER'),
+            'whatsapp' => env('WHATSAPP_PROVIDER'),
+        ],
+    ],
+
     // Roles que no pueden eliminarse desde la interfaz.
     'protected_roles' => ['ADMINISTRADOR'],
 

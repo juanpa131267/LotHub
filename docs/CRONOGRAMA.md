@@ -14,7 +14,7 @@ detalladas están en el cronograma del equipo (Excel).
 | S6 | Motor de asignación automática | 61 | — | ✅ Implementado |
 | S7 | Pasarela de pagos (Wompi) y conciliación | 53 | 2026-10-20 | ✅ Implementado |
 | S8 | Cartera y mora, liquidación de intereses de mora y estados de cuenta en PDF (CU-23, CU-24, RN-19) | — | — | ✅ Implementado |
-| S9 | Canales de contacto, recordatorios y avisos de cobro (Ley 2300) y consultas y reclamos (CU-27 a CU-29) | — | — | ⏳ Pendiente |
+| S9 | Canales de contacto, recordatorios y avisos de cobro (Ley 2300) y consultas y reclamos (CU-27 a CU-29) | — | — | ✅ Implementado |
 | S10 | Operación en paralelo | — | — | ⏳ Planificado |
 | S11 | Puesta en producción | — | 2026-12-28 | ⏳ Planificado |
 
