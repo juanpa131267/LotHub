@@ -7,11 +7,15 @@ use App\Models\Commercial;
 use App\Models\Financing;
 use App\Models\Payments;
 use App\Models\Security;
+use App\Events\PaymentRegistered;
 use App\Observers\AuditObserver;
+use App\Services\Communications\CollectionNotifier;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
@@ -30,6 +34,7 @@ class AppServiceProvider extends ServiceProvider
         Commercial\Reservation::class, Commercial\Sale::class, Commercial\SaleCancellationRequest::class,
         Financing\PaymentAgreement::class, Financing\Obligation::class,
         Payments\BankStatementLine::class, Payments\GatewayTransaction::class,
+        Commercial\ClientRequest::class,
     ];
 
     public function boot(): void
@@ -45,6 +50,15 @@ class AppServiceProvider extends ServiceProvider
 
         // Permite @can('lotes.editar') en Blade y $user->can(...) en código.
         Gate::before(fn (Security\User $user, string $ability) => $user->hasPermission($ability) ?: null);
+
+        // CU-27: cada abono aplicado programa la confirmación al cliente por un canal autorizado.
+        Event::listen(PaymentRegistered::class, function (PaymentRegistered $event) {
+            try {
+                app(CollectionNotifier::class)->paymentConfirmation($event->payment);
+            } catch (\Throwable $e) {
+                Log::warning('No se programó la confirmación de pago: '.$e->getMessage());
+            }
+        });
 
         $this->registerRateLimiters();
         $this->registerCrudRouteMacro();

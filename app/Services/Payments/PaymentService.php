@@ -2,6 +2,7 @@
 
 namespace App\Services\Payments;
 
+use App\Events\PaymentRegistered;
 use App\Models\Catalogs\ObligationStatus;
 use App\Models\Catalogs\PaymentStatus;
 use App\Models\Catalogs\SaleStatus;
@@ -68,6 +69,8 @@ class PaymentService
                 'obligacion' => $obligation->obligation_code, 'valor' => (float) $payment->amount, 'aplicado' => $applied,
                 'saldo_a_favor' => round((float) $payment->amount - $applied, 2), 'obligacion_cancelada' => $closed,
             ], $registeredBy);
+
+            DB::afterCommit(fn () => PaymentRegistered::dispatch($payment));
 
             return $payment;
         });

@@ -55,6 +55,7 @@ class ClientController extends CrudController
     {
         return [
             ['label' => 'Acceso al portal', 'icon' => 'ph-door-open', 'route' => 'clients.portal', 'permission' => 'clientes.portal'],
+            ['label' => 'Canales de contacto', 'icon' => 'ph-chats-circle', 'route' => 'clients.channels', 'permission' => 'clientes.editar'],
         ];
     }
 

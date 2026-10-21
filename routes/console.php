@@ -17,5 +17,9 @@ Schedule::command('reservations:expire')->everyFifteenMinutes()->withoutOverlapp
 // RN-19: liquidación diaria de intereses de mora (idempotente por fecha).
 Schedule::command('portfolio:late-charges')->dailyAt('00:30')->withoutOverlapping();
 
+// CU-27 / RN-23: comunicaciones de cobro (se programan a primera hora y se envían dentro del horario legal).
+Schedule::command('notifications:schedule')->dailyAt('06:00')->withoutOverlapping();
+Schedule::command('notifications:send')->everyFifteenMinutes()->withoutOverlapping();
+
 // CU-20 4b: consulta en Wompi y vence las transacciones abandonadas.
 Schedule::command('gateway:expire')->everyFifteenMinutes()->withoutOverlapping();
