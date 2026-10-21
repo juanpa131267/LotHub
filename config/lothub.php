@@ -29,6 +29,12 @@ return [
     'force_https' => (bool) env('FORCE_HTTPS', false),
     'hsts_max_age' => (int) env('HSTS_MAX_AGE', 31536000),
 
+    // CU-11 Reservas: vigencia propuesta en el formulario y máxima permitida (días).
+    'reservations' => [
+        'default_days' => (int) env('RESERVATION_DEFAULT_DAYS', 8),
+        'max_days'     => (int) env('RESERVATION_MAX_DAYS', 30),
+    ],
+
     // Roles que no pueden eliminarse desde la interfaz.
     'protected_roles' => ['ADMINISTRADOR'],
 

@@ -1,8 +1,7 @@
 <?php
 
 /*
-| Gestión comercial — CU-07, CU-08, CU-10, CU-31
-| Próximos sprints: reservas (CU-11), negociaciones (CU-12), acuerdos y cartera.
+| Gestión comercial — CU-07, CU-08, CU-10, CU-11, CU-12, CU-15, CU-25, CU-31
 */
 
 use App\Http\Controllers\Commercial;
@@ -67,4 +66,15 @@ Route::prefix('comercial')->group(function () {
             });
         });
     Route::crud('/solicitudes', Commercial\InformationRequestController::class);
+
+    // Buscadores de los formularios de reservas y negociaciones (public/js/pickers.js)
+    Route::get('/buscar/lotes', [Commercial\LookupController::class, 'lots'])->name('lookup.lots')->middleware('permission:lotes.ver');
+    Route::get('/buscar/clientes', [Commercial\LookupController::class, 'clients'])->name('lookup.clients')->middleware('permission:clientes.ver');
+
+    // Reservas (CU-11)
+    Route::crud('/reservas', Commercial\ReservationController::class);
+    Route::get('/reservas/{id}', [Commercial\ReservationController::class, 'show'])->name('reservations.show')->middleware('permission:reservas.ver')->whereNumber('id');
+    Route::post('/reservas/{id}/anular', [Commercial\ReservationController::class, 'cancel'])->name('reservations.cancel')->middleware('permission:reservas.anular')->whereNumber('id');
+
+
 });
