@@ -5,6 +5,7 @@
     "license": "proprietary",
     "require": {
         "php": "^8.2",
+        "guzzlehttp/guzzle": "^7.9",
         "laravel/framework": "^12.0",
         "phpoffice/phpspreadsheet": "^5.8.1"
     },

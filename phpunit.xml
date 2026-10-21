@@ -32,5 +32,9 @@
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="BCRYPT_ROUNDS" value="4"/>
         <env name="FORCE_HTTPS" value="false"/>
+        <env name="WOMPI_ENV" value="sandbox"/>
+        <env name="WOMPI_PUBLIC_KEY" value="pub_test_lothub"/>
+        <env name="WOMPI_INTEGRITY_SECRET" value="test_integrity_secret"/>
+        <env name="WOMPI_EVENTS_SECRET" value="test_events_secret"/>
     </php>
 </phpunit>

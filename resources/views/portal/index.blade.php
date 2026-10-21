@@ -8,6 +8,7 @@
         $money = fn ($v) => '$ '.number_format((float) $v, 0, ',', '.');
         $statusTone = ['PAGADA' => 'success', 'VENCIDA' => 'danger', 'PAGO_PARCIAL' => 'warning', 'PENDIENTE' => 'neutral'];
         $statusLabel = ['PAGADA' => 'Pagada', 'VENCIDA' => 'Vencida', 'PAGO_PARCIAL' => 'Pago parcial', 'PENDIENTE' => 'Pendiente'];
+        $canPay = auth()->user()->hasPermission('portal.pagar') && app(\App\Services\Payments\WompiClient::class)->isConfigured();
     @endphp
 
     <div class="page-head">
@@ -26,7 +27,7 @@
         <div class="card empty"><i class="ph ph-receipt"></i>No tienes obligaciones activas en este momento.</div>
     @else
         @foreach ($obligations as $o)
-            @php($plan = $installments[$o->obligation_id] ?? collect())
+            @php $plan = $installments[$o->obligation_id] ?? collect(); @endphp
             <section class="card">
                 <div class="card-head">
                     <div>
@@ -43,7 +44,34 @@
                         <div><strong>{{ $o->next_due_date ?? '—' }}</strong><span>próximo vencimiento</span></div>
                         <div><strong>{{ $o->max_days_overdue ?: 0 }}</strong><span>días de mora</span></div>
                     </div>
-                    @stack('portal-actions-'.$o->obligation_id)
+                    @if ($canPay && (float) $o->balance > 0)
+                        @php
+                            $overdue = $plan->where('days_overdue', '>', 0)->sum(fn ($r) => max(0, (float) $r->balance));
+                            $next = $plan->first(fn ($r) => (float) $r->balance > 0);
+                            $options = array_filter([
+                                'overdue' => $overdue > 0 ? ['Lo vencido', $overdue] : null,
+                                'next'    => $next && (! $overdue || (int) $next->days_overdue === 0) ? ['La próxima cuota ('.$next->due_date.')', (float) $next->balance] : null,
+                                'total'   => ['El saldo total', (float) $o->balance],
+                            ]);
+                        @endphp
+                        <form method="POST" action="{{ route('portal.pay', $o->obligation_id) }}" class="pay-box" data-pay-form
+                              style="border:1px solid var(--line);border-radius:12px;padding:1rem;margin-bottom:1rem;display:grid;gap:.6rem">
+                            @csrf
+                            <strong><i class="ph ph-credit-card"></i> Pagar en línea</strong>
+                            <div style="display:flex;gap:1rem;flex-wrap:wrap">
+                                @foreach ($options as $key => [$label, $value])
+                                    <label class="check"><input type="radio" name="choice" value="{{ round($value) }}" @checked($loop->first)> {{ $label }}: <strong>{{ $money($value) }}</strong></label>
+                                @endforeach
+                                <label class="check"><input type="radio" name="choice" value="other"> Otro valor</label>
+                            </div>
+                            <div style="display:flex;gap:.6rem;align-items:center;flex-wrap:wrap">
+                                <input type="number" name="amount" class="input" style="max-width:220px" min="1" step="1" max="{{ round($o->balance) }}"
+                                       value="{{ round(reset($options)[1]) }}" aria-label="Valor a pagar" readonly>
+                                <button class="btn btn-primary" data-loading="Conectando con Wompi…"><i class="ph ph-lock-key"></i> Pagar con Wompi</button>
+                                <span class="muted" style="font-size:.8rem">Pago seguro: tus datos de tarjeta solo los recibe Wompi (RN-18).</span>
+                            </div>
+                        </form>
+                    @endif
                     <details>
                         <summary style="cursor:pointer;font-weight:600;margin-bottom:.6rem">Plan de cuotas ({{ $plan->count() }})</summary>
                         <div class="table-wrap">
@@ -69,3 +97,15 @@
         @endforeach
     @endif
 @endsection
+
+@push('scripts')
+<script>
+    // El valor sigue la opción elegida; «Otro valor» habilita el campo.
+    document.querySelectorAll('[data-pay-form]').forEach((form) => form.addEventListener('change', (e) => {
+        if (e.target.name !== 'choice') return;
+        const other = e.target.value === 'other';
+        form.amount.readOnly = !other;
+        if (!other) form.amount.value = e.target.value; else form.amount.focus();
+    }));
+</script>
+@endpush

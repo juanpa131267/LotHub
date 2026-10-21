@@ -7,6 +7,25 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y 
 ### Pendiente
 - S4 Reservas y negociaciones · S5 Acuerdos de pago y plan de cuotas · S6 Motor de asignación automática · S7 Pasarela Wompi y conciliación.
 
+## [0.7.0] — Sprint 7: pasarela Wompi y conciliación
+
+### Added
+- Pago en línea desde el portal (CU-20): lo vencido, la próxima cuota, el saldo o un valor libre; redirección al
+  Web Checkout de Wompi con firma de integridad y página de resultado que se actualiza mientras llega la confirmación.
+- Notificaciones de Wompi (CU-21): endpoint de eventos sin CSRF, validación de la firma, payload depurado (RN-18),
+  idempotencia ante notificaciones repetidas y referencias desconocidas para conciliación.
+- Abono automático (CU-17.2) solo con transacción APROBADA, firma válida y el valor solicitado (RN-17).
+- Vencimiento de transacciones abandonadas con consulta previa a Wompi (`gateway:expire` en el planificador).
+- Conciliación por periodo (CU-22): aprobadas sin abono, diferencias de valor, abonos sin transacción aprobada,
+  pendientes fuera de tiempo y notificaciones inválidas, con reproceso, aplicación del valor informado y revisión.
+
+### Fixed
+- Parches de base de datos compatibles con MySQL 8 (sin `ADD COLUMN IF NOT EXISTS`).
+- Vistas que mezclaban `@php(...)` en línea con bloques `@php`, que Blade compila de forma incorrecta.
+
+### Database
+- Parche `006_wompi_reconciliation.sql`: pasarela Wompi, `reported_amount`, tipo de medio y marcas de revisión.
+
 ## [0.6.0] — Sprint 6: motor de asignación automática
 
 ### Added

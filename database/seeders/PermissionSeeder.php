@@ -72,7 +72,7 @@ class PermissionSeeder extends Seeder
         'abonos.crear'                     => 'Registrar abonos manuales',
         'abonos.reversar'                  => 'Reversar abonos',
         'asignacion.gestionar'             => 'Cargar extractos bancarios y revisar la asignación automática de pagos',
-        'conciliacion.ver'                 => 'Conciliar transacciones de la pasarela (próximo sprint)',
+        'conciliacion.ver'                 => 'Conciliar transacciones de la pasarela',
         'cartera.ver'                      => 'Consultar cartera y mora',
         'cartera.exportar'                 => 'Exportar reportes de cartera (próximo sprint)',
         'estados_cuenta.ver'               => 'Consultar y generar estados de cuenta (próximo sprint)',
@@ -82,7 +82,7 @@ class PermissionSeeder extends Seeder
         'documentos.cargar'                => 'Cargar documentos soporte',
 
         'portal.acceder'                   => 'Acceder al portal del cliente',
-        'portal.pagar'                     => 'Pagar en línea (próximo sprint)',
+        'portal.pagar'                     => 'Pagar en línea',
         'portal.reclamos'                  => 'Radicar consultas o reclamos (próximo sprint)',
     ];
 

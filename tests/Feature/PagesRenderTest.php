@@ -32,6 +32,7 @@ class PagesRenderTest extends TestCase
             route('payments.index'),
             route('statements.index'),
             route('allocation.queue'),
+            route('reconciliation.index'),
         ];
 
         foreach ($routes as $url) {

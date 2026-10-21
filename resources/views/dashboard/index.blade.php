@@ -61,7 +61,7 @@
     @if ($queues->isNotEmpty())
         <div class="stats">
             @foreach ($queues as $queue)
-                @php($count = ($queue['count'])())
+                @php $count = ($queue['count'])(); @endphp
                 <div class="card stat">
                     <div class="stat-icon {{ $count ? 'warn' : 'info' }}"><i class="ph {{ $queue['icon'] }}"></i></div>
                     <div class="stat-value">{{ $count }}</div>
@@ -80,7 +80,7 @@
                     @can('proyectos.ver')<a href="{{ route('projects.index') }}" class="btn btn-ghost btn-sm">Ver todos</a>@endcan
                 </div>
                 @forelse ($projects as $project)
-                    @php($sold = $project->total_lots ? round(100 * ($project->total_lots - $project->available_lots) / $project->total_lots) : 0)
+                    @php $sold = $project->total_lots ? round(100 * ($project->total_lots - $project->available_lots) / $project->total_lots) : 0; @endphp
                     <ul class="list"><li>
                         <div class="grow">
                             <div class="title">{{ $project->name }}</div>
@@ -98,7 +98,7 @@
                 <section class="card">
                     <div class="card-head"><h3>Cartera por edades de mora</h3></div>
                     <div class="card-body">
-                        @php($maxBalance = max(1, collect($aging)->max('balance')))
+                        @php $maxBalance = max(1, collect($aging)->max('balance')); @endphp
                         @if (collect($aging)->sum('obligations') === 0)
                             <div class="empty" style="padding:1rem"><i class="ph ph-chart-bar"></i>La cartera se mostrará cuando existan obligaciones activas.</div>
                         @else
