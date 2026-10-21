@@ -7,6 +7,22 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y 
 ### Pendiente
 - S4 Reservas y negociaciones · S5 Acuerdos de pago y plan de cuotas · S6 Motor de asignación automática · S7 Pasarela Wompi y conciliación.
 
+## [0.9.0] — Sprint 9: comunicaciones de cobro y atención al titular
+
+### Added
+- Canales de contacto autorizados por el titular (correo, WhatsApp, SMS, portal, llamada), gestionables por el
+  personal y por el cliente desde el portal, siempre con autorización de datos vigente (RN-22).
+- Recordatorios de vencimiento y avisos de mora (CU-27) que cumplen la Ley 2300 de 2023 (RN-23): canales autorizados,
+  horario permitido, sin domingos ni festivos, una comunicación de cobro al día y un solo canal por semana.
+- Calendario de festivos de Colombia (Ley 51 de 1983 y fiestas móviles según la Pascua) y cálculo de días hábiles.
+- Confirmación automática de cada abono aplicado al cliente.
+- Consultas y reclamos (CU-28, CU-29): radicación desde el portal con fecha límite en días hábiles (10 o 15, RN-24),
+  bandeja de atención con plazos resaltados, respuesta por correo y en el portal.
+- Registro de comunicaciones enviadas con el texto exacto de cada una.
+
+### Database
+- Parche `007_notification_messages.sql`: `notifications.message` y `notifications.payment_id`.
+
 ## [0.8.0] — Sprint 8: cartera, mora y estados de cuenta
 
 ### Added
