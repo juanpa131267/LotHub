@@ -37,6 +37,7 @@ class PagesRenderTest extends TestCase
             route('client-requests.index'),
             route('notifications.index'),
             route('clients.channels', $client->id),
+            route('parallel.index'),
         ];
 
         foreach ($routes as $url) {

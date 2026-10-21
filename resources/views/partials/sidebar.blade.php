@@ -28,6 +28,7 @@
             ['Extractos bancarios', 'ph-bank', 'statements.index', 'asignacion.gestionar', 'statements.*'],
             ['Cola de revisión', 'ph-list-checks', 'allocation.queue', 'asignacion.gestionar', 'allocation.*'],
             ['Conciliación pasarela', 'ph-scales', 'reconciliation.index', 'conciliacion.ver', 'reconciliation.*'],
+            ['Operación en paralelo', 'ph-arrows-left-right', 'parallel.index', 'migracion.gestionar', 'parallel.*'],
         ],
         'Atención' => [
             ['Consultas y reclamos', 'ph-chat-centered-text', 'client-requests.index', 'reclamos.ver', 'client-requests.*'],
