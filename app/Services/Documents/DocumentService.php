@@ -12,7 +12,7 @@ use InvalidArgumentException;
 
 /**
  * Documentos soporte (CU-25): promesa de compraventa, identidad, acuerdo firmado, soporte de pago.
- * Los archivos viven en storage/app/documents/{año}/{mes}/ (fuera de public) y se descargan
+ * Los archivos viven en storage/app/private/documents/{año}/{mes}/ (fuera de public) y se descargan
  * solo con permiso; en la tabla queda su huella SHA-256 (RN-28).
  */
 class DocumentService

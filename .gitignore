@@ -14,6 +14,7 @@ __pycache__/
 /public/.cache/
 /storage/app/plans/
 /storage/app/photos/
+/storage/app/private/
 .phpunit.result.cache
 /.phpunit.cache/
 /storage/framework/testing/

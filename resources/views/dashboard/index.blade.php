@@ -96,7 +96,8 @@
 
             @if ($aging)
                 <section class="card">
-                    <div class="card-head"><h3>Cartera por edades de mora</h3></div>
+                    <div class="card-head"><h3>Cartera por edades de mora</h3>
+                        <a href="{{ route('portfolio.index') }}" class="btn btn-ghost btn-sm">Ver cartera <i class="ph ph-arrow-right"></i></a></div>
                     <div class="card-body">
                         @php $maxBalance = max(1, collect($aging)->max('balance')); @endphp
                         @if (collect($aging)->sum('obligations') === 0)

@@ -74,8 +74,8 @@ class PermissionSeeder extends Seeder
         'asignacion.gestionar'             => 'Cargar extractos bancarios y revisar la asignación automática de pagos',
         'conciliacion.ver'                 => 'Conciliar transacciones de la pasarela',
         'cartera.ver'                      => 'Consultar cartera y mora',
-        'cartera.exportar'                 => 'Exportar reportes de cartera (próximo sprint)',
-        'estados_cuenta.ver'               => 'Consultar y generar estados de cuenta (próximo sprint)',
+        'cartera.exportar'                 => 'Exportar reportes de cartera',
+        'estados_cuenta.ver'               => 'Consultar y generar estados de cuenta en PDF',
         'reclamos.ver'                     => 'Ver consultas y reclamos (próximo sprint)',
         'reclamos.atender'                 => 'Responder consultas y reclamos (próximo sprint)',
         'documentos.ver'                   => 'Ver documentos soporte',
@@ -99,14 +99,14 @@ class PermissionSeeder extends Seeder
     private const DIRECTOR_EXTRA = [
         'proyectos.crear', 'proyectos.editar', 'proyectos.eliminar',
         'lotes.crear', 'lotes.editar', 'lotes.eliminar', 'lotes.bloquear', 'lotes.importar',
-        'clientes.eliminar', 'negociaciones.aprobar_anulacion', 'cartera.ver', 'cartera.exportar', 'abonos.ver', 'acuerdos.ver',
+        'clientes.eliminar', 'negociaciones.aprobar_anulacion', 'cartera.ver', 'cartera.exportar', 'abonos.ver', 'acuerdos.ver', 'estados_cuenta.ver',
     ];
 
     private const AUXILIAR = [
         'panel.acceder', 'proyectos.ver', 'lotes.ver', 'clientes.ver', 'negociaciones.ver',
         'acuerdos.ver', 'acuerdos.crear', 'acuerdos.reestructurar',
         'abonos.ver', 'abonos.crear', 'abonos.reversar', 'asignacion.gestionar', 'conciliacion.ver',
-        'cartera.ver', 'estados_cuenta.ver', 'reclamos.ver', 'reclamos.atender',
+        'cartera.ver', 'cartera.exportar', 'estados_cuenta.ver', 'reclamos.ver', 'reclamos.atender',
         'documentos.ver', 'documentos.cargar',
     ];
 

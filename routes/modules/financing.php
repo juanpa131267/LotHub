@@ -1,15 +1,27 @@
 <?php
 
 /*
-| Financiación y cartera — CU-13, CU-14, CU-16
-| Acuerdos de pago, obligaciones y plan de cuotas.
+| Financiación y cartera — CU-13, CU-14, CU-16, CU-23, CU-24
+| Acuerdos de pago, obligaciones, plan de cuotas, cartera y mora y estados de cuenta.
 */
 
+use App\Http\Controllers\Financing\AccountStatementController;
 use App\Http\Controllers\Financing\AgreementController;
 use App\Http\Controllers\Financing\ObligationController;
+use App\Http\Controllers\Financing\PortfolioController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('cartera')->group(function () {
+    // Cartera y mora (CU-23)
+    Route::get('/tablero', [PortfolioController::class, 'index'])->name('portfolio.index')->middleware('permission:cartera.ver');
+    Route::get('/tablero/exportar', [PortfolioController::class, 'export'])->name('portfolio.export')->middleware('permission:cartera.exportar');
+
+    // Estados de cuenta (CU-24)
+    Route::post('/obligaciones/{obligationId}/estado-cuenta', [AccountStatementController::class, 'generate'])
+        ->name('account-statements.generate')->middleware('permission:estados_cuenta.ver')->whereNumber('obligationId');
+    Route::get('/estados-cuenta/{id}', [AccountStatementController::class, 'show'])
+        ->name('account-statements.show')->middleware('permission:estados_cuenta.ver')->whereNumber('id');
+
     Route::crud('/obligaciones', ObligationController::class);
     Route::get('/obligaciones/{id}', [ObligationController::class, 'show'])->name('obligations.show')->middleware('permission:acuerdos.ver')->whereNumber('id');
 
