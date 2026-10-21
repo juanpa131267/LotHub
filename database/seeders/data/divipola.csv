@@ -1,0 +1,1123 @@
+cod_departamento;departamento;cod_municipio;municipio;tipo
+05;Antioquia;05001;Medellín;Municipio
+05;Antioquia;05002;Abejorral;Municipio
+05;Antioquia;05004;Abriaquí;Municipio
+05;Antioquia;05021;Alejandría;Municipio
+05;Antioquia;05030;Amagá;Municipio
+05;Antioquia;05031;Amalfi;Municipio
+05;Antioquia;05034;Andes;Municipio
+05;Antioquia;05036;Angelópolis;Municipio
+05;Antioquia;05038;Angostura;Municipio
+05;Antioquia;05040;Anorí;Municipio
+05;Antioquia;05042;Santa Fé de Antioquia;Municipio
+05;Antioquia;05044;Anzá;Municipio
+05;Antioquia;05045;Apartadó;Municipio
+05;Antioquia;05051;Arboletes;Municipio
+05;Antioquia;05055;Argelia;Municipio
+05;Antioquia;05059;Armenia;Municipio
+05;Antioquia;05079;Barbosa;Municipio
+05;Antioquia;05086;Belmira;Municipio
+05;Antioquia;05088;Bello;Municipio
+05;Antioquia;05091;Betania;Municipio
+05;Antioquia;05093;Betulia;Municipio
+05;Antioquia;05101;Ciudad Bolívar;Municipio
+05;Antioquia;05107;Briceño;Municipio
+05;Antioquia;05113;Buriticá;Municipio
+05;Antioquia;05120;Cáceres;Municipio
+05;Antioquia;05125;Caicedo;Municipio
+05;Antioquia;05129;Caldas;Municipio
+05;Antioquia;05134;Campamento;Municipio
+05;Antioquia;05138;Cañasgordas;Municipio
+05;Antioquia;05142;Caracolí;Municipio
+05;Antioquia;05145;Caramanta;Municipio
+05;Antioquia;05147;Carepa;Municipio
+05;Antioquia;05148;El Carmen de Viboral;Municipio
+05;Antioquia;05150;Carolina;Municipio
+05;Antioquia;05154;Caucasia;Municipio
+05;Antioquia;05172;Chigorodó;Municipio
+05;Antioquia;05190;Cisneros;Municipio
+05;Antioquia;05197;Cocorná;Municipio
+05;Antioquia;05206;Concepción;Municipio
+05;Antioquia;05209;Concordia;Municipio
+05;Antioquia;05212;Copacabana;Municipio
+05;Antioquia;05234;Dabeiba;Municipio
+05;Antioquia;05237;Donmatías;Municipio
+05;Antioquia;05240;Ebéjico;Municipio
+05;Antioquia;05250;El Bagre;Municipio
+05;Antioquia;05264;Entrerríos;Municipio
+05;Antioquia;05266;Envigado;Municipio
+05;Antioquia;05282;Fredonia;Municipio
+05;Antioquia;05284;Frontino;Municipio
+05;Antioquia;05306;Giraldo;Municipio
+05;Antioquia;05308;Girardota;Municipio
+05;Antioquia;05310;Gómez Plata;Municipio
+05;Antioquia;05313;Granada;Municipio
+05;Antioquia;05315;Guadalupe;Municipio
+05;Antioquia;05318;Guarne;Municipio
+05;Antioquia;05321;Guatapé;Municipio
+05;Antioquia;05347;Heliconia;Municipio
+05;Antioquia;05353;Hispania;Municipio
+05;Antioquia;05360;Itagüí;Municipio
+05;Antioquia;05361;Ituango;Municipio
+05;Antioquia;05364;Jardín;Municipio
+05;Antioquia;05368;Jericó;Municipio
+05;Antioquia;05376;La Ceja;Municipio
+05;Antioquia;05380;La Estrella;Municipio
+05;Antioquia;05390;La Pintada;Municipio
+05;Antioquia;05400;La Unión;Municipio
+05;Antioquia;05411;Liborina;Municipio
+05;Antioquia;05425;Maceo;Municipio
+05;Antioquia;05440;Marinilla;Municipio
+05;Antioquia;05467;Montebello;Municipio
+05;Antioquia;05475;Murindó;Municipio
+05;Antioquia;05480;Mutatá;Municipio
+05;Antioquia;05483;Nariño;Municipio
+05;Antioquia;05490;Necoclí;Municipio
+05;Antioquia;05495;Nechí;Municipio
+05;Antioquia;05501;Olaya;Municipio
+05;Antioquia;05541;Peñol;Municipio
+05;Antioquia;05543;Peque;Municipio
+05;Antioquia;05576;Pueblorrico;Municipio
+05;Antioquia;05579;Puerto Berrío;Municipio
+05;Antioquia;05585;Puerto Nare;Municipio
+05;Antioquia;05591;Puerto Triunfo;Municipio
+05;Antioquia;05604;Remedios;Municipio
+05;Antioquia;05607;Retiro;Municipio
+05;Antioquia;05615;Rionegro;Municipio
+05;Antioquia;05628;Sabanalarga;Municipio
+05;Antioquia;05631;Sabaneta;Municipio
+05;Antioquia;05642;Salgar;Municipio
+05;Antioquia;05647;San Andrés de Cuerquía;Municipio
+05;Antioquia;05649;San Carlos;Municipio
+05;Antioquia;05652;San Francisco;Municipio
+05;Antioquia;05656;San Jerónimo;Municipio
+05;Antioquia;05658;San José de la Montaña;Municipio
+05;Antioquia;05659;San Juan de Urabá;Municipio
+05;Antioquia;05660;San Luis;Municipio
+05;Antioquia;05664;San Pedro de los Milagros;Municipio
+05;Antioquia;05665;San Pedro de Urabá;Municipio
+05;Antioquia;05667;San Rafael;Municipio
+05;Antioquia;05670;San Roque;Municipio
+05;Antioquia;05674;San Vicente Ferrer;Municipio
+05;Antioquia;05679;Santa Bárbara;Municipio
+05;Antioquia;05686;Santa Rosa de Osos;Municipio
+05;Antioquia;05690;Santo Domingo;Municipio
+05;Antioquia;05697;El Santuario;Municipio
+05;Antioquia;05736;Segovia;Municipio
+05;Antioquia;05756;Sonsón;Municipio
+05;Antioquia;05761;Sopetrán;Municipio
+05;Antioquia;05789;Támesis;Municipio
+05;Antioquia;05790;Tarazá;Municipio
+05;Antioquia;05792;Tarso;Municipio
+05;Antioquia;05809;Titiribí;Municipio
+05;Antioquia;05819;Toledo;Municipio
+05;Antioquia;05837;Turbo;Municipio
+05;Antioquia;05842;Uramita;Municipio
+05;Antioquia;05847;Urrao;Municipio
+05;Antioquia;05854;Valdivia;Municipio
+05;Antioquia;05856;Valparaíso;Municipio
+05;Antioquia;05858;Vegachí;Municipio
+05;Antioquia;05861;Venecia;Municipio
+05;Antioquia;05873;Vigía del Fuerte;Municipio
+05;Antioquia;05885;Yalí;Municipio
+05;Antioquia;05887;Yarumal;Municipio
+05;Antioquia;05890;Yolombó;Municipio
+05;Antioquia;05893;Yondó;Municipio
+05;Antioquia;05895;Zaragoza;Municipio
+08;Atlántico;08001;Barranquilla;Municipio
+08;Atlántico;08078;Baranoa;Municipio
+08;Atlántico;08137;Campo de la Cruz;Municipio
+08;Atlántico;08141;Candelaria;Municipio
+08;Atlántico;08296;Galapa;Municipio
+08;Atlántico;08372;Juan de Acosta;Municipio
+08;Atlántico;08421;Luruaco;Municipio
+08;Atlántico;08433;Malambo;Municipio
+08;Atlántico;08436;Manatí;Municipio
+08;Atlántico;08520;Palmar de Varela;Municipio
+08;Atlántico;08549;Piojó;Municipio
+08;Atlántico;08558;Polonuevo;Municipio
+08;Atlántico;08560;Ponedera;Municipio
+08;Atlántico;08573;Puerto Colombia;Municipio
+08;Atlántico;08606;Repelón;Municipio
+08;Atlántico;08634;Sabanagrande;Municipio
+08;Atlántico;08638;Sabanalarga;Municipio
+08;Atlántico;08675;Santa Lucía;Municipio
+08;Atlántico;08685;Santo Tomás;Municipio
+08;Atlántico;08758;Soledad;Municipio
+08;Atlántico;08770;Suan;Municipio
+08;Atlántico;08832;Tubará;Municipio
+08;Atlántico;08849;Usiacurí;Municipio
+11;Bogotá D.C.;11001;Bogotá D.C.;Municipio
+13;Bolívar;13001;Cartagena de Indias;Municipio
+13;Bolívar;13006;Achí;Municipio
+13;Bolívar;13030;Altos del Rosario;Municipio
+13;Bolívar;13042;Arenal;Municipio
+13;Bolívar;13052;Arjona;Municipio
+13;Bolívar;13062;Arroyohondo;Municipio
+13;Bolívar;13074;Barranco de Loba;Municipio
+13;Bolívar;13140;Calamar;Municipio
+13;Bolívar;13160;Cantagallo;Municipio
+13;Bolívar;13188;Cicuco;Municipio
+13;Bolívar;13212;Córdoba;Municipio
+13;Bolívar;13222;Clemencia;Municipio
+13;Bolívar;13244;El Carmen de Bolívar;Municipio
+13;Bolívar;13248;El Guamo;Municipio
+13;Bolívar;13268;El Peñón;Municipio
+13;Bolívar;13300;Hatillo de Loba;Municipio
+13;Bolívar;13430;Magangué;Municipio
+13;Bolívar;13433;Mahates;Municipio
+13;Bolívar;13440;Margarita;Municipio
+13;Bolívar;13442;María la Baja;Municipio
+13;Bolívar;13458;Montecristo;Municipio
+13;Bolívar;13468;Santa Cruz de Mompox;Municipio
+13;Bolívar;13473;Morales;Municipio
+13;Bolívar;13490;Norosí;Municipio
+13;Bolívar;13549;Pinillos;Municipio
+13;Bolívar;13580;Regidor;Municipio
+13;Bolívar;13600;Río Viejo;Municipio
+13;Bolívar;13620;San Cristóbal;Municipio
+13;Bolívar;13647;San Estanislao;Municipio
+13;Bolívar;13650;San Fernando;Municipio
+13;Bolívar;13654;San Jacinto;Municipio
+13;Bolívar;13655;San Jacinto del Cauca;Municipio
+13;Bolívar;13657;San Juan Nepomuceno;Municipio
+13;Bolívar;13667;San Martín de Loba;Municipio
+13;Bolívar;13670;San Pablo;Municipio
+13;Bolívar;13673;Santa Catalina;Municipio
+13;Bolívar;13683;Santa Rosa;Municipio
+13;Bolívar;13688;Santa Rosa del Sur;Municipio
+13;Bolívar;13744;Simití;Municipio
+13;Bolívar;13760;Soplaviento;Municipio
+13;Bolívar;13780;Talaigua Nuevo;Municipio
+13;Bolívar;13810;Tiquisio;Municipio
+13;Bolívar;13836;Turbaco;Municipio
+13;Bolívar;13838;Turbaná;Municipio
+13;Bolívar;13873;Villanueva;Municipio
+13;Bolívar;13894;Zambrano;Municipio
+15;Boyacá;15001;Tunja;Municipio
+15;Boyacá;15022;Almeida;Municipio
+15;Boyacá;15047;Aquitania;Municipio
+15;Boyacá;15051;Arcabuco;Municipio
+15;Boyacá;15087;Belén;Municipio
+15;Boyacá;15090;Berbeo;Municipio
+15;Boyacá;15092;Betéitiva;Municipio
+15;Boyacá;15097;Boavita;Municipio
+15;Boyacá;15104;Boyacá;Municipio
+15;Boyacá;15106;Briceño;Municipio
+15;Boyacá;15109;Buenavista;Municipio
+15;Boyacá;15114;Busbanzá;Municipio
+15;Boyacá;15131;Caldas;Municipio
+15;Boyacá;15135;Campohermoso;Municipio
+15;Boyacá;15162;Cerinza;Municipio
+15;Boyacá;15172;Chinavita;Municipio
+15;Boyacá;15176;Chiquinquirá;Municipio
+15;Boyacá;15180;Chiscas;Municipio
+15;Boyacá;15183;Chita;Municipio
+15;Boyacá;15185;Chitaraque;Municipio
+15;Boyacá;15187;Chivatá;Municipio
+15;Boyacá;15189;Ciénega;Municipio
+15;Boyacá;15204;Cómbita;Municipio
+15;Boyacá;15212;Coper;Municipio
+15;Boyacá;15215;Corrales;Municipio
+15;Boyacá;15218;Covarachía;Municipio
+15;Boyacá;15223;Cubará;Municipio
+15;Boyacá;15224;Cucaita;Municipio
+15;Boyacá;15226;Cuítiva;Municipio
+15;Boyacá;15232;Chíquiza;Municipio
+15;Boyacá;15236;Chivor;Municipio
+15;Boyacá;15238;Duitama;Municipio
+15;Boyacá;15244;El Cocuy;Municipio
+15;Boyacá;15248;El Espino;Municipio
+15;Boyacá;15272;Firavitoba;Municipio
+15;Boyacá;15276;Floresta;Municipio
+15;Boyacá;15293;Gachantivá;Municipio
+15;Boyacá;15296;Gámeza;Municipio
+15;Boyacá;15299;Garagoa;Municipio
+15;Boyacá;15317;Guacamayas;Municipio
+15;Boyacá;15322;Guateque;Municipio
+15;Boyacá;15325;Guayatá;Municipio
+15;Boyacá;15332;Güicán de la Sierra;Municipio
+15;Boyacá;15362;Iza;Municipio
+15;Boyacá;15367;Jenesano;Municipio
+15;Boyacá;15368;Jericó;Municipio
+15;Boyacá;15377;Labranzagrande;Municipio
+15;Boyacá;15380;La Capilla;Municipio
+15;Boyacá;15401;La Victoria;Municipio
+15;Boyacá;15403;La Uvita;Municipio
+15;Boyacá;15407;Villa de Leyva;Municipio
+15;Boyacá;15425;Macanal;Municipio
+15;Boyacá;15442;Maripí;Municipio
+15;Boyacá;15455;Miraflores;Municipio
+15;Boyacá;15464;Mongua;Municipio
+15;Boyacá;15466;Monguí;Municipio
+15;Boyacá;15469;Moniquirá;Municipio
+15;Boyacá;15476;Motavita;Municipio
+15;Boyacá;15480;Muzo;Municipio
+15;Boyacá;15491;Nobsa;Municipio
+15;Boyacá;15494;Nuevo Colón;Municipio
+15;Boyacá;15500;Oicatá;Municipio
+15;Boyacá;15507;Otanche;Municipio
+15;Boyacá;15511;Pachavita;Municipio
+15;Boyacá;15514;Páez;Municipio
+15;Boyacá;15516;Paipa;Municipio
+15;Boyacá;15518;Pajarito;Municipio
+15;Boyacá;15522;Panqueba;Municipio
+15;Boyacá;15531;Pauna;Municipio
+15;Boyacá;15533;Paya;Municipio
+15;Boyacá;15537;Paz de Río;Municipio
+15;Boyacá;15542;Pesca;Municipio
+15;Boyacá;15550;Pisba;Municipio
+15;Boyacá;15572;Puerto Boyacá;Municipio
+15;Boyacá;15580;Quípama;Municipio
+15;Boyacá;15599;Ramiriquí;Municipio
+15;Boyacá;15600;Ráquira;Municipio
+15;Boyacá;15621;Rondón;Municipio
+15;Boyacá;15632;Saboyá;Municipio
+15;Boyacá;15638;Sáchica;Municipio
+15;Boyacá;15646;Samacá;Municipio
+15;Boyacá;15660;San Eduardo;Municipio
+15;Boyacá;15664;San José de Pare;Municipio
+15;Boyacá;15667;San Luis de Gaceno;Municipio
+15;Boyacá;15673;San Mateo;Municipio
+15;Boyacá;15676;San Miguel de Sema;Municipio
+15;Boyacá;15681;San Pablo de Borbur;Municipio
+15;Boyacá;15686;Santana;Municipio
+15;Boyacá;15690;Santa María;Municipio
+15;Boyacá;15693;Santa Rosa de Viterbo;Municipio
+15;Boyacá;15696;Santa Sofía;Municipio
+15;Boyacá;15720;Sativanorte;Municipio
+15;Boyacá;15723;Sativasur;Municipio
+15;Boyacá;15740;Siachoque;Municipio
+15;Boyacá;15753;Soatá;Municipio
+15;Boyacá;15755;Socotá;Municipio
+15;Boyacá;15757;Socha;Municipio
+15;Boyacá;15759;Sogamoso;Municipio
+15;Boyacá;15761;Somondoco;Municipio
+15;Boyacá;15762;Sora;Municipio
+15;Boyacá;15763;Sotaquirá;Municipio
+15;Boyacá;15764;Soracá;Municipio
+15;Boyacá;15774;Susacón;Municipio
+15;Boyacá;15776;Sutamarchán;Municipio
+15;Boyacá;15778;Sutatenza;Municipio
+15;Boyacá;15790;Tasco;Municipio
+15;Boyacá;15798;Tenza;Municipio
+15;Boyacá;15804;Tibaná;Municipio
+15;Boyacá;15806;Tibasosa;Municipio
+15;Boyacá;15808;Tinjacá;Municipio
+15;Boyacá;15810;Tipacoque;Municipio
+15;Boyacá;15814;Toca;Municipio
+15;Boyacá;15816;Togüí;Municipio
+15;Boyacá;15820;Tópaga;Municipio
+15;Boyacá;15822;Tota;Municipio
+15;Boyacá;15832;Tununguá;Municipio
+15;Boyacá;15835;Turmequé;Municipio
+15;Boyacá;15837;Tuta;Municipio
+15;Boyacá;15839;Tutazá;Municipio
+15;Boyacá;15842;Úmbita;Municipio
+15;Boyacá;15861;Ventaquemada;Municipio
+15;Boyacá;15879;Viracachá;Municipio
+15;Boyacá;15897;Zetaquira;Municipio
+17;Caldas;17001;Manizales;Municipio
+17;Caldas;17013;Aguadas;Municipio
+17;Caldas;17042;Anserma;Municipio
+17;Caldas;17050;Aranzazu;Municipio
+17;Caldas;17088;Belalcázar;Municipio
+17;Caldas;17174;Chinchiná;Municipio
+17;Caldas;17272;Filadelfia;Municipio
+17;Caldas;17380;La Dorada;Municipio
+17;Caldas;17388;La Merced;Municipio
+17;Caldas;17433;Manzanares;Municipio
+17;Caldas;17442;Marmato;Municipio
+17;Caldas;17444;Marquetalia;Municipio
+17;Caldas;17446;Marulanda;Municipio
+17;Caldas;17486;Neira;Municipio
+17;Caldas;17495;Norcasia;Municipio
+17;Caldas;17513;Pácora;Municipio
+17;Caldas;17524;Palestina;Municipio
+17;Caldas;17541;Pensilvania;Municipio
+17;Caldas;17614;Riosucio;Municipio
+17;Caldas;17616;Risaralda;Municipio
+17;Caldas;17653;Salamina;Municipio
+17;Caldas;17662;Samaná;Municipio
+17;Caldas;17665;San José;Municipio
+17;Caldas;17777;Supía;Municipio
+17;Caldas;17867;Victoria;Municipio
+17;Caldas;17873;Villamaría;Municipio
+17;Caldas;17877;Viterbo;Municipio
+18;Caquetá;18001;Florencia;Municipio
+18;Caquetá;18029;Albania;Municipio
+18;Caquetá;18094;Belén de los Andaquíes;Municipio
+18;Caquetá;18150;Cartagena del Chairá;Municipio
+18;Caquetá;18205;Curillo;Municipio
+18;Caquetá;18247;El Doncello;Municipio
+18;Caquetá;18256;El Paujíl;Municipio
+18;Caquetá;18410;La Montañita;Municipio
+18;Caquetá;18460;Milán;Municipio
+18;Caquetá;18479;Morelia;Municipio
+18;Caquetá;18592;Puerto Rico;Municipio
+18;Caquetá;18610;San José del Fragua;Municipio
+18;Caquetá;18753;San Vicente del Caguán;Municipio
+18;Caquetá;18756;Solano;Municipio
+18;Caquetá;18785;Solita;Municipio
+18;Caquetá;18860;Valparaíso;Municipio
+19;Cauca;19001;Popayán;Municipio
+19;Cauca;19022;Almaguer;Municipio
+19;Cauca;19050;Argelia;Municipio
+19;Cauca;19075;Balboa;Municipio
+19;Cauca;19100;Bolívar;Municipio
+19;Cauca;19110;Buenos Aires;Municipio
+19;Cauca;19130;Cajibío;Municipio
+19;Cauca;19137;Caldono;Municipio
+19;Cauca;19142;Caloto;Municipio
+19;Cauca;19212;Corinto;Municipio
+19;Cauca;19256;El Tambo;Municipio
+19;Cauca;19290;Florencia;Municipio
+19;Cauca;19300;Guachené;Municipio
+19;Cauca;19318;Guapi;Municipio
+19;Cauca;19355;Inzá;Municipio
+19;Cauca;19364;Jambaló;Municipio
+19;Cauca;19392;La Sierra;Municipio
+19;Cauca;19397;La Vega;Municipio
+19;Cauca;19418;López de Micay;Municipio
+19;Cauca;19450;Mercaderes;Municipio
+19;Cauca;19455;Miranda;Municipio
+19;Cauca;19473;Morales;Municipio
+19;Cauca;19513;Padilla;Municipio
+19;Cauca;19517;Páez;Municipio
+19;Cauca;19532;Patía;Municipio
+19;Cauca;19533;Piamonte;Municipio
+19;Cauca;19548;Piendamó - Tunía;Municipio
+19;Cauca;19573;Puerto Tejada;Municipio
+19;Cauca;19585;Puracé;Municipio
+19;Cauca;19622;Rosas;Municipio
+19;Cauca;19693;San Sebastián;Municipio
+19;Cauca;19698;Santander de Quilichao;Municipio
+19;Cauca;19701;Santa Rosa;Municipio
+19;Cauca;19743;Silvia;Municipio
+19;Cauca;19760;Sotará - Paispamba;Municipio
+19;Cauca;19780;Suárez;Municipio
+19;Cauca;19785;Sucre;Municipio
+19;Cauca;19807;Timbío;Municipio
+19;Cauca;19809;Timbiquí;Municipio
+19;Cauca;19821;Toribío;Municipio
+19;Cauca;19824;Totoró;Municipio
+19;Cauca;19845;Villa Rica;Municipio
+20;Cesar;20001;Valledupar;Municipio
+20;Cesar;20011;Aguachica;Municipio
+20;Cesar;20013;Agustín Codazzi;Municipio
+20;Cesar;20032;Astrea;Municipio
+20;Cesar;20045;Becerril;Municipio
+20;Cesar;20060;Bosconia;Municipio
+20;Cesar;20175;Chimichagua;Municipio
+20;Cesar;20178;Chiriguaná;Municipio
+20;Cesar;20228;Curumaní;Municipio
+20;Cesar;20238;El Copey;Municipio
+20;Cesar;20250;El Paso;Municipio
+20;Cesar;20295;Gamarra;Municipio
+20;Cesar;20310;González;Municipio
+20;Cesar;20383;La Gloria;Municipio
+20;Cesar;20400;La Jagua de Ibirico;Municipio
+20;Cesar;20443;Manaure Balcón del Cesar;Municipio
+20;Cesar;20517;Pailitas;Municipio
+20;Cesar;20550;Pelaya;Municipio
+20;Cesar;20570;Pueblo Bello;Municipio
+20;Cesar;20614;Río de Oro;Municipio
+20;Cesar;20621;La Paz;Municipio
+20;Cesar;20710;San Alberto;Municipio
+20;Cesar;20750;San Diego;Municipio
+20;Cesar;20770;San Martín;Municipio
+20;Cesar;20787;Tamalameque;Municipio
+23;Córdoba;23001;Montería;Municipio
+23;Córdoba;23068;Ayapel;Municipio
+23;Córdoba;23079;Buenavista;Municipio
+23;Córdoba;23090;Canalete;Municipio
+23;Córdoba;23162;Cereté;Municipio
+23;Córdoba;23168;Chimá;Municipio
+23;Córdoba;23182;Chinú;Municipio
+23;Córdoba;23189;Ciénaga de Oro;Municipio
+23;Córdoba;23300;Cotorra;Municipio
+23;Córdoba;23350;La Apartada;Municipio
+23;Córdoba;23417;Lorica;Municipio
+23;Córdoba;23419;Los Córdobas;Municipio
+23;Córdoba;23464;Momil;Municipio
+23;Córdoba;23466;Montelíbano;Municipio
+23;Córdoba;23500;Moñitos;Municipio
+23;Córdoba;23555;Planeta Rica;Municipio
+23;Córdoba;23570;Pueblo Nuevo;Municipio
+23;Córdoba;23574;Puerto Escondido;Municipio
+23;Córdoba;23580;Puerto Libertador;Municipio
+23;Córdoba;23586;Purísima de la Concepción;Municipio
+23;Córdoba;23660;Sahagún;Municipio
+23;Córdoba;23670;San Andrés de Sotavento;Municipio
+23;Córdoba;23672;San Antero;Municipio
+23;Córdoba;23675;San Bernardo del Viento;Municipio
+23;Córdoba;23678;San Carlos;Municipio
+23;Córdoba;23682;San José de Uré;Municipio
+23;Córdoba;23686;San Pelayo;Municipio
+23;Córdoba;23807;Tierralta;Municipio
+23;Córdoba;23815;Tuchín;Municipio
+23;Córdoba;23855;Valencia;Municipio
+25;Cundinamarca;25001;Agua de Dios;Municipio
+25;Cundinamarca;25019;Albán;Municipio
+25;Cundinamarca;25035;Anapoima;Municipio
+25;Cundinamarca;25040;Anolaima;Municipio
+25;Cundinamarca;25053;Arbeláez;Municipio
+25;Cundinamarca;25086;Beltrán;Municipio
+25;Cundinamarca;25095;Bituima;Municipio
+25;Cundinamarca;25099;Bojacá;Municipio
+25;Cundinamarca;25120;Cabrera;Municipio
+25;Cundinamarca;25123;Cachipay;Municipio
+25;Cundinamarca;25126;Cajicá;Municipio
+25;Cundinamarca;25148;Caparrapí;Municipio
+25;Cundinamarca;25151;Cáqueza;Municipio
+25;Cundinamarca;25154;Carmen de Carupa;Municipio
+25;Cundinamarca;25168;Chaguaní;Municipio
+25;Cundinamarca;25175;Chía;Municipio
+25;Cundinamarca;25178;Chipaque;Municipio
+25;Cundinamarca;25181;Choachí;Municipio
+25;Cundinamarca;25183;Chocontá;Municipio
+25;Cundinamarca;25200;Cogua;Municipio
+25;Cundinamarca;25214;Cota;Municipio
+25;Cundinamarca;25224;Cucunubá;Municipio
+25;Cundinamarca;25245;El Colegio;Municipio
+25;Cundinamarca;25258;El Peñón;Municipio
+25;Cundinamarca;25260;El Rosal;Municipio
+25;Cundinamarca;25269;Facatativá;Municipio
+25;Cundinamarca;25279;Fómeque;Municipio
+25;Cundinamarca;25281;Fosca;Municipio
+25;Cundinamarca;25286;Funza;Municipio
+25;Cundinamarca;25288;Fúquene;Municipio
+25;Cundinamarca;25290;Fusagasugá;Municipio
+25;Cundinamarca;25293;Gachalá;Municipio
+25;Cundinamarca;25295;Gachancipá;Municipio
+25;Cundinamarca;25297;Gachetá;Municipio
+25;Cundinamarca;25299;Gama;Municipio
+25;Cundinamarca;25307;Girardot;Municipio
+25;Cundinamarca;25312;Granada;Municipio
+25;Cundinamarca;25317;Guachetá;Municipio
+25;Cundinamarca;25320;Guaduas;Municipio
+25;Cundinamarca;25322;Guasca;Municipio
+25;Cundinamarca;25324;Guataquí;Municipio
+25;Cundinamarca;25326;Guatavita;Municipio
+25;Cundinamarca;25328;Guayabal de Síquima;Municipio
+25;Cundinamarca;25335;Guayabetal;Municipio
+25;Cundinamarca;25339;Gutiérrez;Municipio
+25;Cundinamarca;25368;Jerusalén;Municipio
+25;Cundinamarca;25372;Junín;Municipio
+25;Cundinamarca;25377;La Calera;Municipio
+25;Cundinamarca;25386;La Mesa;Municipio
+25;Cundinamarca;25394;La Palma;Municipio
+25;Cundinamarca;25398;La Peña;Municipio
+25;Cundinamarca;25402;La Vega;Municipio
+25;Cundinamarca;25407;Lenguazaque;Municipio
+25;Cundinamarca;25426;Machetá;Municipio
+25;Cundinamarca;25430;Madrid;Municipio
+25;Cundinamarca;25436;Manta;Municipio
+25;Cundinamarca;25438;Medina;Municipio
+25;Cundinamarca;25473;Mosquera;Municipio
+25;Cundinamarca;25483;Nariño;Municipio
+25;Cundinamarca;25486;Nemocón;Municipio
+25;Cundinamarca;25488;Nilo;Municipio
+25;Cundinamarca;25489;Nimaima;Municipio
+25;Cundinamarca;25491;Nocaima;Municipio
+25;Cundinamarca;25506;Venecia;Municipio
+25;Cundinamarca;25513;Pacho;Municipio
+25;Cundinamarca;25518;Paime;Municipio
+25;Cundinamarca;25524;Pandi;Municipio
+25;Cundinamarca;25530;Paratebueno;Municipio
+25;Cundinamarca;25535;Pasca;Municipio
+25;Cundinamarca;25572;Puerto Salgar;Municipio
+25;Cundinamarca;25580;Pulí;Municipio
+25;Cundinamarca;25592;Quebradanegra;Municipio
+25;Cundinamarca;25594;Quetame;Municipio
+25;Cundinamarca;25596;Quipile;Municipio
+25;Cundinamarca;25599;Apulo;Municipio
+25;Cundinamarca;25612;Ricaurte;Municipio
+25;Cundinamarca;25645;San Antonio del Tequendama;Municipio
+25;Cundinamarca;25649;San Bernardo;Municipio
+25;Cundinamarca;25653;San Cayetano;Municipio
+25;Cundinamarca;25658;San Francisco;Municipio
+25;Cundinamarca;25662;San Juan de Rioseco;Municipio
+25;Cundinamarca;25718;Sasaima;Municipio
+25;Cundinamarca;25736;Sesquilé;Municipio
+25;Cundinamarca;25740;Sibaté;Municipio
+25;Cundinamarca;25743;Silvania;Municipio
+25;Cundinamarca;25745;Simijaca;Municipio
+25;Cundinamarca;25754;Soacha;Municipio
+25;Cundinamarca;25758;Sopó;Municipio
+25;Cundinamarca;25769;Subachoque;Municipio
+25;Cundinamarca;25772;Suesca;Municipio
+25;Cundinamarca;25777;Supatá;Municipio
+25;Cundinamarca;25779;Susa;Municipio
+25;Cundinamarca;25781;Sutatausa;Municipio
+25;Cundinamarca;25785;Tabio;Municipio
+25;Cundinamarca;25793;Tausa;Municipio
+25;Cundinamarca;25797;Tena;Municipio
+25;Cundinamarca;25799;Tenjo;Municipio
+25;Cundinamarca;25805;Tibacuy;Municipio
+25;Cundinamarca;25807;Tibirita;Municipio
+25;Cundinamarca;25815;Tocaima;Municipio
+25;Cundinamarca;25817;Tocancipá;Municipio
+25;Cundinamarca;25823;Topaipí;Municipio
+25;Cundinamarca;25839;Ubalá;Municipio
+25;Cundinamarca;25841;Ubaque;Municipio
+25;Cundinamarca;25843;Villa de San Diego de Ubaté;Municipio
+25;Cundinamarca;25845;Une;Municipio
+25;Cundinamarca;25851;Útica;Municipio
+25;Cundinamarca;25862;Vergara;Municipio
+25;Cundinamarca;25867;Vianí;Municipio
+25;Cundinamarca;25871;Villagómez;Municipio
+25;Cundinamarca;25873;Villapinzón;Municipio
+25;Cundinamarca;25875;Villeta;Municipio
+25;Cundinamarca;25878;Viotá;Municipio
+25;Cundinamarca;25885;Yacopí;Municipio
+25;Cundinamarca;25898;Zipacón;Municipio
+25;Cundinamarca;25899;Zipaquirá;Municipio
+27;Chocó;27001;Quibdó;Municipio
+27;Chocó;27006;Acandí;Municipio
+27;Chocó;27025;Alto Baudó;Municipio
+27;Chocó;27050;Atrato;Municipio
+27;Chocó;27073;Bagadó;Municipio
+27;Chocó;27075;Bahía Solano;Municipio
+27;Chocó;27077;Bajo Baudó;Municipio
+27;Chocó;27099;Bojayá;Municipio
+27;Chocó;27135;El Cantón del San Pablo;Municipio
+27;Chocó;27150;Carmen del Darién;Municipio
+27;Chocó;27160;Cértegui;Municipio
+27;Chocó;27205;Condoto;Municipio
+27;Chocó;27245;El Carmen de Atrato;Municipio
+27;Chocó;27250;El Litoral del San Juan;Municipio
+27;Chocó;27361;Istmina;Municipio
+27;Chocó;27372;Juradó;Municipio
+27;Chocó;27413;Lloró;Municipio
+27;Chocó;27425;Medio Atrato;Municipio
+27;Chocó;27430;Medio Baudó;Municipio
+27;Chocó;27450;Medio San Juan;Municipio
+27;Chocó;27491;Nóvita;Municipio
+27;Chocó;27493;Nuevo Belén de Bajirá;Municipio
+27;Chocó;27495;Nuquí;Municipio
+27;Chocó;27580;Río Iró;Municipio
+27;Chocó;27600;Río Quito;Municipio
+27;Chocó;27615;Riosucio;Municipio
+27;Chocó;27660;San José del Palmar;Municipio
+27;Chocó;27745;Sipí;Municipio
+27;Chocó;27787;Tadó;Municipio
+27;Chocó;27800;Unguía;Municipio
+27;Chocó;27810;Unión Panamericana;Municipio
+41;Huila;41001;Neiva;Municipio
+41;Huila;41006;Acevedo;Municipio
+41;Huila;41013;Agrado;Municipio
+41;Huila;41016;Aipe;Municipio
+41;Huila;41020;Algeciras;Municipio
+41;Huila;41026;Altamira;Municipio
+41;Huila;41078;Baraya;Municipio
+41;Huila;41132;Campoalegre;Municipio
+41;Huila;41206;Colombia;Municipio
+41;Huila;41244;Elías;Municipio
+41;Huila;41298;Garzón;Municipio
+41;Huila;41306;Gigante;Municipio
+41;Huila;41319;Guadalupe;Municipio
+41;Huila;41349;Hobo;Municipio
+41;Huila;41357;Íquira;Municipio
+41;Huila;41359;Isnos;Municipio
+41;Huila;41378;La Argentina;Municipio
+41;Huila;41396;La Plata;Municipio
+41;Huila;41483;Nátaga;Municipio
+41;Huila;41503;Oporapa;Municipio
+41;Huila;41518;Paicol;Municipio
+41;Huila;41524;Palermo;Municipio
+41;Huila;41530;Palestina;Municipio
+41;Huila;41548;Pital;Municipio
+41;Huila;41551;Pitalito;Municipio
+41;Huila;41615;Rivera;Municipio
+41;Huila;41660;Saladoblanco;Municipio
+41;Huila;41668;San Agustín;Municipio
+41;Huila;41676;Santa María;Municipio
+41;Huila;41770;Suaza;Municipio
+41;Huila;41791;Tarqui;Municipio
+41;Huila;41797;Tesalia;Municipio
+41;Huila;41799;Tello;Municipio
+41;Huila;41801;Teruel;Municipio
+41;Huila;41807;Timaná;Municipio
+41;Huila;41872;Villavieja;Municipio
+41;Huila;41885;Yaguará;Municipio
+44;La Guajira;44001;Riohacha;Municipio
+44;La Guajira;44035;Albania;Municipio
+44;La Guajira;44078;Barrancas;Municipio
+44;La Guajira;44090;Dibulla;Municipio
+44;La Guajira;44098;Distracción;Municipio
+44;La Guajira;44110;El Molino;Municipio
+44;La Guajira;44279;Fonseca;Municipio
+44;La Guajira;44378;Hatonuevo;Municipio
+44;La Guajira;44420;La Jagua del Pilar;Municipio
+44;La Guajira;44430;Maicao;Municipio
+44;La Guajira;44560;Manaure;Municipio
+44;La Guajira;44650;San Juan del Cesar;Municipio
+44;La Guajira;44847;Uribia;Municipio
+44;La Guajira;44855;Urumita;Municipio
+44;La Guajira;44874;Villanueva;Municipio
+47;Magdalena;47001;Santa Marta;Municipio
+47;Magdalena;47030;Algarrobo;Municipio
+47;Magdalena;47053;Aracataca;Municipio
+47;Magdalena;47058;Ariguaní;Municipio
+47;Magdalena;47161;Cerro de San Antonio;Municipio
+47;Magdalena;47170;Chivolo;Municipio
+47;Magdalena;47189;Ciénaga;Municipio
+47;Magdalena;47205;Concordia;Municipio
+47;Magdalena;47245;El Banco;Municipio
+47;Magdalena;47258;El Piñón;Municipio
+47;Magdalena;47268;El Retén;Municipio
+47;Magdalena;47288;Fundación;Municipio
+47;Magdalena;47318;Guamal;Municipio
+47;Magdalena;47460;Nueva Granada;Municipio
+47;Magdalena;47541;Pedraza;Municipio
+47;Magdalena;47545;Pijiño del Carmen;Municipio
+47;Magdalena;47551;Pivijay;Municipio
+47;Magdalena;47555;Plato;Municipio
+47;Magdalena;47570;Puebloviejo;Municipio
+47;Magdalena;47605;Remolino;Municipio
+47;Magdalena;47660;Sabanas de San Ángel;Municipio
+47;Magdalena;47675;Salamina;Municipio
+47;Magdalena;47692;San Sebastián de Buenavista;Municipio
+47;Magdalena;47703;San Zenón;Municipio
+47;Magdalena;47707;Santa Ana;Municipio
+47;Magdalena;47720;Santa Bárbara de Pinto;Municipio
+47;Magdalena;47745;Sitionuevo;Municipio
+47;Magdalena;47798;Tenerife;Municipio
+47;Magdalena;47960;Zapayán;Municipio
+47;Magdalena;47980;Zona Bananera;Municipio
+50;Meta;50001;Villavicencio;Municipio
+50;Meta;50006;Acacías;Municipio
+50;Meta;50110;Barranca de Upía;Municipio
+50;Meta;50124;Cabuyaro;Municipio
+50;Meta;50150;Castilla la Nueva;Municipio
+50;Meta;50223;Cubarral;Municipio
+50;Meta;50226;Cumaral;Municipio
+50;Meta;50245;El Calvario;Municipio
+50;Meta;50251;El Castillo;Municipio
+50;Meta;50270;El Dorado;Municipio
+50;Meta;50287;Fuente de Oro;Municipio
+50;Meta;50313;Granada;Municipio
+50;Meta;50318;Guamal;Municipio
+50;Meta;50325;Mapiripán;Municipio
+50;Meta;50330;Mesetas;Municipio
+50;Meta;50350;La Macarena;Municipio
+50;Meta;50370;Uribe;Municipio
+50;Meta;50400;Lejanías;Municipio
+50;Meta;50450;Puerto Concordia;Municipio
+50;Meta;50568;Puerto Gaitán;Municipio
+50;Meta;50573;Puerto López;Municipio
+50;Meta;50577;Puerto Lleras;Municipio
+50;Meta;50590;Puerto Rico;Municipio
+50;Meta;50606;Restrepo;Municipio
+50;Meta;50680;San Carlos de Guaroa;Municipio
+50;Meta;50683;San Juan de Arama;Municipio
+50;Meta;50686;San Juanito;Municipio
+50;Meta;50689;San Martín;Municipio
+50;Meta;50711;Vistahermosa;Municipio
+52;Nariño;52001;Pasto;Municipio
+52;Nariño;52019;Albán;Municipio
+52;Nariño;52022;Aldana;Municipio
+52;Nariño;52036;Ancuya;Municipio
+52;Nariño;52051;Arboleda;Municipio
+52;Nariño;52079;Barbacoas;Municipio
+52;Nariño;52083;Belén;Municipio
+52;Nariño;52110;Buesaco;Municipio
+52;Nariño;52203;Colón;Municipio
+52;Nariño;52207;Consacá;Municipio
+52;Nariño;52210;Contadero;Municipio
+52;Nariño;52215;Córdoba;Municipio
+52;Nariño;52224;Cuaspud Carlosama;Municipio
+52;Nariño;52227;Cumbal;Municipio
+52;Nariño;52233;Cumbitara;Municipio
+52;Nariño;52240;Chachagüí;Municipio
+52;Nariño;52250;El Charco;Municipio
+52;Nariño;52254;El Peñol;Municipio
+52;Nariño;52256;El Rosario;Municipio
+52;Nariño;52258;El Tablón de Gómez;Municipio
+52;Nariño;52260;El Tambo;Municipio
+52;Nariño;52287;Funes;Municipio
+52;Nariño;52317;Guachucal;Municipio
+52;Nariño;52320;Guaitarilla;Municipio
+52;Nariño;52323;Gualmatán;Municipio
+52;Nariño;52352;Iles;Municipio
+52;Nariño;52354;Imués;Municipio
+52;Nariño;52356;Ipiales;Municipio
+52;Nariño;52378;La Cruz;Municipio
+52;Nariño;52381;La Florida;Municipio
+52;Nariño;52385;La Llanada;Municipio
+52;Nariño;52390;La Tola;Municipio
+52;Nariño;52399;La Unión;Municipio
+52;Nariño;52405;Leiva;Municipio
+52;Nariño;52411;Linares;Municipio
+52;Nariño;52418;Los Andes;Municipio
+52;Nariño;52427;Magüí;Municipio
+52;Nariño;52435;Mallama;Municipio
+52;Nariño;52473;Mosquera;Municipio
+52;Nariño;52480;Nariño;Municipio
+52;Nariño;52490;Olaya Herrera;Municipio
+52;Nariño;52506;Ospina;Municipio
+52;Nariño;52520;Francisco Pizarro;Municipio
+52;Nariño;52540;Policarpa;Municipio
+52;Nariño;52560;Potosí;Municipio
+52;Nariño;52565;Providencia;Municipio
+52;Nariño;52573;Puerres;Municipio
+52;Nariño;52585;Pupiales;Municipio
+52;Nariño;52612;Ricaurte;Municipio
+52;Nariño;52621;Roberto Payán;Municipio
+52;Nariño;52678;Samaniego;Municipio
+52;Nariño;52683;Sandoná;Municipio
+52;Nariño;52685;San Bernardo;Municipio
+52;Nariño;52687;San Lorenzo;Municipio
+52;Nariño;52693;San Pablo;Municipio
+52;Nariño;52694;San Pedro de Cartago;Municipio
+52;Nariño;52696;Santa Bárbara;Municipio
+52;Nariño;52699;Santacruz;Municipio
+52;Nariño;52720;Sapuyes;Municipio
+52;Nariño;52786;Taminango;Municipio
+52;Nariño;52788;Tangua;Municipio
+52;Nariño;52835;San Andrés de Tumaco;Municipio
+52;Nariño;52838;Túquerres;Municipio
+52;Nariño;52885;Yacuanquer;Municipio
+54;Norte de Santander;54001;San José de Cúcuta;Municipio
+54;Norte de Santander;54003;Ábrego;Municipio
+54;Norte de Santander;54051;Arboledas;Municipio
+54;Norte de Santander;54099;Bochalema;Municipio
+54;Norte de Santander;54109;Bucarasica;Municipio
+54;Norte de Santander;54125;Cácota;Municipio
+54;Norte de Santander;54128;Cáchira;Municipio
+54;Norte de Santander;54172;Chinácota;Municipio
+54;Norte de Santander;54174;Chitagá;Municipio
+54;Norte de Santander;54206;Convención;Municipio
+54;Norte de Santander;54223;Cucutilla;Municipio
+54;Norte de Santander;54239;Durania;Municipio
+54;Norte de Santander;54245;El Carmen;Municipio
+54;Norte de Santander;54250;El Tarra;Municipio
+54;Norte de Santander;54261;El Zulia;Municipio
+54;Norte de Santander;54313;Gramalote;Municipio
+54;Norte de Santander;54344;Hacarí;Municipio
+54;Norte de Santander;54347;Herrán;Municipio
+54;Norte de Santander;54377;Labateca;Municipio
+54;Norte de Santander;54385;La Esperanza;Municipio
+54;Norte de Santander;54398;La Playa;Municipio
+54;Norte de Santander;54405;Los Patios;Municipio
+54;Norte de Santander;54418;Lourdes;Municipio
+54;Norte de Santander;54480;Mutiscua;Municipio
+54;Norte de Santander;54498;Ocaña;Municipio
+54;Norte de Santander;54518;Pamplona;Municipio
+54;Norte de Santander;54520;Pamplonita;Municipio
+54;Norte de Santander;54553;Puerto Santander;Municipio
+54;Norte de Santander;54599;Ragonvalia;Municipio
+54;Norte de Santander;54660;Salazar;Municipio
+54;Norte de Santander;54670;San Calixto;Municipio
+54;Norte de Santander;54673;San Cayetano;Municipio
+54;Norte de Santander;54680;Santiago;Municipio
+54;Norte de Santander;54720;Sardinata;Municipio
+54;Norte de Santander;54743;Silos;Municipio
+54;Norte de Santander;54800;Teorama;Municipio
+54;Norte de Santander;54810;Tibú;Municipio
+54;Norte de Santander;54820;Toledo;Municipio
+54;Norte de Santander;54871;Villa Caro;Municipio
+54;Norte de Santander;54874;Villa del Rosario;Municipio
+63;Quindío;63001;Armenia;Municipio
+63;Quindío;63111;Buenavista;Municipio
+63;Quindío;63130;Calarcá;Municipio
+63;Quindío;63190;Circasia;Municipio
+63;Quindío;63212;Córdoba;Municipio
+63;Quindío;63272;Filandia;Municipio
+63;Quindío;63302;Génova;Municipio
+63;Quindío;63401;La Tebaida;Municipio
+63;Quindío;63470;Montenegro;Municipio
+63;Quindío;63548;Pijao;Municipio
+63;Quindío;63594;Quimbaya;Municipio
+63;Quindío;63690;Salento;Municipio
+66;Risaralda;66001;Pereira;Municipio
+66;Risaralda;66045;Apía;Municipio
+66;Risaralda;66075;Balboa;Municipio
+66;Risaralda;66088;Belén de Umbría;Municipio
+66;Risaralda;66170;Dosquebradas;Municipio
+66;Risaralda;66318;Guática;Municipio
+66;Risaralda;66383;La Celia;Municipio
+66;Risaralda;66400;La Virginia;Municipio
+66;Risaralda;66440;Marsella;Municipio
+66;Risaralda;66456;Mistrató;Municipio
+66;Risaralda;66572;Pueblo Rico;Municipio
+66;Risaralda;66594;Quinchía;Municipio
+66;Risaralda;66682;Santa Rosa de Cabal;Municipio
+66;Risaralda;66687;Santuario;Municipio
+68;Santander;68001;Bucaramanga;Municipio
+68;Santander;68013;Aguada;Municipio
+68;Santander;68020;Albania;Municipio
+68;Santander;68051;Aratoca;Municipio
+68;Santander;68077;Barbosa;Municipio
+68;Santander;68079;Barichara;Municipio
+68;Santander;68081;Barrancabermeja;Municipio
+68;Santander;68092;Betulia;Municipio
+68;Santander;68101;Bolívar;Municipio
+68;Santander;68121;Cabrera;Municipio
+68;Santander;68132;California;Municipio
+68;Santander;68147;Capitanejo;Municipio
+68;Santander;68152;Carcasí;Municipio
+68;Santander;68160;Cepitá;Municipio
+68;Santander;68162;Cerrito;Municipio
+68;Santander;68167;Charalá;Municipio
+68;Santander;68169;Charta;Municipio
+68;Santander;68176;Chima;Municipio
+68;Santander;68179;Chipatá;Municipio
+68;Santander;68190;Cimitarra;Municipio
+68;Santander;68207;Concepción;Municipio
+68;Santander;68209;Confines;Municipio
+68;Santander;68211;Contratación;Municipio
+68;Santander;68217;Coromoro;Municipio
+68;Santander;68229;Curití;Municipio
+68;Santander;68235;El Carmen de Chucurí;Municipio
+68;Santander;68245;El Guacamayo;Municipio
+68;Santander;68250;El Peñón;Municipio
+68;Santander;68255;El Playón;Municipio
+68;Santander;68264;Encino;Municipio
+68;Santander;68266;Enciso;Municipio
+68;Santander;68271;Florián;Municipio
+68;Santander;68276;Floridablanca;Municipio
+68;Santander;68296;Galán;Municipio
+68;Santander;68298;Gámbita;Municipio
+68;Santander;68307;Girón;Municipio
+68;Santander;68318;Guaca;Municipio
+68;Santander;68320;Guadalupe;Municipio
+68;Santander;68322;Guapotá;Municipio
+68;Santander;68324;Guavatá;Municipio
+68;Santander;68327;Güepsa;Municipio
+68;Santander;68344;Hato;Municipio
+68;Santander;68368;Jesús María;Municipio
+68;Santander;68370;Jordán;Municipio
+68;Santander;68377;La Belleza;Municipio
+68;Santander;68385;Landázuri;Municipio
+68;Santander;68397;La Paz;Municipio
+68;Santander;68406;Lebrija;Municipio
+68;Santander;68418;Los Santos;Municipio
+68;Santander;68425;Macaravita;Municipio
+68;Santander;68432;Málaga;Municipio
+68;Santander;68444;Matanza;Municipio
+68;Santander;68464;Mogotes;Municipio
+68;Santander;68468;Molagavita;Municipio
+68;Santander;68498;Ocamonte;Municipio
+68;Santander;68500;Oiba;Municipio
+68;Santander;68502;Onzaga;Municipio
+68;Santander;68522;Palmar;Municipio
+68;Santander;68524;Palmas del Socorro;Municipio
+68;Santander;68533;Páramo;Municipio
+68;Santander;68547;Piedecuesta;Municipio
+68;Santander;68549;Pinchote;Municipio
+68;Santander;68572;Puente Nacional;Municipio
+68;Santander;68573;Puerto Parra;Municipio
+68;Santander;68575;Puerto Wilches;Municipio
+68;Santander;68615;Rionegro;Municipio
+68;Santander;68655;Sabana de Torres;Municipio
+68;Santander;68669;San Andrés;Municipio
+68;Santander;68673;San Benito;Municipio
+68;Santander;68679;San Gil;Municipio
+68;Santander;68682;San Joaquín;Municipio
+68;Santander;68684;San José de Miranda;Municipio
+68;Santander;68686;San Miguel;Municipio
+68;Santander;68689;San Vicente de Chucurí;Municipio
+68;Santander;68705;Santa Bárbara;Municipio
+68;Santander;68720;Santa Helena del Opón;Municipio
+68;Santander;68745;Simacota;Municipio
+68;Santander;68755;Socorro;Municipio
+68;Santander;68770;Suaita;Municipio
+68;Santander;68773;Sucre;Municipio
+68;Santander;68780;Suratá;Municipio
+68;Santander;68820;Tona;Municipio
+68;Santander;68855;Valle de San José;Municipio
+68;Santander;68861;Vélez;Municipio
+68;Santander;68867;Vetas;Municipio
+68;Santander;68872;Villanueva;Municipio
+68;Santander;68895;Zapatoca;Municipio
+70;Sucre;70001;Sincelejo;Municipio
+70;Sucre;70110;Buenavista;Municipio
+70;Sucre;70124;Caimito;Municipio
+70;Sucre;70204;Colosó;Municipio
+70;Sucre;70215;Corozal;Municipio
+70;Sucre;70221;Coveñas;Municipio
+70;Sucre;70230;Chalán;Municipio
+70;Sucre;70233;El Roble;Municipio
+70;Sucre;70235;Galeras;Municipio
+70;Sucre;70265;Guaranda;Municipio
+70;Sucre;70400;La Unión;Municipio
+70;Sucre;70418;Los Palmitos;Municipio
+70;Sucre;70429;Majagual;Municipio
+70;Sucre;70473;Morroa;Municipio
+70;Sucre;70508;Ovejas;Municipio
+70;Sucre;70523;Palmito;Municipio
+70;Sucre;70670;Sampués;Municipio
+70;Sucre;70678;San Benito Abad;Municipio
+70;Sucre;70702;San Juan de Betulia;Municipio
+70;Sucre;70708;San Marcos;Municipio
+70;Sucre;70713;San Onofre;Municipio
+70;Sucre;70717;San Pedro;Municipio
+70;Sucre;70742;San Luis de Sincé;Municipio
+70;Sucre;70771;Sucre;Municipio
+70;Sucre;70820;Santiago de Tolú;Municipio
+70;Sucre;70823;San José de Toluviejo;Municipio
+73;Tolima;73001;Ibagué;Municipio
+73;Tolima;73024;Alpujarra;Municipio
+73;Tolima;73026;Alvarado;Municipio
+73;Tolima;73030;Ambalema;Municipio
+73;Tolima;73043;Anzoátegui;Municipio
+73;Tolima;73055;Armero;Municipio
+73;Tolima;73067;Ataco;Municipio
+73;Tolima;73124;Cajamarca;Municipio
+73;Tolima;73148;Carmen de Apicalá;Municipio
+73;Tolima;73152;Casabianca;Municipio
+73;Tolima;73168;Chaparral;Municipio
+73;Tolima;73200;Coello;Municipio
+73;Tolima;73217;Coyaima;Municipio
+73;Tolima;73226;Cunday;Municipio
+73;Tolima;73236;Dolores;Municipio
+73;Tolima;73268;Espinal;Municipio
+73;Tolima;73270;Falan;Municipio
+73;Tolima;73275;Flandes;Municipio
+73;Tolima;73283;Fresno;Municipio
+73;Tolima;73319;Guamo;Municipio
+73;Tolima;73347;Herveo;Municipio
+73;Tolima;73349;Honda;Municipio
+73;Tolima;73352;Icononzo;Municipio
+73;Tolima;73408;Lérida;Municipio
+73;Tolima;73411;Líbano;Municipio
+73;Tolima;73443;San Sebastián de Mariquita;Municipio
+73;Tolima;73449;Melgar;Municipio
+73;Tolima;73461;Murillo;Municipio
+73;Tolima;73483;Natagaima;Municipio
+73;Tolima;73504;Ortega;Municipio
+73;Tolima;73520;Palocabildo;Municipio
+73;Tolima;73547;Piedras;Municipio
+73;Tolima;73555;Planadas;Municipio
+73;Tolima;73563;Prado;Municipio
+73;Tolima;73585;Purificación;Municipio
+73;Tolima;73616;Rioblanco;Municipio
+73;Tolima;73622;Roncesvalles;Municipio
+73;Tolima;73624;Rovira;Municipio
+73;Tolima;73671;Saldaña;Municipio
+73;Tolima;73675;San Antonio;Municipio
+73;Tolima;73678;San Luis;Municipio
+73;Tolima;73686;Santa Isabel;Municipio
+73;Tolima;73770;Suárez;Municipio
+73;Tolima;73854;Valle de San Juan;Municipio
+73;Tolima;73861;Venadillo;Municipio
+73;Tolima;73870;Villahermosa;Municipio
+73;Tolima;73873;Villarrica;Municipio
+76;Valle del Cauca;76001;Santiago de Cali;Municipio
+76;Valle del Cauca;76020;Alcalá;Municipio
+76;Valle del Cauca;76036;Andalucía;Municipio
+76;Valle del Cauca;76041;Ansermanuevo;Municipio
+76;Valle del Cauca;76054;Argelia;Municipio
+76;Valle del Cauca;76100;Bolívar;Municipio
+76;Valle del Cauca;76109;Buenaventura;Municipio
+76;Valle del Cauca;76111;Guadalajara de Buga;Municipio
+76;Valle del Cauca;76113;Bugalagrande;Municipio
+76;Valle del Cauca;76122;Caicedonia;Municipio
+76;Valle del Cauca;76126;Calima;Municipio
+76;Valle del Cauca;76130;Candelaria;Municipio
+76;Valle del Cauca;76147;Cartago;Municipio
+76;Valle del Cauca;76233;Dagua;Municipio
+76;Valle del Cauca;76243;El Águila;Municipio
+76;Valle del Cauca;76246;El Cairo;Municipio
+76;Valle del Cauca;76248;El Cerrito;Municipio
+76;Valle del Cauca;76250;El Dovio;Municipio
+76;Valle del Cauca;76275;Florida;Municipio
+76;Valle del Cauca;76306;Ginebra;Municipio
+76;Valle del Cauca;76318;Guacarí;Municipio
+76;Valle del Cauca;76364;Jamundí;Municipio
+76;Valle del Cauca;76377;La Cumbre;Municipio
+76;Valle del Cauca;76400;La Unión;Municipio
+76;Valle del Cauca;76403;La Victoria;Municipio
+76;Valle del Cauca;76497;Obando;Municipio
+76;Valle del Cauca;76520;Palmira;Municipio
+76;Valle del Cauca;76563;Pradera;Municipio
+76;Valle del Cauca;76606;Restrepo;Municipio
+76;Valle del Cauca;76616;Riofrío;Municipio
+76;Valle del Cauca;76622;Roldanillo;Municipio
+76;Valle del Cauca;76670;San Pedro;Municipio
+76;Valle del Cauca;76736;Sevilla;Municipio
+76;Valle del Cauca;76823;Toro;Municipio
+76;Valle del Cauca;76828;Trujillo;Municipio
+76;Valle del Cauca;76834;Tuluá;Municipio
+76;Valle del Cauca;76845;Ulloa;Municipio
+76;Valle del Cauca;76863;Versalles;Municipio
+76;Valle del Cauca;76869;Vijes;Municipio
+76;Valle del Cauca;76890;Yotoco;Municipio
+76;Valle del Cauca;76892;Yumbo;Municipio
+76;Valle del Cauca;76895;Zarzal;Municipio
+81;Arauca;81001;Arauca;Municipio
+81;Arauca;81065;Arauquita;Municipio
+81;Arauca;81220;Cravo Norte;Municipio
+81;Arauca;81300;Fortul;Municipio
+81;Arauca;81591;Puerto Rondón;Municipio
+81;Arauca;81736;Saravena;Municipio
+81;Arauca;81794;Tame;Municipio
+85;Casanare;85001;Yopal;Municipio
+85;Casanare;85010;Aguazul;Municipio
+85;Casanare;85015;Chámeza;Municipio
+85;Casanare;85125;Hato Corozal;Municipio
+85;Casanare;85136;La Salina;Municipio
+85;Casanare;85139;Maní;Municipio
+85;Casanare;85162;Monterrey;Municipio
+85;Casanare;85225;Nunchía;Municipio
+85;Casanare;85230;Orocué;Municipio
+85;Casanare;85250;Paz de Ariporo;Municipio
+85;Casanare;85263;Pore;Municipio
+85;Casanare;85279;Recetor;Municipio
+85;Casanare;85300;Sabanalarga;Municipio
+85;Casanare;85315;Sácama;Municipio
+85;Casanare;85325;San Luis de Palenque;Municipio
+85;Casanare;85400;Támara;Municipio
+85;Casanare;85410;Tauramena;Municipio
+85;Casanare;85430;Trinidad;Municipio
+85;Casanare;85440;Villanueva;Municipio
+86;Putumayo;86001;Mocoa;Municipio
+86;Putumayo;86219;Colón;Municipio
+86;Putumayo;86320;Orito;Municipio
+86;Putumayo;86568;Puerto Asís;Municipio
+86;Putumayo;86569;Puerto Caicedo;Municipio
+86;Putumayo;86571;Puerto Guzmán;Municipio
+86;Putumayo;86573;Puerto Leguízamo;Municipio
+86;Putumayo;86749;Sibundoy;Municipio
+86;Putumayo;86755;San Francisco;Municipio
+86;Putumayo;86757;San Miguel;Municipio
+86;Putumayo;86760;Santiago;Municipio
+86;Putumayo;86865;Valle del Guamuez;Municipio
+86;Putumayo;86885;Villagarzón;Municipio
+88;Archipiélago de San Andrés, Providencia y Santa Catalina;88001;San Andrés;Isla
+88;Archipiélago de San Andrés, Providencia y Santa Catalina;88564;Providencia;Municipio
+91;Amazonas;91001;Leticia;Municipio
+91;Amazonas;91263;El Encanto;Área no municipalizada
+91;Amazonas;91405;La Chorrera;Área no municipalizada
+91;Amazonas;91407;La Pedrera;Área no municipalizada
+91;Amazonas;91430;La Victoria;Área no municipalizada
+91;Amazonas;91460;Mirití - Paraná;Área no municipalizada
+91;Amazonas;91530;Puerto Alegría;Área no municipalizada
+91;Amazonas;91536;Puerto Arica;Área no municipalizada
+91;Amazonas;91540;Puerto Nariño;Municipio
+91;Amazonas;91669;Puerto Santander;Área no municipalizada
+91;Amazonas;91798;Tarapacá;Área no municipalizada
+94;Guainía;94001;Inírida;Municipio
+94;Guainía;94343;Barrancominas;Municipio
+94;Guainía;94883;San Felipe;Área no municipalizada
+94;Guainía;94884;Puerto Colombia;Área no municipalizada
+94;Guainía;94885;La Guadalupe;Área no municipalizada
+94;Guainía;94886;Cacahual;Área no municipalizada
+94;Guainía;94887;Pana Pana;Área no municipalizada
+94;Guainía;94888;Morichal;Área no municipalizada
+95;Guaviare;95001;San José del Guaviare;Municipio
+95;Guaviare;95015;Calamar;Municipio
+95;Guaviare;95025;El Retorno;Municipio
+95;Guaviare;95200;Miraflores;Municipio
+97;Vaupés;97001;Mitú;Municipio
+97;Vaupés;97161;Carurú;Municipio
+97;Vaupés;97511;Pacoa;Área no municipalizada
+97;Vaupés;97666;Taraira;Municipio
+97;Vaupés;97777;Papunahua;Área no municipalizada
+97;Vaupés;97889;Yavaraté;Área no municipalizada
+99;Vichada;99001;Puerto Carreño;Municipio
+99;Vichada;99524;La Primavera;Municipio
+99;Vichada;99624;Santa Rosalía;Municipio
+99;Vichada;99773;Cumaribo;Municipio

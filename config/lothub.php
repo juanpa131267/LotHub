@@ -75,6 +75,8 @@ return [
         'reminder_days_before' => array_map('intval', explode(',', env('NOTIFY_REMINDER_DAYS', '3'))),
         'overdue_days'         => array_map('intval', explode(',', env('NOTIFY_OVERDUE_DAYS', '1,8,15,30,60,90'))),
         'send_hour'            => (int) env('NOTIFY_SEND_HOUR', 9),
+        // Confirmación automática al cliente de cada abono aplicado.
+        'payment_confirmations' => (bool) env('NOTIFY_PAYMENT_CONFIRMATIONS', true),
         // Proveedores de SMS y WhatsApp: mientras no se configuren, esos canales no se usan automáticamente.
         'providers' => [
             'sms'      => env('SMS_PROVIDER'),
