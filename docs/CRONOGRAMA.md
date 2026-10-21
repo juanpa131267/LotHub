@@ -10,7 +10,7 @@ detalladas están en el cronograma del equipo (Excel).
 | S3 | Clientes, autorización de datos y catálogo público | 45 | — | ✅ Implementado |
 | — | Ajustes de S1 a S3 (US-AUTH-004/007/008, US-CLI-003, US-LOT-004/005/008, US-TEC-001) | — | — | ✅ Implementado |
 | S4 | Reservas y negociaciones | 50 | — | ✅ Implementado |
-| S5 | Acuerdos de pago y plan de cuotas | 58 | — | ⏳ Pendiente |
+| S5 | Acuerdos de pago y plan de cuotas | 58 | — | ✅ Implementado |
 | S6 | Motor de asignación automática | 61 | — | ⏳ Pendiente |
 | S7 | Pasarela de pagos (Wompi) y conciliación | 53 | 2026-10-20 | ⏳ Pendiente |
 | S8 | Por definir | — | — | — |

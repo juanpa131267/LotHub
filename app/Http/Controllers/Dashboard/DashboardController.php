@@ -5,10 +5,14 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\Catalogs\LotStatus;
 use App\Models\Catalogs\ProjectStatus;
+use App\Models\Catalogs\SaleStatus;
 use App\Models\Commercial\Client;
 use App\Models\Commercial\InformationRequest;
 use App\Models\Commercial\Lot;
 use App\Models\Commercial\Project;
+use App\Models\Commercial\Reservation;
+use App\Models\Commercial\Sale;
+use App\Models\Commercial\SaleCancellationRequest;
 use App\Models\Security\AuditLog;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
@@ -50,6 +54,25 @@ class DashboardController extends Controller
             ? AuditLog::with('user')->latest('id')->limit(6)->get()
             : collect();
 
-        return view('dashboard.index', compact('stats', 'aging', 'projects', 'requests', 'activity'));
+        $queues = collect($this->queues())->filter(fn ($q) => $user->hasPermission($q['permission']))->values();
+
+        return view('dashboard.index', compact('stats', 'aging', 'projects', 'requests', 'activity', 'queues'));
+    }
+
+    /**
+     * Bandejas de trabajo pendiente por rol: [etiqueta, ícono, cantidad, ruta, permiso].
+     * Cada sprint agrega las suyas (reservas por vencer, anulaciones, acuerdos, pagos por revisar…).
+     */
+    private function queues(): array
+    {
+        return [
+            ['label' => 'Reservas activas', 'icon' => 'ph-bookmark-simple', 'route' => 'reservations.index', 'permission' => 'reservas.ver',
+             'count' => fn () => Reservation::active()->count(),
+             'hint' => fn () => ($n = Reservation::active()->where('expires_at', '<=', now()->addDays(2))->count()) ? "{$n} vencen en 48 h" : null],
+            ['label' => 'Anulaciones por aprobar', 'icon' => 'ph-seal-warning', 'route' => 'sales.cancellations', 'permission' => 'negociaciones.aprobar_anulacion',
+             'count' => fn () => SaleCancellationRequest::where('status', SaleCancellationRequest::PENDING)->count()],
+            ['label' => 'Negociaciones sin acuerdo', 'icon' => 'ph-file-dashed', 'route' => 'agreements.pending', 'permission' => 'acuerdos.ver',
+             'count' => fn () => Sale::where('status_id', SaleStatus::VIGENTE)->whereDoesntHave('agreements')->count()],
+        ];
     }
 }

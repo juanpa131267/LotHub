@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Catalogs;
 use App\Models\Commercial;
+use App\Models\Financing;
 use App\Models\Security;
 use App\Observers\AuditObserver;
 use Illuminate\Cache\RateLimiting\Limit;
@@ -26,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
         Commercial\Project::class, Commercial\ProjectStage::class, Commercial\Lot::class,
         Commercial\Client::class, Commercial\InformationRequest::class, Commercial\DataConsent::class,
         Commercial\Reservation::class, Commercial\Sale::class, Commercial\SaleCancellationRequest::class,
+        Financing\PaymentAgreement::class, Financing\Obligation::class,
     ];
 
     public function boot(): void

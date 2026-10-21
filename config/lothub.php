@@ -35,6 +35,13 @@ return [
         'max_days'     => (int) env('RESERVATION_MAX_DAYS', 30),
     ],
 
+    // CU-13 Acuerdos de pago. Las tasas se expresan en % mensual. RN-19: ninguna tasa (corriente
+    // ni de mora) supera el límite de usura vigente; actualízalo cada mes con la certificación de
+    // la Superintendencia Financiera (tasa efectiva anual convertida a mensual).
+    'financing' => [
+        'max_monthly_rate' => (float) env('USURY_MONTHLY_RATE', 2.10),
+    ],
+
     // Roles que no pueden eliminarse desde la interfaz.
     'protected_roles' => ['ADMINISTRADOR'],
 
