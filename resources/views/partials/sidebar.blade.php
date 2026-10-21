@@ -20,6 +20,7 @@
             ['Anulaciones', 'ph-seal-warning', 'sales.cancellations', 'negociaciones.aprobar_anulacion', 'sales.cancellations'],
         ],
         'Cartera' => [
+            ['Cartera y mora', 'ph-chart-line-up', 'portfolio.index', 'cartera.ver', 'portfolio.*'],
             ['Acuerdos pendientes', 'ph-file-dashed', 'agreements.pending', 'acuerdos.ver', 'agreements.*'],
             ['Obligaciones', 'ph-receipt', 'obligations.index', 'acuerdos.ver', 'obligations.*'],
             ['Abonos', 'ph-coins', 'payments.index', 'abonos.ver', 'payments.*'],

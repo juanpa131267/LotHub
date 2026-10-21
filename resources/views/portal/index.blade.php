@@ -72,6 +72,7 @@
                             </div>
                         </form>
                     @endif
+                    <a href="{{ route('portal.statement', $o->obligation_id) }}" class="btn btn-ghost btn-sm" style="margin-bottom:.8rem"><i class="ph ph-file-pdf"></i> Descargar estado de cuenta (PDF)</a>
                     <details>
                         <summary style="cursor:pointer;font-weight:600;margin-bottom:.6rem">Plan de cuotas ({{ $plan->count() }})</summary>
                         <div class="table-wrap">

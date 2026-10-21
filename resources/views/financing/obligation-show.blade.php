@@ -33,6 +33,12 @@
             @if ($obligation->isActive() && Route::has('payments.create-for') && $user->hasPermission('abonos.crear'))
                 <a href="{{ route('payments.create-for', $obligation->id) }}" class="btn btn-primary"><i class="ph ph-plus"></i> Registrar abono</a>
             @endif
+            @if ($user->hasPermission('estados_cuenta.ver'))
+                <form method="POST" action="{{ route('account-statements.generate', $obligation->id) }}">
+                    @csrf
+                    <button class="btn btn-ghost"><i class="ph ph-file-pdf"></i> Estado de cuenta</button>
+                </form>
+            @endif
             @if ($obligation->isActive() && $summary->balance > 0 && $user->hasPermission('acuerdos.reestructurar'))
                 <a href="{{ route('obligations.restructure', $obligation->id) }}" class="btn btn-ghost"><i class="ph ph-arrows-clockwise"></i> Reestructurar</a>
             @endif

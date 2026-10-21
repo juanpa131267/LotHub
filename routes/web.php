@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Commercial\ProjectPhotoController;
 use App\Http\Controllers\Auth\PasswordResetController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Financing\AccountStatementController;
 use App\Http\Controllers\Payments\WompiWebhookController;
 use App\Http\Controllers\Portal\OnlinePaymentController;
 use App\Http\Controllers\Portal\PortalController;
@@ -62,6 +63,8 @@ Route::middleware(['auth', 'password.fresh'])->group(function () {
 
     Route::get('/panel', DashboardController::class)->middleware('permission:panel.acceder')->name('dashboard');
     Route::get('/mi-cuenta', [PortalController::class, 'index'])->middleware('permission:portal.acceder')->name('portal.index');
+    Route::get('/mi-cuenta/obligaciones/{obligationId}/estado-cuenta', [AccountStatementController::class, 'portal'])
+        ->middleware(['permission:portal.acceder', 'throttle:public-form'])->whereNumber('obligationId')->name('portal.statement');
     // Pago en línea (CU-20)
     Route::post('/mi-cuenta/obligaciones/{obligationId}/pagar', [OnlinePaymentController::class, 'pay'])
         ->middleware(['permission:portal.pagar', 'throttle:public-form'])->whereNumber('obligationId')->name('portal.pay');
