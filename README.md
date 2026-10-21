@@ -37,7 +37,7 @@ oficial, que incluye tablas, vistas, triggers y el evento de reservas vencidas.
 
 ```bash
 mysql -u root -p < database/schema/cartera_inmobiliaria.sql
-# Parches, en orden numérico (cada uno es idempotente y se aplica una sola vez por versión):
+# Parches, en orden numérico; cada uno se aplica una sola vez (compatibles con MySQL 8 y MariaDB):
 for f in database/schema/patches/*.sql; do mysql -u root -p cartera_inmobiliaria < "$f"; done
 # El usuario de la app (cartera_admin) necesita privilegios sobre cartera_inmobiliaria.
 # Después de aplicar un parche nuevo ejecuta de nuevo: php artisan db:seed --class=PermissionSeeder

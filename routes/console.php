@@ -13,3 +13,6 @@ use Illuminate\Support\Facades\Schedule;
 
 // RN-03: respaldo del evento ev_expire_reservations por si el event_scheduler está apagado.
 Schedule::command('reservations:expire')->everyFifteenMinutes()->withoutOverlapping();
+
+// CU-20 4b: consulta en Wompi y vence las transacciones abandonadas.
+Schedule::command('gateway:expire')->everyFifteenMinutes()->withoutOverlapping();

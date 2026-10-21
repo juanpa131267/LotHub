@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
         Commercial\Client::class, Commercial\InformationRequest::class, Commercial\DataConsent::class,
         Commercial\Reservation::class, Commercial\Sale::class, Commercial\SaleCancellationRequest::class,
         Financing\PaymentAgreement::class, Financing\Obligation::class,
-        Payments\BankStatementLine::class,
+        Payments\BankStatementLine::class, Payments\GatewayTransaction::class,
     ];
 
     public function boot(): void
@@ -59,6 +59,7 @@ class AppServiceProvider extends ServiceProvider
         RateLimiter::for('login', fn (Request $r) => Limit::perMinute(10)->by('login|'.$r->ip()));
         RateLimiter::for('password', fn (Request $r) => Limit::perMinute(5)->by('password|'.$r->ip()));
         RateLimiter::for('public-form', fn (Request $r) => Limit::perMinute(5)->by('public-form|'.$r->ip()));
+        RateLimiter::for('gateway', fn (Request $r) => Limit::perMinute(120)->by('gateway|'.$r->ip()));
     }
 
     /**

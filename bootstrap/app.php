@@ -31,6 +31,9 @@ return Application::configure(basePath: dirname(__DIR__))
         if ($proxies = env('TRUSTED_PROXIES')) {
             $middleware->trustProxies(at: $proxies === '*' ? '*' : array_map('trim', explode(',', $proxies)));
         }
+
+        // La pasarela notifica sin sesión ni token CSRF; la autenticidad se valida con su firma (RN-17).
+        $middleware->validateCsrfTokens(except: ['pasarela/wompi/eventos']);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         // Archivo más grande de lo que acepta PHP: PHP descarta la petición completa antes de que

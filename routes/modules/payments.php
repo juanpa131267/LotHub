@@ -29,4 +29,5 @@ Route::prefix('cartera')->group(function () {
         Route::post('/asignacion/revision/{lineId}/asignar', 'assign')->name('allocation.assign');
         Route::post('/asignacion/revision/{lineId}/descartar', 'discard')->name('allocation.discard');
     });
+
 });

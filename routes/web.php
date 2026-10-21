@@ -6,6 +6,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Commercial\ProjectPhotoController;
 use App\Http\Controllers\Auth\PasswordResetController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Payments\WompiWebhookController;
+use App\Http\Controllers\Portal\OnlinePaymentController;
 use App\Http\Controllers\Portal\PortalController;
 use App\Http\Controllers\Public\SiteController;
 use Illuminate\Support\Facades\Route;
@@ -21,6 +23,13 @@ Route::get('/media/fotos/{photo}/{size}', [ProjectPhotoController::class, 'media
     ->whereNumber('photo')->whereIn('size', ['full', 'thumb'])->name('media.photo');
 Route::post('/solicitudes-informacion', [SiteController::class, 'storeRequest'])
     ->middleware('throttle:public-form')->name('public.requests.store');
+
+/*
+|--------------------------------------------------------------------------
+| Pasarela de pagos — CU-21 (sin sesión ni CSRF; se valida la firma del evento, RN-17)
+|--------------------------------------------------------------------------
+*/
+Route::post('/pasarela/wompi/eventos', WompiWebhookController::class)->middleware('throttle:gateway')->name('gateway.wompi.events');
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +62,11 @@ Route::middleware(['auth', 'password.fresh'])->group(function () {
 
     Route::get('/panel', DashboardController::class)->middleware('permission:panel.acceder')->name('dashboard');
     Route::get('/mi-cuenta', [PortalController::class, 'index'])->middleware('permission:portal.acceder')->name('portal.index');
+    // Pago en línea (CU-20)
+    Route::post('/mi-cuenta/obligaciones/{obligationId}/pagar', [OnlinePaymentController::class, 'pay'])
+        ->middleware(['permission:portal.pagar', 'throttle:public-form'])->whereNumber('obligationId')->name('portal.pay');
+    Route::get('/mi-cuenta/pagos/{reference}', [OnlinePaymentController::class, 'result'])
+        ->middleware('permission:portal.pagar')->where('reference', '[A-Za-z0-9\-]+')->name('portal.payments.result');
 
     // Módulos internos: cada archivo agrupa las rutas de un área funcional.
     require __DIR__.'/modules/security.php';
