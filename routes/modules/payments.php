@@ -7,6 +7,7 @@
 
 use App\Http\Controllers\Payments\BankStatementController;
 use App\Http\Controllers\Payments\PaymentController;
+use App\Http\Controllers\Payments\ReconciliationController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('cartera')->group(function () {
@@ -30,4 +31,11 @@ Route::prefix('cartera')->group(function () {
         Route::post('/asignacion/revision/{lineId}/descartar', 'discard')->name('allocation.discard');
     });
 
+    // Conciliación de la pasarela (CU-22)
+    Route::controller(ReconciliationController::class)->middleware('permission:conciliacion.ver')->whereNumber('id')->group(function () {
+        Route::get('/conciliacion', 'index')->name('reconciliation.index');
+        Route::post('/conciliacion/transacciones/{id}/reprocesar', 'reprocess')->name('reconciliation.reprocess');
+        Route::post('/conciliacion/transacciones/{id}/valor-informado', 'applyReported')->name('reconciliation.apply-reported');
+        Route::post('/conciliacion/{type}/{id}/revisada', 'review')->whereIn('type', ['transaccion', 'notificacion'])->name('reconciliation.review');
+    });
 });

@@ -25,6 +25,7 @@
             ['Abonos', 'ph-coins', 'payments.index', 'abonos.ver', 'payments.*'],
             ['Extractos bancarios', 'ph-bank', 'statements.index', 'asignacion.gestionar', 'statements.*'],
             ['Cola de revisión', 'ph-list-checks', 'allocation.queue', 'asignacion.gestionar', 'allocation.*'],
+            ['Conciliación pasarela', 'ph-scales', 'reconciliation.index', 'conciliacion.ver', 'reconciliation.*'],
         ],
         'Catálogos' => [
             ['Departamentos', 'ph-map-trifold', 'states.index', 'catalogos.ver', 'states.*'],
