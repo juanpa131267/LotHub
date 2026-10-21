@@ -28,7 +28,6 @@
         </div>
         <div class="page-actions">
             <a href="{{ route('sales.index') }}" class="btn btn-ghost"><i class="ph ph-arrow-left"></i> Negociaciones</a>
-            @stack('sale-actions')
         </div>
     </div>
 

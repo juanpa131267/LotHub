@@ -7,9 +7,13 @@ use App\Models\Commercial\Client;
 use App\Models\Commercial\DataConsent;
 use App\Models\Commercial\Lot;
 use App\Models\Commercial\Project;
+use App\Models\Commercial\Sale;
+use App\Models\Financing\Installment;
+use App\Models\Financing\Obligation;
 use App\Models\Security\Person;
 use App\Models\Security\Role;
 use App\Models\Security\User;
+use App\Services\Financing\AgreementService;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Support\Facades\DB;
@@ -83,6 +87,39 @@ abstract class TestCase extends BaseTestCase
             'status_id'  => 2,
             'created_by' => User::value('id'),
         ]);
+    }
+
+    /** Negociación vigente registrada por un asesor (modalidad 2 = financiación directa, 1 = contado). */
+    protected function sale(int $modality = 2, float $price = 60_000_000, ?Client $client = null): Sale
+    {
+        $advisor = $this->user(['ASESOR_COMERCIAL']);
+        $lot = $this->lot();
+        $client ??= $this->client();
+
+        $this->actingAs($advisor)->post(route('sales.store'), [
+            'lot_id' => $lot->id, 'agreed_price' => $price, 'financing_modality_id' => $modality, 'sale_date' => now()->toDateString(),
+            'buyers' => [['client_id' => $client->id, 'ownership_pct' => 100]], 'primary' => 0,
+        ]);
+
+        return Sale::where('lot_id', $lot->id)->sole();
+    }
+
+    /**
+     * Obligación activa sin intereses: cuota inicial de 10 M y 5 cuotas mensuales de 10 M,
+     * con el plan corrido 10 días al pasado (cuota inicial y cuota 1 vencidas).
+     */
+    protected function obligation(?Client $client = null, array $terms = []): Obligation
+    {
+        $sale = $this->sale(price: 60_000_000, client: $client);
+        $this->actingAs($this->user(['AUXILIAR_CARTERA']));
+
+        $obligation = app(AgreementService::class)->create($sale->load('modality'), $terms + [
+            'down_payment' => 10_000_000, 'financed_amount' => 50_000_000, 'installments_count' => 5, 'frequency_id' => 1,
+            'monthly_interest_rate' => 0, 'late_interest_rate' => 2, 'first_due_date' => now()->toDateString(),
+        ]);
+        Installment::where('obligation_id', $obligation->id)->update(['due_date' => DB::raw('DATE_SUB(due_date, INTERVAL 10 DAY)')]);
+
+        return $obligation->fresh();
     }
 
     protected function lot(?Project $project = null, array $attributes = []): Lot

@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use App\Models\Catalogs\ObligationStatus;
-use App\Models\Commercial\Sale;
 use App\Models\Financing\Obligation;
 use App\Models\Financing\PaymentAgreement;
 use App\Services\Portal\PortalAccessService;
@@ -13,21 +12,6 @@ use Tests\TestCase;
 /** Sprint 5: CU-13 acuerdo de pago, CU-14 plan de cuotas y CU-16 reestructuración (RN-09 a RN-12). */
 class AgreementsTest extends TestCase
 {
-    /** Negociación vigente registrada por un asesor (modalidad 2 = financiación directa, 1 = contado). */
-    protected function sale(int $modality = 2, float $price = 60_000_000, $client = null): Sale
-    {
-        $advisor = $this->user(['ASESOR_COMERCIAL']);
-        $lot = $this->lot();
-        $client ??= $this->client();
-
-        $this->actingAs($advisor)->post(route('sales.store'), [
-            'lot_id' => $lot->id, 'agreed_price' => $price, 'financing_modality_id' => $modality, 'sale_date' => now()->toDateString(),
-            'buyers' => [['client_id' => $client->id, 'ownership_pct' => 100]], 'primary' => 0,
-        ]);
-
-        return Sale::where('lot_id', $lot->id)->sole();
-    }
-
     private function terms(array $overrides = []): array
     {
         return $overrides + [

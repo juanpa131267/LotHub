@@ -7,6 +7,22 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y 
 ### Pendiente
 - S4 Reservas y negociaciones · S5 Acuerdos de pago y plan de cuotas · S6 Motor de asignación automática · S7 Pasarela Wompi y conciliación.
 
+## [0.6.0] — Sprint 6: motor de asignación automática
+
+### Added
+- Abonos (CU-17 a CU-19): registro manual con soporte de pago y advertencia de referencia duplicada, aplicación
+  automática desde la cuota más antigua en el orden mora → interés corriente → capital con saldo a favor (RN-14),
+  cierre de la obligación y la negociación al llegar a saldo cero (RN-20) y reversión con motivo (RN-15).
+- Carga del extracto bancario (Excel o CSV) con detección de columnas, solo créditos y control de archivo repetido.
+- Cálculo del puntaje de asignación por documento del depositante, códigos en la referencia, valor, nombre y fecha;
+  asignación automática con umbral y margen configurables (ver `docs/ASIGNACION.md`).
+- Cola de revisión con candidatos recalculados, asignación manual a cualquier obligación y descarte con motivo;
+  los movimientos repetidos se marcan como duplicados.
+- Bandeja «Pagos por revisar» en el panel.
+
+### Database
+- Parche `005_bank_statements.sql`: tablas `bank_statements` y `bank_statement_lines`.
+
 ## [0.5.0] — Sprint 5: acuerdos de pago y plan de cuotas
 
 ### Added
