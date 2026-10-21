@@ -58,4 +58,5 @@ Route::middleware(['auth', 'password.fresh'])->group(function () {
     require __DIR__.'/modules/security.php';
     require __DIR__.'/modules/catalogs.php';
     require __DIR__.'/modules/commercial.php';
+    require __DIR__.'/modules/financing.php';
 });

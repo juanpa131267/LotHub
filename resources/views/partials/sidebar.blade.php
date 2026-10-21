@@ -19,6 +19,10 @@
             ['Negociaciones', 'ph-handshake', 'sales.index', 'negociaciones.ver', 'sales.index|sales.create|sales.show'],
             ['Anulaciones', 'ph-seal-warning', 'sales.cancellations', 'negociaciones.aprobar_anulacion', 'sales.cancellations'],
         ],
+        'Cartera' => [
+            ['Acuerdos pendientes', 'ph-file-dashed', 'agreements.pending', 'acuerdos.ver', 'agreements.*'],
+            ['Obligaciones', 'ph-receipt', 'obligations.index', 'acuerdos.ver', 'obligations.*'],
+        ],
         'Catálogos' => [
             ['Departamentos', 'ph-map-trifold', 'states.index', 'catalogos.ver', 'states.*'],
             ['Municipios', 'ph-map-pin-area', 'cities.index', 'catalogos.ver', 'cities.*'],
