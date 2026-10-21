@@ -5,11 +5,17 @@ namespace App\Http\Controllers\Commercial;
 use App\Http\Controllers\Crud\CrudController;
 use App\Models\Catalogs\LotStatus;
 use App\Models\Commercial\Lot;
+use App\Models\Commercial\LotPriceHistory;
 use App\Models\Commercial\Project;
 use App\Models\Commercial\ProjectStage;
+use App\Services\AuditLogger;
+use App\Services\Lots\LotInventoryService;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
+use Illuminate\View\View;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 /**
  * CU-08 Gestionar lotes (RF-05). Identidad única proyecto + manzana + número (RN-01).
@@ -56,6 +62,53 @@ class LotController extends CrudController
             ['name' => 'project_id', 'label' => 'Proyecto', 'options' => Project::orderBy('name')->pluck('name', 'id')->all()],
             ['name' => 'status_id', 'label' => 'Estado', 'options' => LotStatus::pluck('name', 'id')->all()],
         ];
+    }
+
+    protected function headerActions(): array
+    {
+        return [
+            ['label' => 'Carga masiva', 'icon' => 'ph-upload-simple', 'route' => 'lots.import', 'permission' => 'lotes.importar'],
+            ['label' => 'Exportar', 'icon' => 'ph-microsoft-excel-logo', 'route' => 'lots.export', 'permission' => 'lotes.exportar', 'keep_filters' => true],
+        ];
+    }
+
+    protected function rowActions(): array
+    {
+        return [
+            ['label' => 'Historial de precios', 'icon' => 'ph-clock-counter-clockwise', 'route' => 'lots.history', 'permission' => 'lotes.ver'],
+        ];
+    }
+
+    /** US-LOT-008 Exporta a Excel el inventario con la búsqueda y los filtros del listado. */
+    public function export(Request $request, LotInventoryService $inventory): BinaryFileResponse
+    {
+        $project = $request->filled('project_id') ? Project::find($request->query('project_id')) : null;
+        $title = $project ? "Proyecto {$project->name}" : 'Todos los proyectos';
+        if ($request->filled('status_id')) {
+            $title .= ' · estado '.LotStatus::whereKey($request->query('status_id'))->value('name');
+        }
+
+        $path = $inventory->export($this->filteredQuery($request), $title);
+        AuditLogger::log('EXPORTAR_INVENTARIO', 'lots', 0, [], $request->only(['q', 'project_id', 'status_id']));
+
+        return response()->download($path, 'inventario_lotes_'.now()->format('Ymd_His').'.xlsx')->deleteFileAfterSend();
+    }
+
+    /** US-LOT-005 Historial de cambios del precio de lista. */
+    public function history(int $id): View
+    {
+        $lot = Lot::with('project', 'status')->findOrFail($id);
+
+        return view('commercial.lot-history', [
+            'lot'     => $lot,
+            'history' => LotPriceHistory::with('user.person')->where('lot_id', $lot->id)->latest('changed_at')->latest('id')->get(),
+            'sources' => LotPriceHistory::SOURCES,
+        ]);
+    }
+
+    protected function save(array $data, ?Model $lot): Model
+    {
+        return LotPriceHistory::recording(LotPriceHistory::FORM, fn () => parent::save($data, $lot));
     }
 
     protected function recordLabel(Model $lot): string

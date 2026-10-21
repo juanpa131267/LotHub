@@ -39,6 +39,8 @@
                     </button>
                     <div class="dropdown" role="menu">
                         <a href="{{ route('home.redirect') }}"><i class="ph ph-house"></i> Inicio</a>
+                        <a href="{{ route('profile.show') }}"><i class="ph ph-user-circle"></i> Mi perfil</a>
+                        <a href="{{ route('password.change') }}"><i class="ph ph-lock-key"></i> Cambiar contraseña</a>
                         <hr>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf

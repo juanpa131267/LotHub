@@ -37,9 +37,10 @@ oficial, que incluye tablas, vistas, triggers y el evento de reservas vencidas.
 
 ```bash
 mysql -u root -p < database/schema/cartera_inmobiliaria.sql
-mysql -u root -p cartera_inmobiliaria < database/schema/patches/001_project_plans.sql   # parches, en orden
-mysql -u root -p cartera_inmobiliaria < database/schema/patches/002_project_photos.sql
+# Parches, en orden numérico (cada uno es idempotente y se aplica una sola vez por versión):
+for f in database/schema/patches/*.sql; do mysql -u root -p cartera_inmobiliaria < "$f"; done
 # El usuario de la app (cartera_admin) necesita privilegios sobre cartera_inmobiliaria.
+# Después de aplicar un parche nuevo ejecuta de nuevo: php artisan db:seed --class=PermissionSeeder
 ```
 
 **Plano interactivo** (opcional): requiere Python 3.10+ para el procesador de planos.
@@ -67,6 +68,17 @@ php artisan db:seed --class=DemoDataSeeder   # opcional: 3 proyectos con lotes d
 | `/ingresar` | Inicio de sesión del personal y de clientes |
 | `/panel` | Panel administrativo (según permisos) |
 | `/mi-cuenta` | Portal del cliente (estado de cuenta) |
+| `/mi-perfil` | Perfil del usuario y cambio de contraseña |
+
+## Pruebas
+
+Las pruebas automáticas (PHPUnit) corren sobre una base aparte, `test_lothub`, creada desde el
+script oficial y sus parches, con los triggers reales. Cada prueba se revierte al terminar.
+
+```bash
+bash tests/setup-test-db.sh      # crea/recrea test_lothub (MYSQL=ruta/a/mysql si no está en el PATH)
+composer test                    # o: php vendor/bin/phpunit
+```
 
 ## Estructura
 

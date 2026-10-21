@@ -20,7 +20,14 @@ return [
         'max_attempts'        => 5,
         'lock_minutes'        => 15,
         'reset_token_minutes' => 30,
+        // US-AUTH-008: vigencia del enlace con el que el cliente activa su cuenta del portal.
+        'activation_hours'    => 72,
     ],
+
+    // US-TEC-001: en producción toda petición se atiende por HTTPS (redirección 301 + HSTS).
+    // Detrás de un proxy o balanceador, define TRUSTED_PROXIES para reconocer X-Forwarded-Proto.
+    'force_https' => (bool) env('FORCE_HTTPS', false),
+    'hsts_max_age' => (int) env('HSTS_MAX_AGE', 31536000),
 
     // Roles que no pueden eliminarse desde la interfaz.
     'protected_roles' => ['ADMINISTRADOR'],

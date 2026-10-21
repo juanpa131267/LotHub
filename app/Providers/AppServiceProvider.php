@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,13 +24,18 @@ class AppServiceProvider extends ServiceProvider
         Catalogs\FinancingModality::class, Catalogs\PaymentFrequency::class,
         Catalogs\PaymentMethod::class, Catalogs\DocumentType::class,
         Commercial\Project::class, Commercial\ProjectStage::class, Commercial\Lot::class,
-        Commercial\Client::class, Commercial\InformationRequest::class,
+        Commercial\Client::class, Commercial\InformationRequest::class, Commercial\DataConsent::class,
     ];
 
     public function boot(): void
     {
         foreach (self::AUDITED_MODELS as $model) {
             $model::observe(AuditObserver::class);
+        }
+
+        // US-TEC-001: los enlaces que genera la aplicación (correos, redirecciones) usan https.
+        if (config('lothub.force_https')) {
+            URL::forceScheme('https');
         }
 
         // Permite @can('lotes.editar') en Blade y $user->can(...) en código.

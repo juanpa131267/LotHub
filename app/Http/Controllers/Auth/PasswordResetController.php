@@ -9,9 +9,7 @@ use App\Models\Security\User;
 use App\Services\AuditLogger;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Str;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\View\View;
 
@@ -35,13 +33,7 @@ class PasswordResetController extends Controller
             ->first();
 
         if ($user && $user->is_active && $user->person?->email) {
-            $token = Str::random(64);
-
-            PasswordReset::create([
-                'user_id'    => $user->id,
-                'token_hash' => hash('sha256', $token),
-                'expires_at' => now()->addMinutes(config('lothub.auth.reset_token_minutes')),
-            ]);
+            $token = PasswordReset::issue($user, PasswordReset::RECOVERY, config('lothub.auth.reset_token_minutes'));
 
             Mail::to($user->person->email)->send(new PasswordResetMail($user, route('password.reset', $token)));
         }
@@ -52,7 +44,7 @@ class PasswordResetController extends Controller
 
     public function showReset(string $token): View|RedirectResponse
     {
-        if (! $this->findValidReset($token)) {
+        if (! PasswordReset::findValid($token, PasswordReset::RECOVERY)) {
             return redirect()->route('password.request')->with('error', 'El enlace no es válido o ya venció. Solicita uno nuevo.');
         }
 
@@ -66,31 +58,16 @@ class PasswordResetController extends Controller
             'password' => ['required', 'confirmed', Password::min(8)->letters()->numbers()],
         ], [], ['password' => 'contraseña']);
 
-        $reset = $this->findValidReset($request->token);
+        $reset = PasswordReset::findValid($request->token, PasswordReset::RECOVERY);
 
         if (! $reset) {
             return redirect()->route('password.request')->with('error', 'El enlace no es válido o ya venció. Solicita uno nuevo.');
         }
 
-        $reset->user->forceFill([
-            'password_hash'   => Hash::make($request->password),
-            'hash_algorithm'  => 'bcrypt',
-            'failed_attempts' => 0,
-            'locked_until'    => null,
-        ])->save();
-
+        $reset->user->setOwnPassword($request->password);
         $reset->update(['used_at' => now()]);
         AuditLogger::log('RESTABLECER_CLAVE', 'users', $reset->user_id, [], [], $reset->user_id);
 
         return redirect()->route('login')->with('success', 'Contraseña actualizada. Ya puedes iniciar sesión.');
-    }
-
-    private function findValidReset(string $token): ?PasswordReset
-    {
-        return PasswordReset::with('user')
-            ->where('token_hash', hash('sha256', $token))
-            ->whereNull('used_at')
-            ->where('expires_at', '>', now())
-            ->first();
     }
 }

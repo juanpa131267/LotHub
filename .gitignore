@@ -15,6 +15,7 @@ __pycache__/
 /storage/app/plans/
 /storage/app/photos/
 .phpunit.result.cache
+/.phpunit.cache/
 *.log
 
 # Documentos y fuentes de trabajo (no se publican)
