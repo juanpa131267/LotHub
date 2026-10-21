@@ -7,6 +7,22 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y 
 ### Pendiente
 - S4 Reservas y negociaciones · S5 Acuerdos de pago y plan de cuotas · S6 Motor de asignación automática · S7 Pasarela Wompi y conciliación.
 
+## [0.4.0] — Sprint 4: reservas y negociaciones
+
+### Added
+- Reservas de lotes (CU-11): registro con buscador de lotes disponibles y de clientes, detalle, anulación con motivo
+  y vencimiento automático (comando `reservations:expire` en el planificador como respaldo del evento de la base).
+- Negociaciones (CU-12): uno o varios compradores con titular principal y participaciones que suman 100 % (RN-07),
+  conversión de la reserva (RN-05), precio pactado y modalidad de pago.
+- Anulación o desistimiento (CU-15): el asesor solicita con motivo, el director aprueba o rechaza desde su bandeja;
+  al aprobar se anula la obligación y se libera el lote (RN-08). Con abonos aplicados se exige registrar su tratamiento.
+- Documentos soporte (CU-25): promesa, identidad y otros sobre la negociación, en almacenamiento privado con huella
+  SHA-256 que se verifica al descargar (RN-28).
+
+### Database
+- Parche `004_sale_cancellation_requests.sql`: tabla `sale_cancellation_requests` y trigger `trg_res_after_update`
+  (al anular una reserva el lote vuelve a DISPONIBLE).
+
 ## [0.3.1] — Ajustes de los sprints 1 a 3
 
 ### Added
