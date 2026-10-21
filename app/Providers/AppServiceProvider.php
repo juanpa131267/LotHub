@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
         Catalogs\FinancingModality::class, Catalogs\PaymentFrequency::class,
         Catalogs\PaymentMethod::class, Catalogs\DocumentType::class,
         Commercial\Project::class, Commercial\ProjectStage::class, Commercial\Lot::class,
-        Commercial\Client::class, Commercial\InformationRequest::class,
+        Commercial\Client::class, Commercial\InformationRequest::class, Commercial\DataConsent::class,
     ];
 
     public function boot(): void
@@ -31,6 +31,7 @@ class AppServiceProvider extends ServiceProvider
         foreach (self::AUDITED_MODELS as $model) {
             $model::observe(AuditObserver::class);
         }
+
 
         // Permite @can('lotes.editar') en Blade y $user->can(...) en código.
         Gate::before(fn (Security\User $user, string $ability) => $user->hasPermission($ability) ?: null);

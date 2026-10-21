@@ -14,6 +14,15 @@ Route::prefix('comercial')->group(function () {
     Route::crud('/lotes', Commercial\LotController::class);
     Route::crud('/clientes', Commercial\ClientController::class);
 
+
+    // Acceso del cliente al portal (US-CLI-003)
+    Route::controller(Commercial\ClientPortalController::class)->prefix('/clientes/{id}/portal')->name('clients.portal')
+        ->whereNumber('id')->middleware('permission:clientes.portal')->group(function () {
+            Route::get('/', 'show')->name('');
+            Route::post('/invitar', 'invite')->name('.invite');
+            Route::post('/revocar', 'revoke')->name('.revoke');
+        });
+
     // Plano interactivo del proyecto (docs/PLANOS.md)
     Route::controller(Commercial\ProjectPlanController::class)->prefix('/proyectos/{id}/plano')->name('projects.plan')
         ->whereNumber(['id', 'planId'])->group(function () {

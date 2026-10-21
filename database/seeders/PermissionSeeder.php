@@ -52,6 +52,7 @@ class PermissionSeeder extends Seeder
         'clientes.crear'                   => 'Registrar clientes',
         'clientes.editar'                  => 'Editar clientes',
         'clientes.eliminar'                => 'Eliminar clientes sin historial',
+        'clientes.portal'                  => 'Habilitar o revocar el acceso del cliente al portal',
         'solicitudes.ver'                  => 'Ver solicitudes de información',
         'solicitudes.editar'               => 'Atender solicitudes de información',
 
@@ -83,8 +84,8 @@ class PermissionSeeder extends Seeder
     ];
 
     private const ASESOR = [
-        'panel.acceder', 'proyectos.ver', 'lotes.ver',
-        'clientes.ver', 'clientes.crear', 'clientes.editar',
+        'panel.acceder', 'proyectos.ver', 'lotes.ver', 'lotes.exportar',
+        'clientes.ver', 'clientes.crear', 'clientes.editar', 'clientes.portal',
         'solicitudes.ver', 'solicitudes.editar',
         'reservas.ver', 'reservas.crear', 'reservas.anular',
         'negociaciones.ver', 'negociaciones.crear', 'negociaciones.solicitar_anulacion',
@@ -94,7 +95,7 @@ class PermissionSeeder extends Seeder
     /** El Director comercial especializa al Asesor (generalización de actores). */
     private const DIRECTOR_EXTRA = [
         'proyectos.crear', 'proyectos.editar', 'proyectos.eliminar',
-        'lotes.crear', 'lotes.editar', 'lotes.eliminar', 'lotes.bloquear',
+        'lotes.crear', 'lotes.editar', 'lotes.eliminar', 'lotes.bloquear', 'lotes.importar',
         'clientes.eliminar', 'negociaciones.aprobar_anulacion', 'cartera.ver', 'cartera.exportar',
     ];
 

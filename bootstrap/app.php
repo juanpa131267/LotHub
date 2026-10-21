@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\CheckPermission;
+use App\Http\Middleware\EnsurePasswordIsFresh;
 use App\Services\Plans\PlanService;
 use Illuminate\Http\Exceptions\PostTooLargeException;
 use Illuminate\Http\Request;
@@ -16,10 +17,12 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         // Uso en rutas: ->middleware('permission:lotes.ver,lotes.editar')  (basta con uno)
         $middleware->alias([
-            'permission' => CheckPermission::class,
+            'permission'     => CheckPermission::class,
+            'password.fresh' => EnsurePasswordIsFresh::class,
         ]);
         $middleware->redirectGuestsTo(fn () => route('login'));
         $middleware->redirectUsersTo(fn () => route('home.redirect'));
+
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         // Archivo más grande de lo que acepta PHP: PHP descarta la petición completa antes de que
