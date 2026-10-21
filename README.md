@@ -4,6 +4,7 @@ Sistema web para una empresa que vende lotes con **financiación directa**: proy
 clientes, negociaciones, acuerdos de pago, cuotas, abonos y estados de cuenta en una sola base
 de datos, con un sitio público para que los visitantes consulten la disponibilidad.
 
+[![Pruebas](https://github.com/juanpa131267/LotHub/actions/workflows/tests.yml/badge.svg)](https://github.com/juanpa131267/LotHub/actions/workflows/tests.yml)
 ![PHP 8.2](https://img.shields.io/badge/PHP-8.2-777BB4?logo=php&logoColor=white)
 ![Laravel 12](https://img.shields.io/badge/Laravel-12-FF2D20?logo=laravel&logoColor=white)
 ![MySQL 8](https://img.shields.io/badge/MySQL-8-4479A1?logo=mysql&logoColor=white)
@@ -15,14 +16,29 @@ de datos, con un sitio público para que los visitantes consulten la disponibili
 > Planificación por sprints: [docs/CRONOGRAMA.md](docs/CRONOGRAMA.md) · Cambios: [CHANGELOG.md](CHANGELOG.md) ·
 > Flujo de trabajo: [CONTRIBUTING.md](CONTRIBUTING.md)
 
+## Funcionalidades
+
+| Área | Qué hace |
+|---|---|
+| Seguridad | Ingreso con bloqueo por intentos, contraseña temporal obligatoria, recuperación y activación por enlace, roles y permisos, auditoría, HTTPS obligatorio |
+| Comercial | Proyectos, etapas y lotes (plano interactivo, carga masiva, historial de precios, exportación), clientes con autorización de datos, reservas, negociaciones con varios compradores y anulación aprobada |
+| Financiación | Acuerdos de pago con plan de cuotas (cuota 0, amortización francesa), reestructuración por versiones, liquidación diaria de mora con tope de usura |
+| Pagos | Abonos manuales con soporte, aplicación mora → interés → capital, reversión, **motor de asignación automática** desde el extracto bancario, **pago en línea con Wompi** y conciliación |
+| Cartera | Tablero de cartera y mora por edades, exportación a Excel, estado de cuenta en PDF |
+| Atención | Canales de contacto autorizados, recordatorios y avisos de cobro conforme a la Ley 2300, consultas y reclamos con plazo legal (Ley 1581) |
+| Portal del cliente | Estado de cuenta, plan de cuotas, pago en línea, PDF, avisos, preferencias de contacto y reclamos |
+| Operación | Migración de la cartera vigente, cortes de la operación en paralelo, verificación de producción y respaldos |
+
 ## Stack
 
 | Capa | Tecnología |
 |---|---|
-| Backend | PHP 8.2 (extensiones `gd`, `zip`, `pdo_mysql`) · Laravel 12 · PhpSpreadsheet 5 (planilla de precios) |
+| Backend | PHP 8.2 (extensiones `gd`, `zip`, `pdo_mysql`) · Laravel 12 · PhpSpreadsheet 5 (Excel) · Dompdf 3 (PDF) |
 | Base de datos | MySQL 8 / MariaDB · esquema propio con vistas y triggers |
 | Frontend | Blade + CSS y JS propios en `public/` (sin Node ni compilación) · íconos [Phosphor](https://phosphoricons.com) |
 | Planos | Python (ezdxf + shapely) en `tools/plan-processor/` · LibreDWG opcional para DWG |
+| Pagos en línea | Wompi (Web Checkout y eventos firmados) |
+| Calidad | PHPUnit sobre el esquema real · GitHub Actions |
 
 ## Puesta en marcha
 
@@ -60,15 +76,20 @@ php artisan db:seed
 php artisan db:seed --class=DemoDataSeeder   # opcional: 3 proyectos con lotes de ejemplo
 ```
 
-**3. Ejecutar:** `php artisan serve` → <http://localhost:8000>
+**3. Ejecutar:** `php artisan serve` → <http://localhost:8000> y, para las tareas programadas
+(vencimientos, mora, comunicaciones, respaldos), `php artisan schedule:work` en otra terminal.
 
 | URL | Qué es |
 |---|---|
 | `/` | Sitio público: proyectos en venta, mapa de lotes, formulario de contacto |
 | `/ingresar` | Inicio de sesión del personal y de clientes |
 | `/panel` | Panel administrativo (según permisos) |
-| `/mi-cuenta` | Portal del cliente (estado de cuenta) |
+| `/mi-cuenta` | Portal del cliente: estado de cuenta, plan de cuotas, pago en línea y PDF |
+| `/mi-cuenta/atencion` | Portal del cliente: avisos, preferencias de contacto y reclamos |
 | `/mi-perfil` | Perfil del usuario y cambio de contraseña |
+| `/pasarela/wompi/eventos` | URL de eventos para Wompi (sin sesión; se valida la firma) |
+
+Para producción sigue [docs/DESPLIEGUE.md](docs/DESPLIEGUE.md) y verifica con `php artisan lothub:check`.
 
 ## Pruebas
 
@@ -84,29 +105,25 @@ composer test                    # o: php vendor/bin/phpunit
 
 ```
 app/
-├── Http/
-│   ├── Controllers/
-│   │   ├── Crud/CrudController.php   ← base de todos los módulos CRUD (leer primero)
-│   │   ├── Auth/                     ← login, bloqueo por intentos, recuperar contraseña
-│   │   ├── Security/                 ← usuarios, roles, permisos, matriz rol-permiso, auditoría
-│   │   ├── Catalogs/                 ← catálogos parametrizables
-│   │   ├── Commercial/               ← proyectos, etapas, lotes, clientes, solicitudes
-│   │   ├── Dashboard/  Portal/  Public/
-│   └── Middleware/CheckPermission.php
-├── Models/{Security,Catalogs,Commercial}/   ← mapean el esquema SQL existente
-├── Services/AuditLogger.php   Observers/AuditObserver.php   Mail/
-└── Providers/AppServiceProvider.php         ← macro Route::crud, Gate, auditoría, rate limits
-config/lothub.php                 ← parámetros de negocio (intentos de login, roles protegidos…)
-database/schema/                  ← script SQL oficial + patches/ (fuente de verdad del modelo de datos)
-tools/plan-processor/             ← procesador de planos DXF → JSON (Python)
-database/seeders/                 ← permisos, geografía, admin, demo
-lang/es/validation.php            ← mensajes de validación en español
-routes/web.php + routes/modules/  ← rutas por área funcional
-resources/views/
-├── layouts/  (panel, public, auth)   partials/ (head, sidebar)
-├── crud/     (index, form, trash)  ← vistas genéricas que usan todos los CRUD
-└── auth/ dashboard/ security/ portal/ public/ emails/
-public/css/app.css  public/js/{app,crud}.js
+├── Http/Controllers/
+│   ├── Crud/CrudController.php   ← base de todos los módulos CRUD (leer primero)
+│   ├── Auth/  Account/           ← ingreso, recuperación, activación, perfil y contraseña
+│   ├── Security/  Catalogs/      ← usuarios, roles, permisos, auditoría y catálogos
+│   ├── Commercial/               ← proyectos, lotes, clientes, reservas, negociaciones, reclamos
+│   ├── Financing/                ← acuerdos, obligaciones, cartera y estados de cuenta
+│   ├── Payments/                 ← abonos, extractos y asignación, Wompi y conciliación
+│   ├── Migration/                ← operación en paralelo
+│   └── Dashboard/  Portal/  Public/  Documents/
+├── Services/                     ← reglas de negocio por área (Commercial, Financing, Payments, Communications…)
+├── Models/{Security,Catalogs,Commercial,Financing,Payments,Documents}/
+├── Console/Commands/             ← tareas programadas, respaldo y lothub:check
+└── Support/ColombianCalendar.php ← festivos y días hábiles de Colombia
+config/lothub.php                 ← parámetros de negocio (usura, mora, asignación, Wompi, comunicaciones…)
+database/schema/                  ← script SQL oficial + patches/ 001 a 008 (fuente de verdad del modelo de datos)
+routes/web.php + routes/modules/  ← rutas por área funcional · routes/console.php ← planificador
+resources/views/                  ← Blade por área + pdf/ y emails/
+tests/Feature  tests/Unit         ← pruebas sobre el esquema real
+tools/plan-processor/  tools/deploy/
 docs/                             ← guías para el equipo
 ```
 
@@ -122,15 +139,27 @@ docs/                             ← guías para el equipo
 - [docs/PASARELA.md](docs/PASARELA.md) — pago en línea con Wompi, notificaciones firmadas y conciliación.
 - [docs/COMUNICACIONES.md](docs/COMUNICACIONES.md) — canales autorizados, recordatorios y avisos de cobro (Ley 2300) y consultas y reclamos.
 - [docs/OPERACION_PARALELA.md](docs/OPERACION_PARALELA.md) — migración de la cartera vigente, cortes de comparación y criterios de salida.
+- [docs/DESPLIEGUE.md](docs/DESPLIEGUE.md) — servidor, configuración de producción, despliegues, respaldos y lista de chequeo del 28 de diciembre.
 - [docs/CRONOGRAMA.md](docs/CRONOGRAMA.md) — sprints S1–S11, puntos de historia y estado de cada uno.
 
 ## Estado por sprint
 
-| Sprint | Alcance | Estado |
-|---|---|---|
-| S1 | Autenticación, bloqueo RN-25, recuperación de contraseña · usuarios, roles, permisos, matriz rol-permiso, auditoría | ✅ |
-| S2 | Catálogos parametrizables · proyectos, etapas y lotes · plano interactivo DWG/DXF · ficha de venta (fotos y precios) | ✅ |
-| S3 | Clientes con autorización de datos (Ley 1581) · solicitudes de información · catálogo público con disponibilidad de lotes | ✅ |
-| — | Panel con indicadores · portal del cliente (lectura de `v_obligation_balance`) | ✅ base |
-| S4 – S7 | Reservas y negociaciones · acuerdos de pago y plan de cuotas · motor de asignación · pasarela Wompi y conciliación | ⏳ pendiente (esquema y permisos ya existen) |
-| S8 – S11 | Por definir · operación en paralelo · puesta en producción | ⏳ planificado |
+| Sprint | Alcance | Versión | Estado |
+|---|---|---|---|
+| S1 | Seguridad: ingreso, bloqueo, roles, permisos y auditoría | v0.1.0 | ✅ |
+| S2 | Catálogos, proyectos, etapas y lotes · plano interactivo · ficha de venta | v0.2.0 | ✅ |
+| S3 | Clientes, autorización de datos y catálogo público | v0.3.0 | ✅ |
+| — | Ajustes de S1 a S3 (contraseña temporal, perfil, activación, carga masiva, historial y exportación de lotes, HTTPS) | v0.3.1 | ✅ |
+| S4 | Reservas y negociaciones | v0.4.0 | ✅ |
+| S5 | Acuerdos de pago y plan de cuotas | v0.5.0 | ✅ |
+| S6 | Motor de asignación automática | v0.6.0 | ✅ |
+| S7 | Pasarela Wompi y conciliación | v0.7.0 | ✅ |
+| S8 | Cartera y mora, liquidación de mora y estados de cuenta en PDF | v0.8.0 | ✅ |
+| S9 | Comunicaciones de cobro (Ley 2300) y consultas y reclamos | v0.9.0 | ✅ |
+| S10 | Operación en paralelo: migración y cortes de comparación | v0.10.0 | ✅ herramientas |
+| S11 | Puesta en producción: verificación, respaldos, CI y despliegue | v1.0.0-rc.1 | ✅ herramientas · salida a producción el 28 de diciembre |
+
+El contenido de S8 y S9 no estaba definido en el cronograma; se propuso con los casos de uso que
+quedaban pendientes (ver [docs/CRONOGRAMA.md](docs/CRONOGRAMA.md)). La operación en paralelo y la
+salida a producción son actividades del equipo con la empresa; el repositorio aporta las
+herramientas y los procedimientos para realizarlas.
