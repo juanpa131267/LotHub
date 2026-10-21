@@ -121,6 +121,16 @@ abstract class CrudController extends Controller
         return [];
     }
 
+    /**
+     * Botones extra en el encabezado del listado:
+     * [['label' => 'Exportar', 'icon' => 'ph-download', 'route' => 'lots.export', 'permission' => 'lotes.ver', 'keep_filters' => true]]
+     * Con keep_filters el enlace recibe la búsqueda y los filtros que el usuario tenga aplicados.
+     */
+    protected function headerActions(): array
+    {
+        return [];
+    }
+
     /** Vista parcial opcional sobre el formulario: ['view' => 'nombre.vista', 'data' => [...]]. */
     protected function formTop(?Model $record): ?array
     {
@@ -151,18 +161,7 @@ abstract class CrudController extends Controller
     /** JSON paginado que consume la tabla (public/js/crud.js). */
     public function data(Request $request): JsonResponse
     {
-        $query = $this->query();
-
-        if ($term = trim((string) $request->query('q'))) {
-            $this->applySearch($query, $term);
-        }
-
-        foreach ($this->filters() as $filter) {
-            $value = $request->query($filter['name']);
-            if ($value !== null && $value !== '') {
-                $query->where($filter['column'] ?? $filter['name'], $value);
-            }
-        }
+        $query = $this->filteredQuery($request);
 
         $perPage = min(max((int) $request->query('per_page', 15), 5), 100);
         $page = $query->orderBy($this->orderBy, $this->orderDir)->paginate($perPage);
@@ -254,6 +253,25 @@ abstract class CrudController extends Controller
     //  Internos
     // ═════════════════════════════════════════════════════════════════════
 
+    /** Consulta base con la búsqueda (?q=) y los filtros del listado aplicados. */
+    protected function filteredQuery(Request $request): Builder
+    {
+        $query = $this->query();
+
+        if ($term = trim((string) $request->query('q'))) {
+            $this->applySearch($query, $term);
+        }
+
+        foreach ($this->filters() as $filter) {
+            $value = $request->query($filter['name']);
+            if ($value !== null && $value !== '') {
+                $query->where($filter['column'] ?? $filter['name'], $value);
+            }
+        }
+
+        return $query;
+    }
+
     protected function messages(): array
     {
         return [];
@@ -324,6 +342,9 @@ abstract class CrudController extends Controller
             'row_actions' => collect($this->rowActions())
                 ->filter(fn ($a) => $user->hasPermission($a['permission']))
                 ->map(fn ($a) => $a + ['url' => route($a['route'], '__ID__')])->values()->all(),
+            'header_actions' => collect($this->headerActions())
+                ->filter(fn ($a) => $user->hasPermission($a['permission']))
+                ->map(fn ($a) => $a + ['url' => route($a['route'])])->values()->all(),
             'filters'  => $this->filters(),
             'routes'   => $routes,
             'trash'    => $this->usesSoftDeletes(),

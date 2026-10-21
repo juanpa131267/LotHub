@@ -8,6 +8,7 @@ use App\Models\Catalogs\IdentificationType;
 use App\Models\Commercial\Client;
 use App\Models\Commercial\DataConsent;
 use App\Models\Security\Person;
+use App\Services\Portal\PortalAccessService;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Validation\Rule;
 
@@ -43,6 +44,17 @@ class ClientController extends CrudController
             ['key' => 'person.phone', 'label' => 'Teléfono', 'type' => 'muted'],
             ['key' => 'person.city.name', 'label' => 'Municipio', 'type' => 'muted'],
             ['key' => 'consent', 'label' => 'Datos', 'type' => 'badge', 'colors' => ['Autorizado' => 'success', 'Sin autorización' => 'warning']],
+            ['key' => 'portal', 'label' => 'Portal', 'type' => 'badge', 'colors' => [
+                PortalAccessService::ACTIVE => 'success', PortalAccessService::INVITED => 'warning',
+                PortalAccessService::DISABLED => 'neutral', PortalAccessService::NONE => 'neutral',
+            ]],
+        ];
+    }
+
+    protected function rowActions(): array
+    {
+        return [
+            ['label' => 'Acceso al portal', 'icon' => 'ph-door-open', 'route' => 'clients.portal', 'permission' => 'clientes.portal'],
         ];
     }
 
@@ -53,6 +65,7 @@ class ClientController extends CrudController
         return $client->toArray() + [
             'document' => trim(($p->identificationType?->code ?? '').' '.$p->identification_number),
             'consent'  => $client->consents->whereNull('revoked_at')->isNotEmpty() ? 'Autorizado' : 'Sin autorización',
+            'portal'   => app(PortalAccessService::class)->status($client),
         ];
     }
 

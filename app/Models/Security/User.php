@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * Cuenta de acceso (tabla users). Los datos personales viven en people (Person).
@@ -21,7 +22,8 @@ class User extends Authenticatable
 
     protected $fillable = [
         'person_id', 'username', 'password_hash', 'hash_algorithm',
-        'is_active', 'failed_attempts', 'locked_until', 'last_login_at',
+        'is_active', 'must_change_password', 'password_changed_at',
+        'failed_attempts', 'locked_until', 'last_login_at',
     ];
 
     protected $hidden = ['password_hash'];
@@ -29,9 +31,11 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
-            'is_active'     => 'boolean',
-            'locked_until'  => 'datetime',
-            'last_login_at' => 'datetime',
+            'is_active'            => 'boolean',
+            'must_change_password' => 'boolean',
+            'password_changed_at'  => 'datetime',
+            'locked_until'         => 'datetime',
+            'last_login_at'        => 'datetime',
         ];
     }
 
@@ -109,5 +113,18 @@ class User extends Authenticatable
     public function isLocked(): bool
     {
         return $this->locked_until !== null && $this->locked_until->isFuture();
+    }
+
+    /** Guarda una contraseña definitiva elegida por el propio usuario (US-AUTH-004). */
+    public function setOwnPassword(string $plain): void
+    {
+        $this->forceFill([
+            'password_hash'        => Hash::make($plain),
+            'hash_algorithm'       => 'bcrypt',
+            'must_change_password' => false,
+            'password_changed_at'  => now(),
+            'failed_attempts'      => 0,
+            'locked_until'         => null,
+        ])->save();
     }
 }

@@ -27,6 +27,7 @@ class AdminUserSeeder extends Seeder
             return;
         }
 
+        $generated = ! env('ADMIN_PASSWORD');
         $password = env('ADMIN_PASSWORD') ?: Str::password(14, symbols: false);
 
         $person = Person::firstOrCreate(
@@ -40,11 +41,13 @@ class AdminUserSeeder extends Seeder
             'password_hash'  => Hash::make($password),
             'hash_algorithm' => 'bcrypt',
             'is_active'      => true,
+            // Una contraseña generada es temporal: se exige cambiarla en el primer ingreso (US-AUTH-004).
+            'must_change_password' => $generated,
         ]);
 
         $user->roles()->attach(Role::where('name', 'ADMINISTRADOR')->value('id'));
 
         $this->command?->warn("Administrador creado → usuario: {$username}  contraseña: {$password}");
-        $this->command?->warn('Cámbiala después del primer ingreso.');
+        $this->command?->warn($generated ? 'El sistema pedirá cambiarla en el primer ingreso.' : 'Cámbiala después del primer ingreso.');
     }
 }

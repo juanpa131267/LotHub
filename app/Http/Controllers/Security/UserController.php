@@ -88,7 +88,10 @@ class UserController extends CrudController
             ['name' => 'username', 'label' => 'Nombre de usuario', 'required' => true, 'width' => 'half'],
             ['name' => 'password', 'label' => 'Contraseña', 'type' => 'password', 'required' => ! $user, 'width' => 'half',
              'help' => $user ? 'Déjala vacía para conservar la actual.' : 'Mínimo 8 caracteres, con letras y números.'],
-            ['name' => 'is_active', 'label' => 'Estado', 'type' => 'checkbox', 'checkbox_label' => 'Cuenta activa', 'default' => true],
+            ['name' => 'is_active', 'label' => 'Estado', 'type' => 'checkbox', 'checkbox_label' => 'Cuenta activa', 'default' => true, 'width' => 'half'],
+            ['name' => 'must_change_password', 'label' => 'Contraseña temporal', 'type' => 'checkbox', 'default' => true, 'width' => 'half',
+             'checkbox_label' => 'Exigir cambio de contraseña en el próximo ingreso',
+             'help' => 'Recomendado al crear la cuenta o al asignar una contraseña nueva (US-AUTH-004).'],
             ['name' => 'roles', 'label' => 'Roles', 'type' => 'checkboxes', 'options' => Role::orderBy('name')->pluck('name', 'id')->all(),
              'value' => $user?->roles->pluck('id')->all() ?? []],
         ];
@@ -109,7 +112,8 @@ class UserController extends CrudController
             'username'               => ['required', 'string', 'max:191', 'alpha_dash', Rule::unique('users')->ignore($user)],
             'password'               => [$user ? 'nullable' : 'required', Password::min(8)->letters()->numbers()],
             'is_active'              => ['boolean'],
-            'roles'                  => ['nullable', 'array'],
+            'must_change_password'   => ['boolean'],
+            'roles'                => ['nullable', 'array'],
             'roles.*'                => ['exists:roles,id'],
         ];
     }
@@ -129,10 +133,12 @@ class UserController extends CrudController
             'person_id' => $person->id,
             'username'  => $data['username'],
             'is_active' => $data['is_active'] ?? false,
+            'must_change_password' => $data['must_change_password'] ?? false,
         ]);
 
         if (! empty($data['password'])) {
             $user->password_hash = Hash::make($data['password']);
+            $user->password_changed_at = now();
         }
         $user->save();
 

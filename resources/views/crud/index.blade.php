@@ -13,6 +13,10 @@
             </div>
         </div>
         <div class="page-actions">
+            @foreach ($page['header_actions'] as $action)
+                <a href="{{ $action['url'] }}" class="btn btn-ghost" @if (! empty($action['keep_filters'])) data-keep-filters @endif>
+                    <i class="ph {{ $action['icon'] }}"></i> {{ $action['label'] }}</a>
+            @endforeach
             @if ($page['trash'] && $page['can']['delete'])
                 <a href="{{ $page['routes']['trash'] }}" class="btn btn-ghost"><i class="ph ph-trash"></i> Papelera</a>
             @endif

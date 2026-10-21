@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Account\ProfileController;
+use App\Http\Controllers\Auth\AccountActivationController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Commercial\ProjectPhotoController;
 use App\Http\Controllers\Auth\PasswordResetController;
@@ -33,11 +35,21 @@ Route::middleware('guest')->group(function () {
     Route::post('/recuperar-clave', [PasswordResetController::class, 'sendLink'])->middleware('throttle:password')->name('password.email');
     Route::get('/restablecer-clave/{token}', [PasswordResetController::class, 'showReset'])->name('password.reset');
     Route::post('/restablecer-clave', [PasswordResetController::class, 'reset'])->name('password.update');
+
+    // US-AUTH-008: el cliente crea su contraseña con el enlace que recibe al habilitarle el portal.
+    Route::get('/activar-cuenta/{token}', [AccountActivationController::class, 'show'])->name('account.activate');
+    Route::post('/activar-cuenta', [AccountActivationController::class, 'activate'])->middleware('throttle:password')->name('account.activate.store');
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'password.fresh'])->group(function () {
     Route::post('/salir', [LoginController::class, 'logout'])->name('logout');
     Route::get('/inicio', [LoginController::class, 'redirect'])->name('home.redirect');
+
+    // Cuenta propia: perfil (US-AUTH-007) y cambio de contraseña, obligatorio si es temporal (US-AUTH-004).
+    Route::get('/mi-perfil', [ProfileController::class, 'show'])->name('profile.show');
+    Route::put('/mi-perfil', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/cambiar-clave', [ProfileController::class, 'editPassword'])->name('password.change');
+    Route::put('/cambiar-clave', [ProfileController::class, 'updatePassword'])->middleware('throttle:password')->name('password.change.update');
 
     Route::get('/panel', DashboardController::class)->middleware('permission:panel.acceder')->name('dashboard');
     Route::get('/mi-cuenta', [PortalController::class, 'index'])->middleware('permission:portal.acceder')->name('portal.index');
