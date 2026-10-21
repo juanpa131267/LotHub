@@ -120,6 +120,7 @@ docs/                             ← guías para el equipo
 
 - [docs/ASIGNACION.md](docs/ASIGNACION.md) — motor de asignación automática de pagos: extracto, puntaje y cola de revisión.
 - [docs/PASARELA.md](docs/PASARELA.md) — pago en línea con Wompi, notificaciones firmadas y conciliación.
+- [docs/COMUNICACIONES.md](docs/COMUNICACIONES.md) — canales autorizados, recordatorios y avisos de cobro (Ley 2300) y consultas y reclamos.
 - [docs/CRONOGRAMA.md](docs/CRONOGRAMA.md) — sprints S1–S11, puntos de historia y estado de cada uno.
 
 ## Estado por sprint

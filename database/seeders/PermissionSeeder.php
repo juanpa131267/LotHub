@@ -76,14 +76,15 @@ class PermissionSeeder extends Seeder
         'cartera.ver'                      => 'Consultar cartera y mora',
         'cartera.exportar'                 => 'Exportar reportes de cartera',
         'estados_cuenta.ver'               => 'Consultar y generar estados de cuenta en PDF',
-        'reclamos.ver'                     => 'Ver consultas y reclamos (próximo sprint)',
-        'reclamos.atender'                 => 'Responder consultas y reclamos (próximo sprint)',
+        'comunicaciones.ver'               => 'Ver las comunicaciones enviadas a los clientes',
+        'reclamos.ver'                     => 'Ver consultas y reclamos',
+        'reclamos.atender'                 => 'Responder consultas y reclamos',
         'documentos.ver'                   => 'Ver documentos soporte',
         'documentos.cargar'                => 'Cargar documentos soporte',
 
         'portal.acceder'                   => 'Acceder al portal del cliente',
         'portal.pagar'                     => 'Pagar en línea',
-        'portal.reclamos'                  => 'Radicar consultas o reclamos (próximo sprint)',
+        'portal.reclamos'                  => 'Radicar consultas o reclamos',
     ];
 
     private const ASESOR = [
@@ -99,14 +100,14 @@ class PermissionSeeder extends Seeder
     private const DIRECTOR_EXTRA = [
         'proyectos.crear', 'proyectos.editar', 'proyectos.eliminar',
         'lotes.crear', 'lotes.editar', 'lotes.eliminar', 'lotes.bloquear', 'lotes.importar',
-        'clientes.eliminar', 'negociaciones.aprobar_anulacion', 'cartera.ver', 'cartera.exportar', 'abonos.ver', 'acuerdos.ver', 'estados_cuenta.ver',
+        'clientes.eliminar', 'negociaciones.aprobar_anulacion', 'cartera.ver', 'cartera.exportar', 'abonos.ver', 'acuerdos.ver', 'estados_cuenta.ver', 'comunicaciones.ver', 'reclamos.ver',
     ];
 
     private const AUXILIAR = [
         'panel.acceder', 'proyectos.ver', 'lotes.ver', 'clientes.ver', 'negociaciones.ver',
         'acuerdos.ver', 'acuerdos.crear', 'acuerdos.reestructurar',
         'abonos.ver', 'abonos.crear', 'abonos.reversar', 'asignacion.gestionar', 'conciliacion.ver',
-        'cartera.ver', 'cartera.exportar', 'estados_cuenta.ver', 'reclamos.ver', 'reclamos.atender',
+        'cartera.ver', 'cartera.exportar', 'estados_cuenta.ver', 'reclamos.ver', 'reclamos.atender', 'comunicaciones.ver',
         'documentos.ver', 'documentos.cargar',
     ];
 

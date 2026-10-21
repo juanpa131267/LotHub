@@ -34,6 +34,9 @@ class PagesRenderTest extends TestCase
             route('allocation.queue'),
             route('reconciliation.index'),
             route('portfolio.index'),
+            route('client-requests.index'),
+            route('notifications.index'),
+            route('clients.channels', $client->id),
         ];
 
         foreach ($routes as $url) {

@@ -7,7 +7,8 @@
     $menu = [
         'General' => [
             ['Panel', 'ph-squares-four', 'dashboard', 'panel.acceder', 'dashboard'],
-            ['Mi estado de cuenta', 'ph-receipt', 'portal.index', 'portal.acceder', 'portal.*'],
+            ['Mi estado de cuenta', 'ph-receipt', 'portal.index', 'portal.acceder', 'portal.index|portal.payments.*'],
+            ['Atención al cliente', 'ph-lifebuoy', 'portal.service', 'portal.acceder', 'portal.service'],
         ],
         'Comercial' => [
             ['Proyectos', 'ph-buildings', 'projects.index', 'proyectos.ver', 'projects.*'],
@@ -27,6 +28,10 @@
             ['Extractos bancarios', 'ph-bank', 'statements.index', 'asignacion.gestionar', 'statements.*'],
             ['Cola de revisión', 'ph-list-checks', 'allocation.queue', 'asignacion.gestionar', 'allocation.*'],
             ['Conciliación pasarela', 'ph-scales', 'reconciliation.index', 'conciliacion.ver', 'reconciliation.*'],
+        ],
+        'Atención' => [
+            ['Consultas y reclamos', 'ph-chat-centered-text', 'client-requests.index', 'reclamos.ver', 'client-requests.*'],
+            ['Comunicaciones', 'ph-megaphone', 'notifications.index', 'comunicaciones.ver', 'notifications.*'],
         ],
         'Catálogos' => [
             ['Departamentos', 'ph-map-trifold', 'states.index', 'catalogos.ver', 'states.*'],
