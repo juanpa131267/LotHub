@@ -7,6 +7,7 @@ use App\Models\Catalogs\LotStatus;
 use App\Models\Catalogs\ProjectStatus;
 use App\Models\Catalogs\SaleStatus;
 use App\Models\Commercial\Client;
+use App\Models\Commercial\ClientRequest;
 use App\Models\Commercial\InformationRequest;
 use App\Models\Commercial\Lot;
 use App\Models\Commercial\Project;
@@ -74,6 +75,9 @@ class DashboardController extends Controller
              'count' => fn () => SaleCancellationRequest::where('status', SaleCancellationRequest::PENDING)->count()],
             ['label' => 'Negociaciones sin acuerdo', 'icon' => 'ph-file-dashed', 'route' => 'agreements.pending', 'permission' => 'acuerdos.ver',
              'count' => fn () => Sale::where('status_id', SaleStatus::VIGENTE)->whereDoesntHave('agreements')->count()],
+            ['label' => 'Consultas y reclamos abiertos', 'icon' => 'ph-chat-centered-text', 'route' => 'client-requests.index', 'permission' => 'reclamos.ver',
+             'count' => fn () => ClientRequest::whereIn('status', ['RADICADA', 'EN_TRAMITE'])->count(),
+             'hint' => fn () => ($n = ClientRequest::whereIn('status', ['RADICADA', 'EN_TRAMITE'])->where('due_date', '<=', now()->addDays(2)->toDateString())->count()) ? "{$n} vencen pronto" : null],
             ['label' => 'Pagos por revisar', 'icon' => 'ph-list-checks', 'route' => 'allocation.queue', 'permission' => 'asignacion.gestionar',
              'count' => fn () => BankStatementLine::where('status', BankStatementLine::REVIEW)->count()],
         ];

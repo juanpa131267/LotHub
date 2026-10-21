@@ -21,6 +21,22 @@ Route::prefix('comercial')->group(function () {
     Route::get('/lotes/exportar', [Commercial\LotController::class, 'export'])->name('lots.export')->middleware('permission:lotes.exportar');
     Route::get('/lotes/{id}/historial-precios', [Commercial\LotController::class, 'history'])->name('lots.history')->middleware('permission:lotes.ver')->whereNumber('id');
 
+    // Canales de contacto autorizados (Ley 2300)
+    Route::get('/clientes/{id}/canales', [Commercial\ContactChannelController::class, 'edit'])->name('clients.channels')->middleware('permission:clientes.editar')->whereNumber('id');
+    Route::put('/clientes/{id}/canales', [Commercial\ContactChannelController::class, 'update'])->name('clients.channels.update')->middleware('permission:clientes.editar')->whereNumber('id');
+
+    // Consultas y reclamos (CU-29) y registro de comunicaciones (CU-27)
+    Route::crud('/consultas-reclamos', Commercial\ClientRequestController::class);
+    Route::controller(Commercial\ClientRequestController::class)->prefix('/consultas-reclamos/{id}')->name('client-requests.')->whereNumber('id')->group(function () {
+        Route::get('/', 'show')->name('show')->middleware('permission:reclamos.ver');
+        Route::middleware('permission:reclamos.atender')->group(function () {
+            Route::post('/tramite', 'process')->name('process');
+            Route::post('/respuesta', 'answer')->name('answer');
+            Route::post('/cierre', 'close')->name('close');
+        });
+    });
+    Route::crud('/comunicaciones', Commercial\NotificationLogController::class);
+
     // Acceso del cliente al portal (US-CLI-003)
     Route::controller(Commercial\ClientPortalController::class)->prefix('/clientes/{id}/portal')->name('clients.portal')
         ->whereNumber('id')->middleware('permission:clientes.portal')->group(function () {

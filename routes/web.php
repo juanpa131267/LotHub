@@ -9,6 +9,7 @@ use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Financing\AccountStatementController;
 use App\Http\Controllers\Payments\WompiWebhookController;
 use App\Http\Controllers\Portal\OnlinePaymentController;
+use App\Http\Controllers\Portal\PortalServiceController;
 use App\Http\Controllers\Portal\PortalController;
 use App\Http\Controllers\Public\SiteController;
 use Illuminate\Support\Facades\Route;
@@ -65,6 +66,10 @@ Route::middleware(['auth', 'password.fresh'])->group(function () {
     Route::get('/mi-cuenta', [PortalController::class, 'index'])->middleware('permission:portal.acceder')->name('portal.index');
     Route::get('/mi-cuenta/obligaciones/{obligationId}/estado-cuenta', [AccountStatementController::class, 'portal'])
         ->middleware(['permission:portal.acceder', 'throttle:public-form'])->whereNumber('obligationId')->name('portal.statement');
+    // Atención al cliente: avisos, preferencias de contacto y consultas o reclamos (CU-28)
+    Route::get('/mi-cuenta/atencion', [PortalServiceController::class, 'index'])->middleware('permission:portal.acceder')->name('portal.service');
+    Route::put('/mi-cuenta/canales', [PortalServiceController::class, 'updateChannels'])->middleware('permission:portal.acceder')->name('portal.channels.update');
+    Route::post('/mi-cuenta/solicitudes', [PortalServiceController::class, 'storeRequest'])->middleware(['permission:portal.reclamos', 'throttle:public-form'])->name('portal.requests.store');
     // Pago en línea (CU-20)
     Route::post('/mi-cuenta/obligaciones/{obligationId}/pagar', [OnlinePaymentController::class, 'pay'])
         ->middleware(['permission:portal.pagar', 'throttle:public-form'])->whereNumber('obligationId')->name('portal.pay');
