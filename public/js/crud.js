@@ -123,6 +123,14 @@
         const b = e.target.closest('[data-page]');
         if (b && !b.disabled) load(Number(b.dataset.page));
     });
+    // Botones del encabezado que deben respetar la búsqueda y los filtros actuales (p. ej. Exportar).
+    document.querySelectorAll('[data-keep-filters]').forEach((link) => link.addEventListener('click', () => {
+        const target = new URL(link.href, window.location.origin);
+        target.search = '';
+        if (state.q) target.searchParams.set('q', state.q);
+        el.filters.forEach((f) => f.value && target.searchParams.set(f.dataset.filter, f.value));
+        link.href = target.toString();
+    }));
     el.body.addEventListener('click', (e) => {
         const del = e.target.closest('[data-delete]');
         if (del) return remove(del.dataset.delete);

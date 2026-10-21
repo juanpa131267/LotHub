@@ -48,6 +48,8 @@ class PermissionSeeder extends Seeder
         'lotes.editar'                     => 'Editar lotes',
         'lotes.eliminar'                   => 'Eliminar lotes sin historial',
         'lotes.bloquear'                   => 'Bloquear / desbloquear lotes',
+        'lotes.importar'                   => 'Cargar lotes de forma masiva desde Excel',
+        'lotes.exportar'                   => 'Exportar el inventario de lotes',
         'clientes.ver'                     => 'Ver clientes',
         'clientes.crear'                   => 'Registrar clientes',
         'clientes.editar'                  => 'Editar clientes',

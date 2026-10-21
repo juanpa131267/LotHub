@@ -4,6 +4,7 @@ namespace App\Services\Pricing;
 
 use App\Models\Catalogs\LotStatus;
 use App\Models\Commercial\Lot;
+use App\Models\Commercial\LotPriceHistory;
 use App\Models\Commercial\Project;
 use App\Services\AuditLogger;
 use Illuminate\Http\UploadedFile;
@@ -62,9 +63,9 @@ class PriceService
     // ── 1. Precio general por m² ───────────────────────────────────────────
     public function applyPerM2(Project $project, float $pricePerM2, string $scope): int
     {
-        $count = Lot::where('project_id', $project->id)
+        $count = LotPriceHistory::recording(LotPriceHistory::PER_M2, fn () => Lot::where('project_id', $project->id)
             ->whereIn('status_id', self::SCOPE_STATUSES[$scope])
-            ->update(['list_price' => DB::raw('GREATEST(1000, ROUND(area_m2 * '.(float) $pricePerM2.', -3))'), 'updated_at' => now()]);
+            ->update(['list_price' => DB::raw('GREATEST(1000, ROUND(area_m2 * '.(float) $pricePerM2.', -3))'), 'updated_at' => now()]));
 
         AuditLogger::log('PRECIO_POR_M2', 'projects', $project->id, [], ['valor_m2' => $pricePerM2, 'alcance' => $scope, 'lotes' => $count]);
 
@@ -235,11 +236,11 @@ class PriceService
             return $result;
         }
 
-        DB::transaction(function () use ($changes) {
+        LotPriceHistory::recording(LotPriceHistory::SPREADSHEET, fn () => DB::transaction(function () use ($changes) {
             foreach ($changes as $id => $price) {
                 Lot::whereKey($id)->update(['list_price' => $price, 'updated_at' => now()]);
             }
-        });
+        }));
         $result['updated'] = count($changes);
 
         AuditLogger::log('PRECIOS_PLANILLA', 'projects', $project->id, [], [

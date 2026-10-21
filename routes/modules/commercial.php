@@ -14,6 +14,12 @@ Route::prefix('comercial')->group(function () {
     Route::crud('/lotes', Commercial\LotController::class);
     Route::crud('/clientes', Commercial\ClientController::class);
 
+    // Inventario de lotes: carga masiva (US-LOT-004), exportación (US-LOT-008) e historial de precios (US-LOT-005)
+    Route::get('/lotes/carga-masiva', [Commercial\LotImportController::class, 'index'])->name('lots.import')->middleware('permission:lotes.importar');
+    Route::get('/lotes/carga-masiva/plantilla', [Commercial\LotImportController::class, 'template'])->name('lots.import.template')->middleware('permission:lotes.importar');
+    Route::post('/lotes/carga-masiva', [Commercial\LotImportController::class, 'store'])->name('lots.import.store')->middleware('permission:lotes.importar');
+    Route::get('/lotes/exportar', [Commercial\LotController::class, 'export'])->name('lots.export')->middleware('permission:lotes.exportar');
+    Route::get('/lotes/{id}/historial-precios', [Commercial\LotController::class, 'history'])->name('lots.history')->middleware('permission:lotes.ver')->whereNumber('id');
 
     // Acceso del cliente al portal (US-CLI-003)
     Route::controller(Commercial\ClientPortalController::class)->prefix('/clientes/{id}/portal')->name('clients.portal')
