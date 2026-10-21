@@ -6,7 +6,7 @@
 @section('content')
     @php
         $statusTone = ['RADICADA' => 'warning', 'EN_TRAMITE' => 'info', 'RESPONDIDA' => 'success', 'CERRADA' => 'neutral'];
-        $canFile = auth()->user()->hasPermission('portal.reclamos');
+        $canFile = $client && auth()->user()->hasPermission('portal.reclamos');
     @endphp
 
     <div class="page-head">
@@ -20,6 +20,10 @@
         <a href="{{ route('portal.index') }}" class="btn btn-ghost"><i class="ph ph-receipt"></i> Mi estado de cuenta</a>
     </div>
 
+    @if (! $client)
+        <div class="card empty"><i class="ph ph-user-circle-dashed"></i>Esta sección es para los compradores. Tu usuario no está vinculado a una ficha
+            de cliente; si eres cliente, comunícate con tu asesor para que habilite tu acceso al portal.</div>
+    @else
     <div class="option-grid">
         <section class="card">
             <div class="card-head"><h3>Mis avisos</h3></div>
@@ -94,5 +98,6 @@
                 </table>
             </div>
         </section>
+    @endif
     @endif
 @endsection

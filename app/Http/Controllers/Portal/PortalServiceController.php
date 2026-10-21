@@ -22,7 +22,10 @@ class PortalServiceController extends Controller
 {
     public function index(Request $request, ContactChannelService $channels): View
     {
-        $client = $request->user()->client() ?? abort(403);
+        $client = $request->user()->client();
+        if (! $client) {
+            return view('portal.service', ['client' => null]);
+        }
 
         return view('portal.service', [
             'client'   => $client,
@@ -37,7 +40,10 @@ class PortalServiceController extends Controller
 
     public function updateChannels(Request $request, ContactChannelService $channels): RedirectResponse
     {
-        $client = $request->user()->client() ?? abort(403);
+        $client = $request->user()->client();
+        if (! $client) {
+            return redirect()->route('portal.service');
+        }
         $data = $request->validate(['channels' => ['array'], 'channels.*.enabled' => ['nullable', 'boolean'], 'channels.*.value' => ['nullable', 'string', 'max:191']]);
 
         try {
@@ -51,7 +57,10 @@ class PortalServiceController extends Controller
 
     public function storeRequest(Request $request, ClientRequestService $requests): RedirectResponse
     {
-        $client = $request->user()->client() ?? abort(403);
+        $client = $request->user()->client();
+        if (! $client) {
+            return redirect()->route('portal.service');
+        }
         $data = $request->validate([
             'request_type' => ['required', Rule::in(array_keys(ClientRequest::TYPES))],
             'subject'      => ['required', 'string', 'min:5', 'max:200'],

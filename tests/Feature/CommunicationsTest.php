@@ -114,6 +114,14 @@ class CommunicationsTest extends TestCase
         $this->assertStringContainsString('recibimos tu pago de $ 2.000.000', $notice->message);
     }
 
+    public function test_attention_page_explains_when_the_user_is_not_a_client(): void
+    {
+        $admin = $this->user(['ADMINISTRADOR']);
+
+        $this->actingAs($admin)->get(route('portal.service'))->assertOk()->assertSee('no está vinculado a una ficha');
+        $this->actingAs($admin)->get(route('dashboard'))->assertOk()->assertDontSee(route('portal.service'));
+    }
+
     public function test_client_files_a_claim_with_legal_due_date_and_staff_answers(): void
     {
         Mail::fake();

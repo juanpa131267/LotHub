@@ -24,7 +24,10 @@ class OnlinePaymentController extends Controller
     public function pay(Request $request, int $obligationId): RedirectResponse
     {
         $data = $request->validate(['amount' => ['required', 'numeric', 'min:1', 'max:999999999999']], [], ['amount' => 'valor']);
-        $client = $request->user()->client() ?? abort(403);
+        $client = $request->user()->client();
+        if (! $client) {
+            return redirect()->route('portal.index')->with('error', 'Solo los compradores pueden pagar en línea.');
+        }
         $obligation = Obligation::with('agreement')->findOrFail($obligationId);
 
         try {
