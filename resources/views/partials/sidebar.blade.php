@@ -55,7 +55,7 @@
 
     <nav class="sidebar-nav">
         @foreach ($menu as $group => $items)
-            @php($visible = array_filter($items, fn ($i) => $user->hasPermission($i[3])))
+            @php $visible = array_filter($items, fn ($i) => $user->hasPermission($i[3])); @endphp
             @continue(! $visible)
 
             <div class="nav-label">{{ $group }}</div>

@@ -58,7 +58,7 @@
                 @break
 
             @case('checkboxes')
-                @php($selected = array_map('strval', (array) $value))
+                @php $selected = array_map('strval', (array) $value); @endphp
                 <input type="hidden" name="{{ $name }}" value="">
                 <div class="checks">
                     @foreach ($field['options'] ?? [] as $optValue => $optLabel)
