@@ -7,6 +7,20 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y 
 ### Pendiente
 - S4 Reservas y negociaciones · S5 Acuerdos de pago y plan de cuotas · S6 Motor de asignación automática · S7 Pasarela Wompi y conciliación.
 
+## [0.5.0] — Sprint 5: acuerdos de pago y plan de cuotas
+
+### Added
+- Acuerdos de pago (CU-13): cuota inicial, capital financiado, número de cuotas, periodicidad, tasa corriente y de mora,
+  primer vencimiento y firma con el acuerdo firmado como documento soporte. Vista previa del plan antes de guardar.
+- Generación de la obligación y del plan de cuotas (CU-14): cuota 0 para la cuota inicial, amortización francesa a la
+  tasa equivalente del periodo, fechas sin desbordar el mes y ajuste del redondeo en la última cuota (RN-12).
+- Reglas del acuerdo: cuota inicial + capital = precio pactado (RN-09), contado en una sola cuota sin intereses (RN-10)
+  y tasas que no superan el límite de usura configurable `USURY_MONTHLY_RATE` (RN-19).
+- Reestructuración (CU-16): nueva versión sobre el saldo con motivo; la obligación anterior queda REESTRUCTURADA (RN-11).
+- Obligaciones: listado con saldo, estado (al día / en mora) y detalle del plan con saldo, mora y estado de cada cuota.
+- Bandeja «Acuerdos pendientes» y bandejas de trabajo en el panel (reservas activas, anulaciones, acuerdos).
+- Portal del cliente con el plan de cuotas de cada obligación (RN-21).
+
 ## [0.4.0] — Sprint 4: reservas y negociaciones
 
 ### Added
