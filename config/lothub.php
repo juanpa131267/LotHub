@@ -42,6 +42,11 @@ return [
         'max_monthly_rate' => (float) env('USURY_MONTHLY_RATE', 2.10),
     ],
 
+    // RN-19 Liquidación de mora: días de gracia después del vencimiento antes de liquidar.
+    'portfolio' => [
+        'grace_days' => (int) env('LATE_CHARGE_GRACE_DAYS', 0),
+    ],
+
     // Motor de asignación automática de pagos (Sprint 6, ver docs/ASIGNACION.md).
     // Se asigna solo si el mejor candidato alcanza el umbral y supera al segundo por el margen.
     'allocation' => [
