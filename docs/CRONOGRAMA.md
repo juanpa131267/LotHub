@@ -16,7 +16,7 @@ detalladas están en el cronograma del equipo (Excel).
 | S8 | Cartera y mora, liquidación de intereses de mora y estados de cuenta en PDF (CU-23, CU-24, RN-19) | — | — | ✅ Implementado |
 | S9 | Canales de contacto, recordatorios y avisos de cobro (Ley 2300) y consultas y reclamos (CU-27 a CU-29) | — | — | ✅ Implementado |
 | S10 | Operación en paralelo: migración de la cartera vigente y cortes de comparación | — | — | ✅ Herramientas implementadas |
-| S11 | Puesta en producción | — | 2026-12-28 | ⏳ Planificado |
+| S11 | Puesta en producción: verificación, respaldos, CI y guía de despliegue | — | 2026-12-28 | ✅ Herramientas implementadas · salida pendiente |
 
 ## Relación con el repositorio
 
@@ -29,5 +29,7 @@ detalladas están en el cronograma del equipo (Excel).
 
 ## Observación
 
-El esquema de base de datos (`database/schema/cartera_inmobiliaria.sql`) y la matriz de permisos
-(`PermissionSeeder`) ya contemplan los módulos de S4 a S7; falta su implementación en la aplicación.
+S10 y S11 incluyen actividades del equipo con la empresa (operar en paralelo y salir a producción).
+El repositorio entrega las herramientas y los procedimientos: migración y cortes de comparación
+([OPERACION_PARALELA.md](OPERACION_PARALELA.md)) y verificación, respaldos y despliegue
+([DESPLIEGUE.md](DESPLIEGUE.md)). La versión `v1.0.0` se etiqueta el día de la salida a producción.

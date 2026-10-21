@@ -12,6 +12,7 @@ use App\Observers\AuditObserver;
 use App\Services\Communications\CollectionNotifier;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Http\Middleware\TrustProxies;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Gate;
@@ -43,9 +44,13 @@ class AppServiceProvider extends ServiceProvider
             $model::observe(AuditObserver::class);
         }
 
-        // US-TEC-001: los enlaces que genera la aplicación (correos, redirecciones) usan https.
+        // US-TEC-001: los enlaces que genera la aplicación (correos, redirecciones) usan https y, detrás
+        // de un proxy o balanceador, se reconoce el esquema original (X-Forwarded-Proto).
         if (config('lothub.force_https')) {
             URL::forceScheme('https');
+        }
+        if ($proxies = config('lothub.trusted_proxies')) {
+            TrustProxies::at($proxies === '*' ? '*' : array_map('trim', explode(',', $proxies)));
         }
 
         // Permite @can('lotes.editar') en Blade y $user->can(...) en código.
