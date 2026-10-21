@@ -22,6 +22,7 @@
         'Cartera' => [
             ['Acuerdos pendientes', 'ph-file-dashed', 'agreements.pending', 'acuerdos.ver', 'agreements.*'],
             ['Obligaciones', 'ph-receipt', 'obligations.index', 'acuerdos.ver', 'obligations.*'],
+            ['Abonos', 'ph-coins', 'payments.index', 'abonos.ver', 'payments.*'],
         ],
         'Catálogos' => [
             ['Departamentos', 'ph-map-trifold', 'states.index', 'catalogos.ver', 'states.*'],

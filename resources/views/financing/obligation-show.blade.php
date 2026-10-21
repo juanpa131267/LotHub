@@ -30,7 +30,9 @@
         </div>
         <div class="page-actions">
             <a href="{{ route('obligations.index') }}" class="btn btn-ghost"><i class="ph ph-arrow-left"></i> Obligaciones</a>
-            @stack('obligation-actions')
+            @if ($obligation->isActive() && Route::has('payments.create-for') && $user->hasPermission('abonos.crear'))
+                <a href="{{ route('payments.create-for', $obligation->id) }}" class="btn btn-primary"><i class="ph ph-plus"></i> Registrar abono</a>
+            @endif
             @if ($obligation->isActive() && $summary->balance > 0 && $user->hasPermission('acuerdos.reestructurar'))
                 <a href="{{ route('obligations.restructure', $obligation->id) }}" class="btn btn-ghost"><i class="ph ph-arrows-clockwise"></i> Reestructurar</a>
             @endif
