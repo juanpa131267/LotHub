@@ -79,6 +79,11 @@ class Payment extends Model
         return $this->hasMany(Document::class);
     }
 
+    public function gatewayTransaction(): BelongsTo
+    {
+        return $this->belongsTo(GatewayTransaction::class);
+    }
+
     public function statementLine(): HasOne
     {
         return $this->hasOne(BankStatementLine::class);

@@ -114,7 +114,7 @@
                                 </div></div>
                             @endif
 
-                            @php($publishedOther = ! $plan->is_published ? $project->plans->firstWhere('is_published', true) : null)
+                            @php $publishedOther = ! $plan->is_published ? $project->plans->firstWhere('is_published', true) : null; @endphp
                             @if ($publishedOther)
                                 <div class="alert alert-info" style="margin:0"><i class="ph ph-warning"></i><div style="font-size:.84rem">
                                     El sitio muestra otra versión (cargada {{ $publishedOther->created_at->format('Y-m-d H:i') }}).

@@ -10,13 +10,13 @@ USE cartera_inmobiliaria;
 
 -- La contraseña que asigna el administrador es temporal: el usuario debe cambiarla al ingresar.
 ALTER TABLE users
-    ADD COLUMN IF NOT EXISTS must_change_password BOOLEAN NOT NULL DEFAULT FALSE AFTER is_active,
-    ADD COLUMN IF NOT EXISTS password_changed_at DATETIME NULL AFTER must_change_password;
+    ADD COLUMN must_change_password BOOLEAN NOT NULL DEFAULT FALSE AFTER is_active,
+    ADD COLUMN password_changed_at DATETIME NULL AFTER must_change_password;
 
 -- La misma tabla de tokens sirve para recuperar la contraseña y para activar la cuenta del portal.
 -- Ambos son de un solo uso y solo se guarda su SHA-256 (RN-25).
 ALTER TABLE password_resets
-    ADD COLUMN IF NOT EXISTS purpose ENUM('RECUPERACION','ACTIVACION') NOT NULL DEFAULT 'RECUPERACION' AFTER user_id;
+    ADD COLUMN purpose ENUM('RECUPERACION','ACTIVACION') NOT NULL DEFAULT 'RECUPERACION' AFTER user_id;
 
 -- Cada cambio del precio de lista queda registrado, sin importar desde dónde se hizo
 -- (formulario, valor por m², planilla o carga masiva). La aplicación informa el usuario y el

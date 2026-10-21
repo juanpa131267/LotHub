@@ -49,6 +49,19 @@ return [
         'min_margin'     => (int) env('ALLOCATION_MIN_MARGIN', 20),
     ],
 
+    // Pasarela Wompi (Sprint 7, ver docs/PASARELA.md). Las llaves se obtienen en el panel de
+    // comercios de Wompi (Desarrolladores → Llaves y Secretos); nunca se guardan en la base de datos.
+    'wompi' => [
+        'environment'        => env('WOMPI_ENV', 'sandbox'),             // sandbox | production
+        'public_key'         => env('WOMPI_PUBLIC_KEY'),
+        'private_key'        => env('WOMPI_PRIVATE_KEY'),                // opcional: consulta por referencia
+        'integrity_secret'   => env('WOMPI_INTEGRITY_SECRET'),
+        'events_secret'      => env('WOMPI_EVENTS_SECRET'),
+        'checkout_url'       => env('WOMPI_CHECKOUT_URL', 'https://checkout.wompi.co/p/'),
+        'expiration_minutes' => (int) env('WOMPI_EXPIRATION_MINUTES', 60),
+        'min_amount'         => (float) env('WOMPI_MIN_AMOUNT', 10000),
+    ],
+
     // Roles que no pueden eliminarse desde la interfaz.
     'protected_roles' => ['ADMINISTRADOR'],
 

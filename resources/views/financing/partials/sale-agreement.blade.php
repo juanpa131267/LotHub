@@ -6,7 +6,7 @@
 @endphp
 
 @if ($agreement && $obligation)
-    @php($summary = $obligation->summary())
+    @php $summary = $obligation->summary(); @endphp
     <section class="card">
         <div class="card-head">
             <h3>Acuerdo de pago v{{ $agreement->version }} · {{ $obligation->obligation_code }}</h3>
