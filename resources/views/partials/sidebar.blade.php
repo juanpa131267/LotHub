@@ -16,6 +16,8 @@
             ['Clientes', 'ph-address-book', 'clients.index', 'clientes.ver', 'clients.*'],
             ['Solicitudes', 'ph-chat-circle-text', 'information-requests.index', 'solicitudes.ver', 'information-requests.*'],
             ['Reservas', 'ph-bookmark-simple', 'reservations.index', 'reservas.ver', 'reservations.*'],
+            ['Negociaciones', 'ph-handshake', 'sales.index', 'negociaciones.ver', 'sales.index|sales.create|sales.show'],
+            ['Anulaciones', 'ph-seal-warning', 'sales.cancellations', 'negociaciones.aprobar_anulacion', 'sales.cancellations'],
         ],
         'Catálogos' => [
             ['Departamentos', 'ph-map-trifold', 'states.index', 'catalogos.ver', 'states.*'],

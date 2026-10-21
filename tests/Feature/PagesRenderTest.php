@@ -24,6 +24,9 @@ class PagesRenderTest extends TestCase
             route('clients.portal', $client->id),
             route('reservations.index'),
             route('reservations.create', ['lot_id' => $lot->id]),
+            route('sales.index'),
+            route('sales.create', ['lot_id' => $lot->id]),
+            route('sales.cancellations'),
         ];
 
         foreach ($routes as $url) {

@@ -5,6 +5,7 @@
 */
 
 use App\Http\Controllers\Commercial;
+use App\Http\Controllers\Documents\DocumentController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('comercial')->group(function () {
@@ -76,5 +77,16 @@ Route::prefix('comercial')->group(function () {
     Route::get('/reservas/{id}', [Commercial\ReservationController::class, 'show'])->name('reservations.show')->middleware('permission:reservas.ver')->whereNumber('id');
     Route::post('/reservas/{id}/anular', [Commercial\ReservationController::class, 'cancel'])->name('reservations.cancel')->middleware('permission:reservas.anular')->whereNumber('id');
 
+    // Negociaciones (CU-12) y su anulación o desistimiento (CU-15)
+    Route::get('/negociaciones/anulaciones', [Commercial\SaleController::class, 'cancellations'])->name('sales.cancellations')->middleware('permission:negociaciones.aprobar_anulacion');
+    Route::crud('/negociaciones', Commercial\SaleController::class);
+    Route::controller(Commercial\SaleController::class)->prefix('/negociaciones/{id}')->name('sales.')->whereNumber(['id', 'requestId'])->group(function () {
+        Route::get('/', 'show')->name('show')->middleware('permission:negociaciones.ver');
+        Route::post('/anulacion', 'requestCancellation')->name('cancellation.request')->middleware('permission:negociaciones.solicitar_anulacion');
+        Route::post('/anulacion/{requestId}', 'resolveCancellation')->name('cancellation.resolve')->middleware('permission:negociaciones.aprobar_anulacion');
+    });
 
+    // Documentos soporte (CU-25)
+    Route::post('/negociaciones/{id}/documentos', [DocumentController::class, 'storeForSale'])->name('sales.documents.store')->middleware('permission:documentos.cargar')->whereNumber('id');
+    Route::get('/documentos/{id}', [DocumentController::class, 'download'])->name('documents.download')->middleware('permission:documentos.ver')->whereNumber('id');
 });
