@@ -67,14 +67,32 @@ tools/plan-processor/.venv/Scripts/pip install -r tools/plan-processor/requireme
 # DWG además de DXF: LibreDWG en tools/plan-processor/bin/ (ver docs/PLANOS.md)
 ```
 
-**2. Datos base** (permisos, matriz rol-permiso, departamentos/municipios y usuario administrador):
+**2. Datos base** (permisos, matriz rol-permiso, los 33 departamentos y 1.122 municipios del DANE y usuario administrador):
 
 ```bash
 php artisan db:seed
 # Si ADMIN_PASSWORD está vacío, la contraseña generada se imprime UNA vez en consola.
 
-php artisan db:seed --class=DemoDataSeeder   # opcional: 3 proyectos con lotes de ejemplo
+php artisan db:seed --class=DemoDataSeeder   # opcional: datos de demostración (ver abajo). NUNCA en producción
 ```
+
+**Datos de demostración.** `DemoDataSeeder` crea 6 proyectos (PRY-001 a PRY-003 y DEM-004 a DEM-006,
+~310 lotes) y simula 18 meses de operación con los servicios reales del sistema, en orden
+cronológico: unos 230 clientes, 60 reservas, 160 negociaciones (contado, financiadas y mixtas, con
+uno a tres compradores), sus acuerdos y planes de cuotas (~4.500 cuotas), ~850 abonos de clientes
+puntuales, atrasados, morosos y que pagan anticipado, pagos por Wompi, mora liquidada,
+anulaciones, reestructuraciones, reversiones, un extracto bancario con asignación automática y
+cola de revisión, comunicaciones de cobro, consultas y reclamos, una migración de cartera y un
+corte de la operación en paralelo (más de 15.000 registros). Tarda cerca de un minuto.
+
+| Usuario | Rol | Contraseña |
+|---|---|---|
+| `demo.director` | Director comercial | `Demo2026*` |
+| `demo.asesor1`, `demo.asesor2`, `demo.asesor3` | Asesor comercial | `Demo2026*` |
+| `demo.cartera1`, `demo.cartera2` | Auxiliar de cartera | `Demo2026*` |
+| correo del cliente (ver Seguridad → Usuarios, rol CLIENTE) | Cliente con portal | `Cliente2026*` |
+
+`DEMO_SCALE=0.3 php artisan db:seed --class=DemoDataSeeder` genera un volumen menor.
 
 **3. Ejecutar:** `php artisan serve` → <http://localhost:8000> y, para las tareas programadas
 (vencimientos, mora, comunicaciones, respaldos), `php artisan schedule:work` en otra terminal.

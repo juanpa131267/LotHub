@@ -58,6 +58,9 @@ class AppServiceProvider extends ServiceProvider
 
         // CU-27: cada abono aplicado programa la confirmación al cliente por un canal autorizado.
         Event::listen(PaymentRegistered::class, function (PaymentRegistered $event) {
+            if (! config('lothub.notifications.payment_confirmations')) {
+                return;
+            }
             try {
                 app(CollectionNotifier::class)->paymentConfirmation($event->payment);
             } catch (\Throwable $e) {
