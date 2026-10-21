@@ -1,11 +1,11 @@
 <?php
 
 /*
-| Gestión comercial — CU-07, CU-08, CU-10, CU-31
-| Próximos sprints: reservas (CU-11), negociaciones (CU-12), acuerdos y cartera.
+| Gestión comercial — CU-07, CU-08, CU-10, CU-11, CU-12, CU-15, CU-25, CU-31
 */
 
 use App\Http\Controllers\Commercial;
+use App\Http\Controllers\Documents\DocumentController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('comercial')->group(function () {
@@ -67,4 +67,26 @@ Route::prefix('comercial')->group(function () {
             });
         });
     Route::crud('/solicitudes', Commercial\InformationRequestController::class);
+
+    // Buscadores de los formularios de reservas y negociaciones (public/js/pickers.js)
+    Route::get('/buscar/lotes', [Commercial\LookupController::class, 'lots'])->name('lookup.lots')->middleware('permission:lotes.ver');
+    Route::get('/buscar/clientes', [Commercial\LookupController::class, 'clients'])->name('lookup.clients')->middleware('permission:clientes.ver');
+
+    // Reservas (CU-11)
+    Route::crud('/reservas', Commercial\ReservationController::class);
+    Route::get('/reservas/{id}', [Commercial\ReservationController::class, 'show'])->name('reservations.show')->middleware('permission:reservas.ver')->whereNumber('id');
+    Route::post('/reservas/{id}/anular', [Commercial\ReservationController::class, 'cancel'])->name('reservations.cancel')->middleware('permission:reservas.anular')->whereNumber('id');
+
+    // Negociaciones (CU-12) y su anulación o desistimiento (CU-15)
+    Route::get('/negociaciones/anulaciones', [Commercial\SaleController::class, 'cancellations'])->name('sales.cancellations')->middleware('permission:negociaciones.aprobar_anulacion');
+    Route::crud('/negociaciones', Commercial\SaleController::class);
+    Route::controller(Commercial\SaleController::class)->prefix('/negociaciones/{id}')->name('sales.')->whereNumber(['id', 'requestId'])->group(function () {
+        Route::get('/', 'show')->name('show')->middleware('permission:negociaciones.ver');
+        Route::post('/anulacion', 'requestCancellation')->name('cancellation.request')->middleware('permission:negociaciones.solicitar_anulacion');
+        Route::post('/anulacion/{requestId}', 'resolveCancellation')->name('cancellation.resolve')->middleware('permission:negociaciones.aprobar_anulacion');
+    });
+
+    // Documentos soporte (CU-25)
+    Route::post('/negociaciones/{id}/documentos', [DocumentController::class, 'storeForSale'])->name('sales.documents.store')->middleware('permission:documentos.cargar')->whereNumber('id');
+    Route::get('/documentos/{id}', [DocumentController::class, 'download'])->name('documents.download')->middleware('permission:documentos.ver')->whereNumber('id');
 });

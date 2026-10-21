@@ -25,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
         Catalogs\PaymentMethod::class, Catalogs\DocumentType::class,
         Commercial\Project::class, Commercial\ProjectStage::class, Commercial\Lot::class,
         Commercial\Client::class, Commercial\InformationRequest::class, Commercial\DataConsent::class,
+        Commercial\Reservation::class, Commercial\Sale::class, Commercial\SaleCancellationRequest::class,
     ];
 
     public function boot(): void

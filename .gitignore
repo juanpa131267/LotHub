@@ -16,6 +16,7 @@ __pycache__/
 /storage/app/photos/
 .phpunit.result.cache
 /.phpunit.cache/
+/storage/framework/testing/
 *.log
 
 # Documentos y fuentes de trabajo (no se publican)
