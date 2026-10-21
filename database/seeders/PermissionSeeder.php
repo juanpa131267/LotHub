@@ -15,7 +15,7 @@ use Illuminate\Database\Seeder;
  */
 class PermissionSeeder extends Seeder
 {
-    /** Código => descripción. Los marcados "(próximo sprint)" aún no tienen pantalla. */
+    /** Código => descripción. Cada permiso protege rutas y botones (ver docs/PERMISOS.md). */
     public const PERMISSIONS = [
         'sistema.acceso_total'             => 'Acceso total a todas las funciones del sistema',
         'panel.acceder'                    => 'Acceder al panel administrativo',

@@ -7,6 +7,22 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y 
 ### Pendiente
 - S4 Reservas y negociaciones · S5 Acuerdos de pago y plan de cuotas · S6 Motor de asignación automática · S7 Pasarela Wompi y conciliación.
 
+## [1.0.0-rc.1] — Sprint 11: puesta en producción
+
+Versión candidata para la salida a producción (28 de diciembre de 2026, ver `docs/DESPLIEGUE.md`).
+
+### Added
+- `php artisan lothub:check`: verificación de producción (configuración segura, parches 001 a 008, event_scheduler,
+  latido del planificador, almacenamiento, correo, Wompi, tasa de usura y respaldos).
+- `php artisan lothub:backup`: volcado de la base con triggers, vistas, rutinas y eventos (gzip) y archivo de los
+  documentos privados, con retención configurable; programado a diario.
+- Integración continua en GitHub Actions: pruebas con PHP 8.2 y MariaDB 11 sobre el esquema oficial.
+- Script de despliegue (`tools/deploy/deploy.sh`), plantilla de Nginx y guía de despliegue con la lista de chequeo.
+- `.gitattributes` con fin de línea LF.
+
+### Fixed
+- Los proxies de confianza y la verificación de la tasa de usura funcionan con la configuración en caché (`config:cache`).
+
 ## [0.10.0] — Sprint 10: operación en paralelo
 
 ### Added

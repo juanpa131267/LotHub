@@ -30,7 +30,7 @@ Cuando aplique, se cita el requerimiento del documento de referencia (RF-xx, RN-
 
 ## Versiones
 
-Se sigue [SemVer](https://semver.org/lang/es/): `v0.N.0` al cerrar el sprint N y `v1.0.0` en la puesta en producción (S11).
+Se sigue [SemVer](https://semver.org/lang/es/): `v0.N.0` al cerrar el sprint N, `v1.0.0-rc.N` como candidata al cerrar S11 y `v1.0.0` el día de la salida a producción.
 
 ## Nuevo módulo CRUD
 
