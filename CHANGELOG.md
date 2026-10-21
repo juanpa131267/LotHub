@@ -7,6 +7,19 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y 
 ### Pendiente
 - S4 Reservas y negociaciones · S5 Acuerdos de pago y plan de cuotas · S6 Motor de asignación automática · S7 Pasarela Wompi y conciliación.
 
+## [0.10.0] — Sprint 10: operación en paralelo
+
+### Added
+- Migración de la cartera vigente desde una plantilla de Excel: cliente, negociación sobre el inventario, acuerdo con su
+  plan de cuotas y abono «Pagado antes del sistema» por lo ya recaudado; atómica, con reporte de errores por fila y
+  liquidación de mora desde la migración (opcional).
+- Cortes de la operación en paralelo: saldo según la hoja vs. saldo del sistema por negociación (coincide, diferencia,
+  no migrada, solo en el sistema), con tolerancia configurable, historial y exportación a Excel.
+- Plan de operación en paralelo con rutinas y criterios de salida (`docs/OPERACION_PARALELA.md`).
+
+### Database
+- Parche `008_legacy_migration.sql`: medio de pago `SALDO_MIGRADO`, `legacy_imports`, `legacy_import_rows` y `parallel_runs`.
+
 ## [0.9.0] — Sprint 9: comunicaciones de cobro y atención al titular
 
 ### Added
