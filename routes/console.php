@@ -9,7 +9,14 @@
 | (en Windows: Programador de tareas con "php artisan schedule:run" cada minuto).
 */
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Schedule;
+
+// Latido del planificador: lothub:check verifica que schedule:run se esté ejecutando.
+Schedule::call(fn () => Cache::put('lothub:scheduler:heartbeat', now()->toDateTimeString(), now()->addDay()))->everyMinute()->name('heartbeat');
+
+// S11: respaldo diario de la base de datos y de los archivos privados.
+Schedule::command('lothub:backup')->dailyAt('02:00')->withoutOverlapping();
 
 // RN-03: respaldo del evento ev_expire_reservations por si el event_scheduler está apagado.
 Schedule::command('reservations:expire')->everyFifteenMinutes()->withoutOverlapping();
